@@ -7,7 +7,12 @@
         <form id="loginForm" action="process-login.php" method="post">
             <div class="row">
                 <div class="col-md-6 col-sm-12">
-
+                    <div class="logo text-center mb-2">
+                        <img src="../img/PDC-Logo.png" alt="Logo">
+                    </div>
+                    <div class="text-center">
+                        <h5>IT & Maintenance Support</h5>
+                    </div>
                 </div>
 
                 <div class="col-md-6 col-sm-12">
@@ -18,13 +23,14 @@
                     <div class="mb-3 input-group">
                         <span class="input-group-text"><i class="fas fa-lock"></i></span>
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                        <span class="input-group-text" id="togglePassword"><i class="far fa-eye"></i></span>
+                        <span class="input-group-text" id="togglePassword"><i class="far fa-eye" style="color: #FFD700;"></i></span>
                     </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                    <div class="mb-3">
+                        <label class="cyberpunk-checkbox-label">
+                        <input type="checkbox" id="rememberMe" name="rememberMe" class="cyberpunk-checkbox">
+                        Remember me</label>
                     </div>
-                    <button type="submit" class="btn w-100 mb-3 btn-primary btn-block">Login</button>
+                    <button type="submit" class="btn w-100 btn-primary btn-block">Login</button>
                 </div>
             </div>
         </form>
