@@ -1,0 +1,15 @@
+.navbar .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+.navbar .dropdown-menu {
+    margin-top: 0;
+}
+.navbar a,
+.navbar a:focus {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.3s;
+}

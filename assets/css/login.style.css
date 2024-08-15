@@ -9,9 +9,9 @@ body {
 }
 
 .login-form {
-    max-width: 680px;
+    max-width: 410px;
     width: 100%;
-    padding: 50px 20px;
+    padding: 45px 20px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     /* border-radius: 10px; */
@@ -90,7 +90,7 @@ body {
 }
 
 .logo img {
-    max-width: 200px;
+    max-width: 140px;
     height: auto;
 }
 

@@ -6,16 +6,14 @@
         <?php endif; ?>
         <form id="loginForm" action="process-login.php" method="post">
             <div class="row">
-                <div class="col-md-6 col-sm-12">
+                <div class="col-md-12 col-sm-12">
                     <div class="logo text-center mb-2">
                         <img src="../img/PDC-Logo.png" alt="Logo">
                     </div>
-                    <div class="text-center">
+                    <div class="text-center mb-3">
                         <h5>IT & Maintenance Support</h5>
                     </div>
-                </div>
-
-                <div class="col-md-6 col-sm-12">
+                    
                     <div class="mb-3 input-group">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                         <input type="text" class="form-control" id="userId" name="username" placeholder="User ID" required>
