@@ -1,11 +1,20 @@
 <?php
 session_start();
+include('../../includes/connection.php');
+
 // Retrieve any error message from the session
 $error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
 unset($_SESSION['error']);
 // Retrieve any success message from the session
 $success = isset($_SESSION['success']) ? $_SESSION['success'] : '';
 unset($_SESSION['success']);
+unset($_SESSION['success']);
+// Get the current script name
+$current_page = basename($_SERVER['PHP_SELF']);
+$accounts_page = ['admin.add.user.php', 'admin.user.php'];
+$outlet_page = ['admin.outlet.php', 'admin.add.outlet.php', 'admin.edit.outlet.php'];
+$product_page = ['admin.products.php', 'admin.add.product.php', 'admin.edit.product.php'];
+$pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'admin.edit.pcategory.php']
 
 ?>
 
@@ -37,8 +46,6 @@ unset($_SESSION['success']);
                 <!-- Logo -->
                 <a class="navbar-brand d-flex align-items-center" href="admin.dashboard.php">
                     <img src="../../img/PDC-logo-transparent.png" alt="PDC logo" height="40">
-                    &nbsp;
-                    <!-- <span style="font-size:1rem;font-weight:600;color:gold;">Support Ticketing</span> -->
                 </a>
                 <!-- Navbar toggler for mobile view -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,15 +55,25 @@ unset($_SESSION['success']);
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Dashboard</a>
+                            <a class="nav-link <?php echo ($current_page == 'admin.dashboard.php') ? 'active' : ''; ?>" href="admin.dashboard.php">Dashboard</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle <?php echo (in_array($current_page, $accounts_page)) ? 'active' : ''; ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Users
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Add New User</a></li>
+                                <li><a class="dropdown-item <?php echo ($current_page == 'admin.add.user.php') ? 'active' : ''; ?>" href="admin.add.user.php">Add New User</a></li>
                                 <li><a class="dropdown-item" href="#">User Management</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Inventory
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Add New Item</a></li>
+                                <li><a class="dropdown-item" href="#">Item List</a></li>
+                                <li><a class="dropdown-item" href="#">Item Management</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
