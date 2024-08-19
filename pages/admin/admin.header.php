@@ -2,6 +2,11 @@
 session_start();
 include('../../includes/connection.php');
 
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+
 // Retrieve any error message from the session
 $error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
 unset($_SESSION['error']);
@@ -101,7 +106,7 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
                                 <li><a class="dropdown-item" href="#"><i class="fas fa-gear"></i>&nbsp;Settings</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp;Log Out</a></li>
+                                <li><a class="dropdown-item" href="../../includes/logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp;Log Out</a></li>
                             </ul>
                         </li>
                     </ul>

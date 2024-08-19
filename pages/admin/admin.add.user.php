@@ -32,7 +32,7 @@
                                 <option value="outlet">Outlet</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn w-100 btn-primary btn-block">Register</button>
+                        <button type="submit" class="btn w-100 btn-warning btn-block">Register</button>
                     </form>
                 </div>
             </div>

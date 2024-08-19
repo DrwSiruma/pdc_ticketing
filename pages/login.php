@@ -1,10 +1,7 @@
 <?php include('header.php'); ?>
 
     <div class="login-form">
-        <?php if (!empty($error)) : ?>
-            <div class="alert alert-danger"><?php echo $error; ?></div>
-        <?php endif; ?>
-        <form id="loginForm" action="process-login.php" method="post">
+        <form id="loginForm" action="process.login.php" method="post">
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div class="logo text-center mb-2">
@@ -13,6 +10,10 @@
                     <div class="text-center mb-3">
                         <h5>IT & Maintenance Support</h5>
                     </div>
+                    
+                    <?php if (!empty($error)) : ?>
+                        <div class="alert alert-danger"><?php echo $error; ?></div>
+                    <?php endif; ?>
                     
                     <div class="mb-3 input-group">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
