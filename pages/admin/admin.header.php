@@ -16,7 +16,7 @@ unset($_SESSION['success']);
 unset($_SESSION['success']);
 // Get the current script name
 $current_page = basename($_SERVER['PHP_SELF']);
-$accounts_page = ['admin.add.user.php', 'admin.user.php'];
+$accounts_page = ['admin.add.user.php', 'admin.accounts.php'];
 $outlet_page = ['admin.outlet.php', 'admin.add.outlet.php', 'admin.edit.outlet.php'];
 $product_page = ['admin.products.php', 'admin.add.product.php', 'admin.edit.product.php'];
 $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'admin.edit.pcategory.php']
@@ -68,7 +68,7 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item <?php echo ($current_page == 'admin.add.user.php') ? 'active' : ''; ?>" href="admin.add.user.php">Add New User</a></li>
-                                <li><a class="dropdown-item" href="#">User Management</a></li>
+                                <li><a class="dropdown-item <?php echo ($current_page == 'admin.accounts.php') ? 'active' : ''; ?>" href="admin.accounts.php">User Management</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

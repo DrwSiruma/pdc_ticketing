@@ -8,6 +8,6 @@
     <script src="../../assets/vendor/datatables/jquery.dataTables.min.js" ></script>
     <script src="../../assets/js/popper.min.js"></script>
     <!-- MAIN JS -->
-    <!-- <script src="../../assets/js/tables.js"></script> -->
+    <script src="../../assets/js/table.js"></script>
     <script src="../../assets/js/main.js"></script>
 </html>
