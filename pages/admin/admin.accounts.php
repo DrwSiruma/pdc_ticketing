@@ -4,7 +4,7 @@
         <div class="container">
             <h2 class="mt-4"><i class="fas fa-users"></i>&nbsp;Account List</h2><hr />
 
-            <div class="card">
+            <div class="card mt-4">
                 <div class="card-body">
                     <?php if (!empty($error)) : ?>
                         <div class="alert alert-danger"><?php echo $error; ?></div>
@@ -42,7 +42,7 @@
                                             </span>
                                         </td>
                                         <td>
-                                            <a class="btn btn-sm btn-outline-dark" href="admin.user.php?id=<?php echo $rows['id']; ?>" title="Edit User"><i class="fas fa-user-edit"></i></a>
+                                            <a class="btn btn-sm btn-outline-dark" href="admin.edit.user.php?id=<?php echo $rows['id']; ?>" title="Edit User"><i class="fas fa-user-edit"></i></a>
                                             <?php if ($rows['status'] == 'Active') { ?>
                                                 <a class="btn btn-sm btn-outline-dark" href="admin.status.php?id=<?php echo $rows['id']; ?>&status=Inactive" title="Deactivate User">
                                                     <i class="fas fa-user-times"></i>
