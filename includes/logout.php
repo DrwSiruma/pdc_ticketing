@@ -21,6 +21,6 @@
     }
 
     session_destroy();
-    header("Location: ../pages/index.php");
+    header("Location: /pdc_ticketing/pages/login");
     exit();
 ?>

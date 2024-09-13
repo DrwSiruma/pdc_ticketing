@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($username) || empty($password)) {
         $_SESSION['error'] = "Username and Password are required.";
-        header("Location: login.php");
+        header("Location: login");
         exit();
     } else {
         $sql = "SELECT * FROM tbl_useraccounts WHERE username = ?";
@@ -42,13 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     log_activity($conn, $user['id'], "User logged in", "Login");
 
                     if ($user['role'] === 'admin') {
-                        header("Location: admin/admin.dashboard.php");
+                        header("Location: admin/dashboard");
                     } elseif ($user['role'] === 'marketing') {
-                        header("Location: ../marketing/marketing.promo.php");
+                        header("Location: ../marketing/dashboard");
                     } elseif ($user['role'] === 'dev') {
-                        header("Location: ../dev/dev.dashboard.php");
+                        header("Location: ../dev/dashboard");
                     } elseif ($user['role'] === 'hr') {
-                        header("Location: ../hr/hr.dashboard.php");
+                        header("Location: ../hr/dashboard");
                     }
                     exit();
                 } else {
@@ -63,10 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['error'] = "Database error: " . $conn->error;
         }
 
-        header("Location: login.php");
+        header("Location: login");
         exit();
     }
 } else {
-    header("Location: login.php");
+    header("Location: login");
     exit();
 }

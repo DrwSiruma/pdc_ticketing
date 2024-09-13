@@ -1,0 +1,19 @@
+.bg-black {
+    background-color: #000000 !important;
+}
+
+.bg-gold {
+    background-color: #FFD700 !important;
+}
+
+header {
+    padding: 156px 0 100px;
+}
+  
+section {
+    padding: 150px 0;
+}
+
+.li-head {
+    font-weight: bold;
+}

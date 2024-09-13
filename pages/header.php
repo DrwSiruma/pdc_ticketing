@@ -3,16 +3,16 @@ session_start();
 
 if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] == 'admin') {
-        header("Location: admin/admin.dashboard.php");
+        header("Location: admin/dashboard");
         exit();
     } elseif ($_SESSION['role'] == 'marketing') {
-        header("Location: ../marketing/marketing.promo.php");
+        header("Location: ../marketing/dashboard");
         exit();
     } elseif ($_SESSION['role'] == 'hr') {
-        header("Location: ../hr/hr.dashboard.php");
+        header("Location: ../hr/dashboard");
         exit();
     } elseif ($_SESSION['role'] == 'dev') {
-        header("Location: ../dev/dev.dashboard.php");
+        header("Location: ../dev/dashboard");
         exit();
     }
 }
@@ -38,6 +38,7 @@ unset($_SESSION['error']);
         <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="../assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
         <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
         <!-- MAIN CSS -->
         <link href="../assets/css/login.style.css" rel="stylesheet">
     </head>
