@@ -15,7 +15,7 @@ $success = isset($_SESSION['success']) ? $_SESSION['success'] : '';
 unset($_SESSION['success']);
 unset($_SESSION['success']);
 // Get the current script name
-$current_page = basename($_SERVER['PHP_SELF']);
+// $current_page = basename($_SERVER['PHP_SELF']);
 $accounts_page = ['admin.add.user.php', 'admin.accounts.php'];
 $outlet_page = ['admin.outlet.php', 'admin.add.outlet.php', 'admin.edit.outlet.php'];
 $product_page = ['admin.products.php', 'admin.add.product.php', 'admin.edit.product.php'];
@@ -36,7 +36,7 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
         <link href="../../img/favicon.png" rel="apple-touch-icon">
 
         <!-- VENDOR CSS -->
-        <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
         <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="../../assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
         <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
@@ -45,71 +45,103 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
         <!-- MAIN CSS -->
         <link href="../../assets/css/main.style.css" rel="stylesheet">
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container container-fluid">
-                <!-- Logo -->
-                <a class="navbar-brand d-flex align-items-center" href="admin.dashboard.php">
-                    <img src="../../img/PDC-logo-transparent.png" alt="PDC logo" height="40">
+    <body id="page-top">
+        <div id="wrapper">
+            <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+                    <div class="sidebar-brand-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">ADMIN PANEL</div>
                 </a>
-                <!-- Navbar toggler for mobile view -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <!-- Navbar links -->
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link <?php echo ($current_page == 'admin.dashboard.php') ? 'active' : ''; ?>" href="admin.dashboard.php">Dashboard</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle <?php echo (in_array($current_page, $accounts_page)) ? 'active' : ''; ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Users
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item <?php echo ($current_page == 'admin.add.user.php') ? 'active' : ''; ?>" href="admin.add.user.php">Add New User</a></li>
-                                <li><a class="dropdown-item <?php echo ($current_page == 'admin.accounts.php') ? 'active' : ''; ?>" href="admin.accounts.php">User Management</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Inventory
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Add New Item</a></li>
-                                <li><a class="dropdown-item" href="#">Item List</a></li>
-                                <li><a class="dropdown-item" href="#">Item Management</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Manpower
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <li><a class="dropdown-item" href="#">IT List</a></li>
-                                <li><a class="dropdown-item" href="#">Maintenance List</a></li>
-                                <li><a class="dropdown-item" href="#">Add New Manpower</a></li>
-                                <li><a class="dropdown-item" href="#">Manpower Management</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Reports
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <li><a class="dropdown-item" href="#">IT Reports</a></li>
-                                <li><a class="dropdown-item" href="#">Maintenance Reports</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" style="color: #FFD700;" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i>&nbsp;Admin</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-gear"></i>&nbsp;Settings</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="logout"><i class="fas fa-sign-out-alt"></i>&nbsp;Log Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item <?php echo ($page == 'admin/dashboard') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="dashboard">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Interface
                 </div>
-            </div>
-        </nav>
+
+                <li class="nav-item <?php echo in_array($page, ['admin/add-user', 'admin/edit-user', 'admin/users']) ? 'active' : ''; ?>">
+                    <a class="nav-link" href="users">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span>Registered Users</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="inventory">
+                        <i class="fas fa-boxes"></i>
+                        <span>Inventory</span>
+                    </a>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    MANPOWER
+                </div>
+
+                <li class="nav-item <?php echo in_array($page, ['admin/add-it', 'admin/it']) ? 'active' : ''; ?>">
+                    <a class="nav-link" href="it">
+                        <i class="fas fa-fw fa-user-astronaut"></i>
+                        <span>IT</span>
+                    </a>
+                </li>
+
+                <li class="nav-item <?php echo in_array($page, ['admin/add-maintenance', 'admin/maintenance']) ? 'active' : ''; ?>">
+                    <a class="nav-link" href="maintenance">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Maintenance</span>
+                    </a>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Reports
+                </div>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="service-report">
+                        <i class="fas fa-fw fa-file"></i>
+                        <span>Service Reports</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="technical-report">
+                        <i class="fas fa-fw fa-file"></i>
+                        <span>Technical Reports</span>
+                    </a>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+
+            </ul>
+
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <!-- Topbar -->
+                    <?php include_once('admin.topbar.php');?>
+                    <!-- End of Topbar -->

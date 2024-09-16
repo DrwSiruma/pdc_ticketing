@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($username) || empty($password) || empty($role)) {
         $_SESSION['error'] = "All fields are required.";
-        header("Location: admin.add.user.php");
+        header("Location: add-user");
         exit();
     } else {
         // Check if the username already exists
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($result->num_rows > 0) {
             $_SESSION['error'] = "Username already exists.";
-            header("Location: admin.add.user.php");
+            header("Location: add-user");
             exit();
         } else {
             // Encrypt the password
@@ -52,11 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 log_activity($conn, $admin_id, "Added new user id: #$new_user_id as $role", "Account");
 
                 $_SESSION['success'] = "User added successfully.";
-                header("Location: admin.add.user.php");
+                header("Location: add-user");
                 exit();
             } else {
                 $_SESSION['error'] = "Failed to register. Please try again.";
-                header("Location: admin.add.user.php");
+                header("Location: add-user");
                 exit();
             }
         }
