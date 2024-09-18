@@ -34,8 +34,14 @@ if (isset($_GET['id'])) {
                                 <?php if (!empty($_SESSION['profile-success'])) : ?>
                                     <div class="alert alert-success"><?php echo $_SESSION['profile-success']; unset($_SESSION['profile-success']); ?></div>
                                 <?php endif; ?>
-                                <form method="post" action="admin.edit.php">
+                                <form method="post" action="process.edit.user.php">
                                     <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+                                    <div class="row mt-2">
+                                        <div class="col-md-12">
+                                            <label for="name">Name :</label>
+                                            <input type="text" class="form-control" placeholder="Enter name" id="name" name="name" value="<?php echo htmlspecialchars($user['name']); ?>">
+                                        </div>
+                                    </div>
                                     <div class="row mt-2">
                                         <div class="col-md-12">
                                             <label for="username">Username :</label>
@@ -79,7 +85,7 @@ if (isset($_GET['id'])) {
                                 <?php if (!empty($_SESSION['password-success'])) : ?>
                                     <div class="alert alert-success"><?php echo $_SESSION['password-success']; unset($_SESSION['password-success']); ?></div>
                                 <?php endif; ?>
-                                <form method="post" action="admin.reset.php">
+                                <form method="post" action="process.reset.php">
                                     <input type="hidden" name="pid" value="<?php echo $user['id']; ?>">
                                     <div class="row mt-2">
                                         <div class="col-md-12">

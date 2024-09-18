@@ -14,6 +14,10 @@
                     <?php endif; ?>
                     <form action="process.register.php" class="mt-2 mb-2" method="post">
                         <div class="mb-3 input-group">
+                            <span class="input-group-text"><i class="fas fa-user-edit"></i></span>
+                            <input type="text" class="form-control" name="name" placeholder="Name" required>
+                        </div>
+                        <div class="mb-3 input-group">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                             <input type="text" class="form-control" name="username" placeholder="Username" required>
                         </div>

@@ -27,7 +27,7 @@ if (strpos($page, 'admin/') === 0) {
             include 'admin/admin.edit.user.php';
             break;
         case 'user-status':
-            include 'admin/admin.status.user.php';
+            include 'admin/process.status.user.php';
             break;
         case 'logout':
             include '../includes/logout.php'; // Admin logout

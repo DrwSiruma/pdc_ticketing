@@ -16,11 +16,12 @@ function log_activity($conn, $user_id, $activity, $type) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['name']);
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
     $role = trim($_POST['role']);
 
-    if (empty($username) || empty($password) || empty($role)) {
+    if (empty($name) || empty($username) || empty($password) || empty($role)) {
         $_SESSION['error'] = "All fields are required.";
         header("Location: add-user");
         exit();
@@ -41,9 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             // Insert new user into the database
-            $sql = "INSERT INTO tbl_useraccounts (username, password, role) VALUES (?, ?, ?)";
+            $sql = "INSERT INTO tbl_useraccounts (name, username, password, role) VALUES (?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sss", $username, $hashedPassword, $role);
+            $stmt->bind_param("ssss", $name, $username, $hashedPassword, $role);
 
             if ($stmt->execute()) {
                 $new_user_id = $stmt->insert_id;

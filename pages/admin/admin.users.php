@@ -17,7 +17,8 @@
                     <table class="table table-bordered table-striped table-sm w-100" id="acctbl">
                         <thead>
                             <tr>
-                                <th>User Id</th>
+                                <th>Id</th>
+                                <th>Name</th>
                                 <th>Username</th>
                                 <th>Role</th>
                                 <th>Created</th>
@@ -33,6 +34,7 @@
                             ?>
                                 <tr>
                                     <td>#<?php echo $rows["id"]; ?></td>
+                                    <td><?php echo $rows["name"]; ?></td>
                                     <td><?php echo $rows["username"]; ?></td>
                                     <td><?php echo $rows["role"]; ?></td>
                                     <td><?php echo $rows["created"]; ?></td>

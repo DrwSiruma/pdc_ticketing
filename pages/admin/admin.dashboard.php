@@ -16,7 +16,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Total Registered Users</div>
+                                    Registered Users</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '1';?></div>
                             </div>
                             <div class="col-auto">
@@ -34,7 +34,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Total Active IT Personel</div>
+                                    Active IT Personel</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '1';?></div>
                             </div>
                             <div class="col-auto">
@@ -51,7 +51,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Active Maintenance Personel
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Active Maintenance Personel
                                 </div>
                                 <div class="row no-gutters align-items-center">
                                     <div class="col-auto">
@@ -75,7 +75,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                    Total Inactive Users</div>
+                                    Inactive Users</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '1';?></div>
                             </div>
                             <div class="col-auto">

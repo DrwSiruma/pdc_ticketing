@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2024 at 11:57 AM
+-- Generation Time: Sep 18, 2024 at 06:07 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pdcticketing_db`
+-- Database: `pdc_ticketing_db`
 --
 
 -- --------------------------------------------------------
@@ -40,11 +40,15 @@ CREATE TABLE `tbl_auditlog` (
 --
 
 INSERT INTO `tbl_auditlog` (`id`, `user_id`, `activity`, `type`, `date_posted`) VALUES
-(265, '1', 'User logged in', 'Login', '2024-08-18 17:47:52.262302'),
-(266, '1', 'Added new user id: #12 as maintenance', 'Account', '2024-08-18 19:30:09.708418'),
-(267, '1', 'User logged in', 'Login', '2024-08-19 09:13:46.932263'),
-(268, '1', 'User logged out', 'Logout', '2024-08-19 09:24:09.312952'),
-(269, '1', 'User logged in', 'Login', '2024-08-19 09:24:35.821765');
+(270, '1', 'User logged in', 'Login', '2024-09-18 23:21:54.815041'),
+(271, '1', 'Added new user id: #2 as it', 'Account', '2024-09-18 23:23:27.222074'),
+(272, '1', 'Added new user id: #3 as maintenance', 'Account', '2024-09-18 23:23:56.370280'),
+(273, '1', 'Updated status of user: #3 as Inactive', 'Account', '2024-09-18 23:29:32.384831'),
+(274, '1', 'Updated status of user: #3 as Active', 'Account', '2024-09-18 23:30:28.687901'),
+(275, '1', 'Updated password of user: #2', 'Account', '2024-09-18 23:33:56.880859'),
+(276, '1', 'Updated information of user: #2', 'Account', '2024-09-18 23:36:23.259791'),
+(277, '1', 'Updated information of user: #2', 'Account', '2024-09-18 23:36:36.657026'),
+(278, '1', 'Updated information of user: #2', 'Account', '2024-09-18 23:36:38.344904');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +68,7 @@ ALTER TABLE `tbl_auditlog`
 -- AUTO_INCREMENT for table `tbl_auditlog`
 --
 ALTER TABLE `tbl_auditlog`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=279;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

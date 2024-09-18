@@ -3,7 +3,7 @@ session_start();
 include('../includes/connection.php');
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login");
+    header("Location: /pdc_ticketing/pages/login");
     exit();
 }
 
@@ -63,7 +63,7 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item <?php echo ($page == 'admin/dashboard') ? 'active' : ''; ?>">
                     <a class="nav-link" href="dashboard">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <i class="fas fa-fw fa-tachometer-alt fa-sm"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -77,35 +77,28 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
 
                 <li class="nav-item <?php echo in_array($page, ['admin/add-user', 'admin/edit-user', 'admin/users']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="users">
-                        <i class="fas fa-fw fa-user"></i>
+                        <i class="fas fa-fw fa-user fa-sm"></i>
                         <span>Registered Users</span>
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item <?php echo in_array($page, ['admin/add-item', 'admin/inventory']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="inventory">
-                        <i class="fas fa-boxes"></i>
+                        <i class="fas fa-fw fa-boxes fa-sm"></i>
                         <span>Inventory</span>
                     </a>
                 </li>
-                <!-- Divider -->
-                <hr class="sidebar-divider d-none d-md-block">
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    MANPOWER
-                </div>
 
                 <li class="nav-item <?php echo in_array($page, ['admin/add-it', 'admin/it']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="it">
-                        <i class="fas fa-fw fa-user-astronaut"></i>
+                        <i class="fas fa-fw fa-user-secret fa-sm"></i>
                         <span>IT</span>
                     </a>
                 </li>
 
                 <li class="nav-item <?php echo in_array($page, ['admin/add-maintenance', 'admin/maintenance']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="maintenance">
-                        <i class="fas fa-user-cog"></i>
+                        <i class="fas fa-fw fa-user-cog fa-sm"></i>
                         <span>Maintenance</span>
                     </a>
                 </li>
@@ -119,14 +112,14 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
 
                 <li class="nav-item">
                     <a class="nav-link" href="service-report">
-                        <i class="fas fa-fw fa-file"></i>
+                        <i class="fas fa-fw fa-file fa-sm"></i>
                         <span>Service Reports</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="technical-report">
-                        <i class="fas fa-fw fa-file"></i>
+                        <i class="fas fa-fw fa-file fa-sm"></i>
                         <span>Technical Reports</span>
                     </a>
                 </li>
