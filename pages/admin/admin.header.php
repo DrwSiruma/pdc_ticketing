@@ -54,7 +54,7 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
                     <div class="sidebar-brand-icon">
                         <i class="fas fa-code"></i>
                     </div>
-                    <div class="sidebar-brand-text mx-3">ADMIN PANEL</div>
+                    <div class="sidebar-brand-text mx-3" style="color: #FFD700;">ADMIN PANEL</div>
                 </a>
 
                 <!-- Divider -->

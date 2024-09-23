@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (password_verify($password, $user['password'])) {
                     $_SESSION['id'] = $user['id'];
                     $_SESSION['role'] = $user['role'];
+                    $_SESSION['name'] = $user['name'];
                     $_SESSION['username'] = $user['username'];
 
                     // Log the login activity

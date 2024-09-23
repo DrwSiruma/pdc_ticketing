@@ -30,15 +30,17 @@
                         <tbody>
                             <?php
                                 $user_qry = mysqli_query($conn, "SELECT * FROM tbl_useraccounts WHERE id != '1'");
-                                while($rows=mysqli_fetch_array($user_qry)){ 
+                                while($rows=mysqli_fetch_array($user_qry)){
+                                    $createDT = new DateTime($rows["created"]);
+                                    $updateDT = new DateTime($rows["updated"]);
                             ?>
                                 <tr>
                                     <td>#<?php echo $rows["id"]; ?></td>
                                     <td><?php echo $rows["name"]; ?></td>
                                     <td><?php echo $rows["username"]; ?></td>
                                     <td><?php echo $rows["role"]; ?></td>
-                                    <td><?php echo $rows["created"]; ?></td>
-                                    <td><?php echo $rows["updated"]; ?></td>
+                                    <td><?php echo $formattedDate = $createDT->format('m/d/Y - h:i A'); ?></td>
+                                    <td><?php echo $formattedDate = $updateDT->format('m/d/Y - h:i A'); ?></td>
                                     <td>
                                         <span class="badge text-white <?php echo $rows["status"] == 'Active' ? 'bg-success' : 'bg-secondary'; ?>">
                                             <?php echo ucfirst($rows["status"]); ?>

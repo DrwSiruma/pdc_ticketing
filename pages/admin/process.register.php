@@ -1,5 +1,5 @@
 <?php
-include('../../includes/connection.php');
+include('../includes/connection.php');
 session_start();
 
 function log_activity($conn, $user_id, $activity, $type) {
