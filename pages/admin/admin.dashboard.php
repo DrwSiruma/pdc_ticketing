@@ -16,7 +16,21 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Registered Users</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '1';?></div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php
+                                        $acc_qry = "SELECT COUNT(*) FROM tbl_useraccounts WHERE status='Active' AND id != '1'";
+                                        $result = mysqli_query($conn, $acc_qry) or die(mysqli_error($conn));
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            if($row[0] <= 0) {
+                                                echo "0";
+                                            }
+                                            else {
+                                                echo "$row[0]";
+                                            }
+                                            
+                                        }
+                                    ?>
+                                </div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -72,7 +86,21 @@
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                     Inactive Users</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '1';?></div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php
+                                        $inacc_qry = "SELECT COUNT(*) FROM tbl_useraccounts WHERE status='Inactive'";
+                                        $result4 = mysqli_query($conn, $inacc_qry) or die(mysqli_error($conn));
+                                        while ($row4 = mysqli_fetch_array($result4)) {
+                                            if($row4[0] <= 0) {
+                                                echo "0";
+                                            }
+                                            else {
+                                                echo "$row4[0]";
+                                            }
+                                            
+                                        }
+                                    ?>
+                                </div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-users fa-2x text-gray-300"></i>
