@@ -1,6 +1,5 @@
 <?php 
     include('admin.header.php');
-    //$user_qry = mysqli_query($conn, "COUNT * FROM tbl_useraccounts WHERE id != '1'");
 ?>
 
     <div class="container-fluid">
@@ -111,7 +110,39 @@
             </div>
         </div>
         
-
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-gear"></i>&nbsp;System Logs
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-sm w-100" id="syslogtbl">
+                                <thead>
+                                    <th>User ID</th>
+                                    <th>Activity</th>
+                                    <th>Date</th>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    $adlog_qry = mysqli_query($conn, "SELECT * FROM tbl_auditlog");
+                                    while($adlog_res=mysqli_fetch_array($adlog_qry)){
+                                        $createDT = new DateTime($adlog_res["date_posted"]);
+                                ?>
+                                <tr>
+                                    <td><?php echo $adlog_res['user_id']; ?></td>
+                                    <td><?php echo $adlog_res['activity']; ?></td>
+                                    <td><?php echo $formattedDate = $createDT->format('m/d/Y - h:i A'); ?></td>
+                                </tr>
+                                <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 <?php include('admin.footer.php'); ?>

@@ -10,12 +10,11 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 // Retrieve any error message from the session
 $error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
 unset($_SESSION['error']);
-// Retrieve any success message from the session
+
 $success = isset($_SESSION['success']) ? $_SESSION['success'] : '';
 unset($_SESSION['success']);
 unset($_SESSION['success']);
-// Get the current script name
-// $current_page = basename($_SERVER['PHP_SELF']);
+
 $accounts_page = ['admin.add.user.php', 'admin.accounts.php'];
 $outlet_page = ['admin.outlet.php', 'admin.add.outlet.php', 'admin.edit.outlet.php'];
 $product_page = ['admin.products.php', 'admin.add.product.php', 'admin.edit.product.php'];
@@ -36,7 +35,6 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
         <link href="../../img/favicon.png" rel="apple-touch-icon">
 
         <!-- VENDOR CSS -->
-        <!-- <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
         <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="../../assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
         <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
@@ -47,7 +45,7 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
     </head>
     <body id="page-top">
         <div id="wrapper">
-            <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+            <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
