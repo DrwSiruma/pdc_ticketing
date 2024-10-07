@@ -1,0 +1,120 @@
+/* Custom Styles */
+body {
+    background-color: #f9f9f9;
+    padding-top: 70px; /* Added padding to account for the fixed navbar */
+}
+
+.navbar {
+    background-color: #e9e9e9;
+    border-bottom: 2px solid #c3c3c3;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    font-size: 14px;
+    color: #666666;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link.active {
+    color: #000000;
+    background-color: #e9e9e9;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+/* Button Styles */
+.btn-primary2 {
+    background-color: #1b9af7;
+    border-color: #1b9af7;
+    color: #FFF;
+    font-size: 16px;
+    padding: 10px 30px;
+}
+
+.btn-success2 {
+    background-color: #87c043;
+    border-color: #87c043;
+    color: #FFF;
+    font-size: 16px;
+    padding: 10px 30px;
+}
+
+/* Header and Paragraph Styles */
+h1.display-6 {
+    font-size: 32px;
+    color: #0073e6;
+    margin-top: 30px;
+}
+
+p.lead {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 30px;
+    max-width: 750px;
+    margin: auto;
+}
+
+/* Adjust button sizes */
+.btn-lg {
+    width: 230px;
+}
+
+/* Margin for buttons */
+.btn-block {
+    margin-bottom: 20px;
+}
+
+/* Add a container max-width to the navbar */
+.container {
+    max-width: 1200px;
+}
+
+/* Styling for top-right links (Guest User, Sign In) */
+.navbar-nav .nav-link {
+    color: #000;
+}
+
+.navbar-nav .nav-link:last-child {
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link:last-child:hover {
+    color: #0073e6;
+    text-decoration: underline;
+}
+
+/* Partition line between Guest User and Sign In */
+.navbar-nav .divider {
+    height: 24px;
+    width: 1px;
+    background-color: #ccc;
+    margin: auto 15px;
+}
+
+/* Hide the divider in mobile view */
+@media (max-width: 991.98px) {
+    .navbar-nav .divider {
+        display: none;
+    }
+}
+
+/* Fixed navbar spacing */
+.navbar.fixed-top {
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    color: #666666;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

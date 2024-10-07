@@ -16,13 +16,13 @@
 
                 <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-ed-tab" data-toggle="pill" data-target="#pills-ed" type="button" role="tab" aria-controls="pills-ed" aria-selected="true">Electronic Devices</button>
+                        <button class="nav-link active" id="pills-pos-tab" data-toggle="pill" data-target="#pills-pos" type="button" role="tab" aria-controls="pills-pos" aria-selected="true">POS</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-appl-tab" data-toggle="pill" data-target="#pills-appl" type="button" role="tab" aria-controls="pills-appl" aria-selected="false">Appliances</button>
+                        <button class="nav-link" id="pills-int-tab" data-toggle="pill" data-target="#pills-int" type="button" role="tab" aria-controls="pills-int" aria-selected="false">Internet</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-furn-tab" data-toggle="pill" data-target="#pills-furn" type="button" role="tab" aria-controls="pills-furn" aria-selected="false">Furniture</button>
+                        <button class="nav-link" id="pills-paint-tab" data-toggle="pill" data-target="#pills-paint" type="button" role="tab" aria-controls="pills-paint" aria-selected="false">Painting</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="pills-te-tab" data-toggle="pill" data-target="#pills-te" type="button" role="tab" aria-controls="pills-te" aria-selected="false">Tools / Equipment</button>
@@ -31,10 +31,10 @@
                 <hr />
 
                 <div class="tab-content" id="pills-tabContent">
-                    <!-- Electronic Devices -->
-                    <div class="tab-pane fade show active" id="pills-ed" role="tabpanel" aria-labelledby="pills-ed-tab">
+                    <!-- POS -->
+                    <div class="tab-pane fade show active" id="pills-pos" role="tabpanel" aria-labelledby="pills-pos-tab">
                         <div class="table-responsive">
-                            <table class="table table-bordered w-100" id="edtbl">
+                            <table class="table table-bordered w-100" id="postbl">
                                 <thead hidden>
                                     <tr>
                                         <th>Image</th>
@@ -55,10 +55,10 @@
                             </table>
                         </div>
                     </div>
-                    <!-- Appliances -->
-                    <div class="tab-pane fade" id="pills-appl" role="tabpanel" aria-labelledby="pills-appl-tab">
+                    <!-- Internet -->
+                    <div class="tab-pane fade" id="pills-int" role="tabpanel" aria-labelledby="pills-int-tab">
                         <div class="table-responsive">
-                            <table class="table table-bordered w-100" id="appltbl">
+                            <table class="table table-bordered w-100" id="inttbl">
                                 <thead hidden>
                                     <tr>
                                         <th>Image</th>
@@ -79,10 +79,10 @@
                             </table>
                         </div>
                     </div>
-                    <!-- Furniture -->
-                    <div class="tab-pane fade" id="pills-furn" role="tabpanel" aria-labelledby="pills-furn-tab">
+                    <!-- Painting -->
+                    <div class="tab-pane fade" id="pills-paint" role="tabpanel" aria-labelledby="pills-paint-tab">
                         <div class="table-responsive">
-                            <table class="table table-bordered w-100" id="furntbl">
+                            <table class="table table-bordered w-100" id="painttbl">
                                 <thead hidden>
                                     <tr>
                                         <th>Image</th>

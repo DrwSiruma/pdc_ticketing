@@ -5,8 +5,8 @@ if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] == 'admin') {
         header("Location: admin/dashboard");
         exit();
-    } elseif ($_SESSION['role'] == 'marketing') {
-        header("Location: ../marketing/dashboard");
+    } elseif ($_SESSION['role'] == 'outlet' || $_SESSION['role'] == 'office') {
+        header("Location: user/dashboard");
         exit();
     } elseif ($_SESSION['role'] == 'hr') {
         header("Location: ../hr/dashboard");

@@ -26,6 +26,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'update-userpassw':
                 include 'admin/process.reset.php';
                 break;
+            case 'add-category':
+                include 'admin/process.reset.php';
+                break;
         }
     } else {
         switch ($admin_page) {
@@ -64,7 +67,32 @@ if (strpos($page, 'admin/') === 0) {
                 break;
         }
     }
-} else {
+} elseif (strpos($page, 'user/') === 0) {
+    $user_page = str_replace('user/', '', $page);
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        switch ($user_page) {
+            case 'edit-profile':
+                include 'user/process.profile-edit.php';
+                break;
+        }
+    } else {
+        switch ($user_page) {
+            case 'dashboard':
+                include 'user/user.dashboard.php';
+                break;
+            case 'open-ticket':
+                include 'user/user.open-ticket.php';
+                break;
+            case 'logout':
+                include '../includes/logout.php';
+                break;
+            default:
+                include 'user/user.dashboard.php';
+                break;
+        }
+    }
+}else {
     switch ($page) {
         case 'login':
             include 'login.php';
