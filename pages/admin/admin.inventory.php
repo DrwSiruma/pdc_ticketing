@@ -16,25 +16,19 @@
 
                 <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-pos-tab" data-toggle="pill" data-target="#pills-pos" type="button" role="tab" aria-controls="pills-pos" aria-selected="true">POS</button>
+                        <button class="nav-link active" id="pills-it-tab" data-toggle="pill" data-target="#pills-it" type="button" role="tab" aria-controls="pills-it" aria-selected="true">For IT</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-int-tab" data-toggle="pill" data-target="#pills-int" type="button" role="tab" aria-controls="pills-int" aria-selected="false">Internet</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-paint-tab" data-toggle="pill" data-target="#pills-paint" type="button" role="tab" aria-controls="pills-paint" aria-selected="false">Painting</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-te-tab" data-toggle="pill" data-target="#pills-te" type="button" role="tab" aria-controls="pills-te" aria-selected="false">Tools / Equipment</button>
+                        <button class="nav-link" id="pills-maint-tab" data-toggle="pill" data-target="#pills-maint" type="button" role="tab" aria-controls="pills-maint" aria-selected="false">For Maintenance</button>
                     </li>
                 </ul>
                 <hr />
 
                 <div class="tab-content" id="pills-tabContent">
-                    <!-- POS -->
-                    <div class="tab-pane fade show active" id="pills-pos" role="tabpanel" aria-labelledby="pills-pos-tab">
+                    <!-- it -->
+                    <div class="tab-pane fade show active" id="pills-it" role="tabpanel" aria-labelledby="pills-it-tab">
                         <div class="table-responsive">
-                            <table class="table table-bordered w-100" id="postbl">
+                            <table class="table table-bordered w-100" id="itcattbl">
                                 <thead hidden>
                                     <tr>
                                         <th>Image</th>
@@ -55,10 +49,10 @@
                             </table>
                         </div>
                     </div>
-                    <!-- Internet -->
-                    <div class="tab-pane fade" id="pills-int" role="tabpanel" aria-labelledby="pills-int-tab">
+                    <!-- maintenance -->
+                    <div class="tab-pane fade" id="pills-maint" role="tabpanel" aria-labelledby="pills-maint-tab">
                         <div class="table-responsive">
-                            <table class="table table-bordered w-100" id="inttbl">
+                            <table class="table table-bordered w-100" id="maincattbl">
                                 <thead hidden>
                                     <tr>
                                         <th>Image</th>
@@ -68,54 +62,6 @@
                                 <tbody>
                                     <?php
                                         $categ_qry = mysqli_query($conn, "SELECT * FROM tbl_itemcategory WHERE designation = '2'");
-                                        while($categ_res=mysqli_fetch_array($categ_qry)){
-                                    ?>
-                                        <tr>
-                                            <td><?php echo $categ_res["img_path"]; ?></td>
-                                            <td><?php echo $categ_res["name"]; ?></td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Painting -->
-                    <div class="tab-pane fade" id="pills-paint" role="tabpanel" aria-labelledby="pills-paint-tab">
-                        <div class="table-responsive">
-                            <table class="table table-bordered w-100" id="painttbl">
-                                <thead hidden>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        $categ_qry = mysqli_query($conn, "SELECT * FROM tbl_itemcategory WHERE designation = '3'");
-                                        while($categ_res=mysqli_fetch_array($categ_qry)){
-                                    ?>
-                                        <tr>
-                                            <td><?php echo $categ_res["img_path"]; ?></td>
-                                            <td><?php echo $categ_res["name"]; ?></td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- Tools / Equipment -->
-                    <div class="tab-pane fade" id="pills-te" role="tabpanel" aria-labelledby="pills-te-tab">
-                        <div class="table-responsive">
-                            <table class="table table-bordered w-100" id="tetbl">
-                                <thead hidden>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        $categ_qry = mysqli_query($conn, "SELECT * FROM tbl_itemcategory WHERE designation = '4'");
                                         while($categ_res=mysqli_fetch_array($categ_qry)){
                                     ?>
                                         <tr>

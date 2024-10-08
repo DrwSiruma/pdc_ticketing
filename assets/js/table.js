@@ -22,7 +22,7 @@ $(document).ready(function () {
 
 // inventory tables
 $(document).ready(function () {
-    var table = $('#postbl').DataTable({
+    var table = $('#itcattbl').DataTable({
     searching: true,
     paging: true,
     info: true,
@@ -31,25 +31,7 @@ $(document).ready(function () {
     });
 });
 $(document).ready(function () {
-    var table = $('#inttbl').DataTable({
-    searching: true,
-    paging: true,
-    info: true,
-    ordering: true,
-    lengthChange: true,
-    });
-});
-$(document).ready(function () {
-    var table = $('#painttbl').DataTable({
-    searching: true,
-    paging: true,
-    info: true,
-    ordering: true,
-    lengthChange: true,
-    });
-});
-$(document).ready(function () {
-    var table = $('#tetbl').DataTable({
+    var table = $('#maincattbl').DataTable({
     searching: true,
     paging: true,
     info: true,

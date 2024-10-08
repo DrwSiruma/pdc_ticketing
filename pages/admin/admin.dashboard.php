@@ -126,7 +126,7 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                    $adlog_qry = mysqli_query($conn, "SELECT * FROM tbl_auditlog");
+                                    $adlog_qry = mysqli_query($conn, "SELECT * FROM tbl_auditlog ORDER BY date_posted DESC");
                                     while($adlog_res=mysqli_fetch_array($adlog_qry)){
                                         $createDT = new DateTime($adlog_res["date_posted"]);
                                 ?>

@@ -23,14 +23,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="form_image">Image <span class="text-danger">*</span></label>
-                                        <input id="form_image" type="file" name="image" class="form-control"  required="required" accept="image/*" data-error="select a file">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label for="form_designation">Designation <span class="text-danger">*</span></label>
                                         <select id="form_designation" name="designation" class="form-control" required="required" data-error="Please specify your designation.">
                                             <option value="" selected disabled>--Select Designation--</option>
@@ -39,16 +31,12 @@
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="form_need">Item Group <span class="text-danger">*</span></label>
-                                        <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
-                                            <option value="" selected disabled>--Select the Item Group--</option>
-                                            <option value="1">POS</option>
-                                            <option value="2">Internet</option>
-                                            <option value="3">Paint</option>
-                                            <option value="4">Tools/Equipment</option>
-                                        </select>
+                                        <label for="form_image">Image <span class="text-danger">*</span></label>
+                                        <input id="form_image" type="file" name="image" class="img-cat" required="required" accept="image/*" data-error="select a file">
                                     </div>
                                 </div>
                             </div>
