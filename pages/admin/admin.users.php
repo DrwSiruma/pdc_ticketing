@@ -2,7 +2,7 @@
 
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">User Accounts&nbsp;<a href="add-user" class="btn btn-sm btn-dark">+</a></h1>
+            <h1 class="h3 mb-0 text-gray-800">User Accounts&nbsp;<a href="add-user" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> Add new user</a></h1>
         </div>
 
         <div class="card mt-4">

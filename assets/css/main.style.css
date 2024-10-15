@@ -51,3 +51,11 @@ table.dataTable tbody td {
       content: "\f15b";
    }
 }
+.itemcat-img {
+   width: 100px;
+   height: 100px;
+}
+
+.table td {
+   vertical-align: middle !important;
+}

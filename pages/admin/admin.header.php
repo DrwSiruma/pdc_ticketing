@@ -80,7 +80,7 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
                     </a>
                 </li>
 
-                <li class="nav-item <?php echo in_array($page, ['admin/add-category', 'admin/inventory']) ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo in_array($page, ['admin/add-category', 'admin/inventory','admin/item-list', 'admin/add-itemlist']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="inventory">
                         <i class="fas fa-fw fa-boxes fa-sm"></i>
                         <span>Inventory</span>

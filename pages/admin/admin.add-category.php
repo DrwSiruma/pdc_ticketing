@@ -12,7 +12,7 @@
                     <?php if (!empty($success)) : ?>
                         <div class="alert alert-success"><?php echo $success; ?></div>
                     <?php endif; ?>
-                    <form action="add-category" class="mt-2 mb-2" method="post">
+                    <form action="add-category" class="mt-2 mb-2" method="post" enctype="multipart/form-data">
                         <div class="controls">
                             <div class="row">
                                 <div class="col-md-6">

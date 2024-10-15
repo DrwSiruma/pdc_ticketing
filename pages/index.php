@@ -27,7 +27,10 @@ if (strpos($page, 'admin/') === 0) {
                 include 'admin/process.reset.php';
                 break;
             case 'add-category':
-                include 'admin/process.reset.php';
+                include 'admin/process.add-category.php';
+                break;
+            case 'add-itemlist':
+                include 'admin/process.add-itemlist.php';
                 break;
         }
     } else {
@@ -58,6 +61,9 @@ if (strpos($page, 'admin/') === 0) {
                 break;
             case 'add-category':
                 include 'admin/admin.add-category.php';
+                break;
+            case 'item-list':
+                include 'admin/admin.item-list.php';
                 break;
             case 'logout':
                 include '../includes/logout.php';

@@ -2,7 +2,7 @@
 
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Facility Management Supplies&nbsp;<a href="add-category" class="btn btn-sm btn-dark">+</a></h1>
+            <h1 class="h3 mb-0 text-gray-800">Facility Management Supplies Category&nbsp;<a href="add-category" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> Add new category</a></h1>
         </div>
 
         <div class="card mt-4">
@@ -28,11 +28,12 @@
                     <!-- it -->
                     <div class="tab-pane fade show active" id="pills-it" role="tabpanel" aria-labelledby="pills-it-tab">
                         <div class="table-responsive">
-                            <table class="table table-bordered w-100" id="itcattbl">
+                            <table class="table w-100" id="itcattbl">
                                 <thead hidden>
                                     <tr>
                                         <th>Image</th>
                                         <th>Name</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,8 +42,16 @@
                                         while($categ_res=mysqli_fetch_array($categ_qry)){
                                     ?>
                                         <tr>
-                                            <td><?php echo $categ_res["img_path"]; ?></td>
-                                            <td><?php echo $categ_res["name"]; ?></td>
+                                            <td width="150px"><img class="img-fluid itemcat-img" src="../<?php echo $categ_res["img_path"]; ?>"></td>
+                                            <td><a href="item-list?item=<?php echo $categ_res['id']; ?>"><?php echo $categ_res["name"]; ?></a></td>
+                                            <td class="text-right">
+                                                <a href="#" class="text-secondary p-1"><i class="fas fa-pencil-alt"></i></a>
+                                                <?php if ($categ_res["status"]== '1') { ?>
+                                                    <a href="#" class="text-secondary p-1"><i class="fas fa-ban"></i></a>
+                                                <?php } else { ?>
+                                                    <a href="#" class="text-secondary p-1"><i class="fas fa-check"></i></a>
+                                                <?php } ?>
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
