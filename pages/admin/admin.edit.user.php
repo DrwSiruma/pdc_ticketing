@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $user = $result->fetch_assoc();
 } else {
     $_SESSION['error'] = "Invalid request.";
-    header("Location: admin.accounts.php");
+    header("Location: users");
     exit();
 }
 ?>
@@ -51,7 +51,7 @@ if (isset($_GET['id'])) {
                                     <div class="row mt-2">
                                         <div class="col-md-12">
                                             <label for="role">Role :</label>
-                                            <select class="form-control" id="role" name="role" onchange="toggleBranchSelection()">
+                                            <select class="form-control" id="role" name="role">
                                                 <option value="admin" <?php if ($user['role'] == 'admin') echo 'selected'; ?>>Admin</option>
                                                 <option value="it" <?php if ($user['role'] == 'it') echo 'selected'; ?>>IT</option>
                                                 <option value="maintenance" <?php if ($user['role'] == 'maintenance') echo 'selected'; ?>>Maintenance</option>

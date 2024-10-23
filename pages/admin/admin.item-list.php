@@ -31,19 +31,19 @@ $item_res = mysqli_fetch_assoc($item_qry2);
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php
-                                if (mysqli_num_rows($item_qry) > 0) {
-                                    mysqli_data_seek($item_qry, 0); // Reset pointer to start
-                                    while($list=mysqli_fetch_array($item_qry)){
+                                <?php
+                                    if (mysqli_num_rows($item_qry) > 0) {
+                                        mysqli_data_seek($item_qry, 0); // Reset pointer to start
+                                        while($list=mysqli_fetch_array($item_qry)){
                                 ?>
                                     <tr>
                                         <td><?php echo $list["l_name"]; ?></td>
                                         <td class="text-right">
                                             <a href="#" class="text-secondary p-1"><i class="fas fa-pencil-alt"></i></a>
                                             <?php if ($list["status"]== '1') { ?>
-                                                <a href="#" class="text-secondary p-1"><i class="fas fa-ban"></i></a>
+                                                <a href="status-item?id=<?php echo $list["l_id"]; ?>&categ=<?php echo $item_id; ?>&status=0" class="text-secondary p-1"><i class="fas fa-ban"></i></a>
                                             <?php } else { ?>
-                                                <a href="#" class="text-secondary p-1"><i class="fas fa-check"></i></a>
+                                                <a href="status-item?id=<?php echo $list["l_id"]; ?>&categ=<?php echo $item_id; ?>&status=1" class="text-secondary p-1"><i class="fas fa-check"></i></a>
                                             <?php } ?>
                                         </td>
                                     </tr>
