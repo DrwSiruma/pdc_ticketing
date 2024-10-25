@@ -3,7 +3,17 @@
 }
 
 .bg-gold {
-    background-color: #FFD700 !important;
+    /* background-color: #FFD700 !important; */
+    background: repeating-linear-gradient(
+      -45deg,
+      orange,
+      orangered 10px,
+      orange 10px,
+      orangered 20px
+    )
+    orange;
+    background-blend-mode: screen;
+    /* color: #fff; */
 }
 
 header {

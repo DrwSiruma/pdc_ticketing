@@ -77,6 +77,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'status-item':
                 include 'admin/process.item-status.php';
                 break;
+            case 'personnels':
+                include 'admin/admin.staff-list.php';
+                break;
             case 'logout':
                 include '../includes/logout.php';
                 break;

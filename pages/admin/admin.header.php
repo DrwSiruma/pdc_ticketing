@@ -86,18 +86,11 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
                         <span>Inventory</span>
                     </a>
                 </li>
-
-                <li class="nav-item <?php echo in_array($page, ['admin/add-it', 'admin/it']) ? 'active' : ''; ?>">
-                    <a class="nav-link" href="it">
-                        <i class="fas fa-fw fa-user-secret fa-sm"></i>
-                        <span>IT</span>
-                    </a>
-                </li>
-
-                <li class="nav-item <?php echo in_array($page, ['admin/add-maintenance', 'admin/maintenance']) ? 'active' : ''; ?>">
-                    <a class="nav-link" href="maintenance">
+                
+                <li class="nav-item <?php echo in_array($page, ['admin/personnels', 'admin/it']) ? 'active' : ''; ?>">
+                    <a class="nav-link" href="personnels">
                         <i class="fas fa-fw fa-user-cog fa-sm"></i>
-                        <span>Maintenance</span>
+                        <span>Support Staff</span>
                     </a>
                 </li>
                 <!-- Divider -->
