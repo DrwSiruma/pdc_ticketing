@@ -62,6 +62,35 @@
                     <!-- maintenance -->
                     <div class="tab-pane fade" id="pills-maint" role="tabpanel" aria-labelledby="pills-maint-tab">
                         <div class="table-responsive">
+                            <table class="table table-bordered w-100" id="itcattbl">
+                                <thead>
+                                    <tr>
+                                        <th>ID #</th>
+                                        <th>Name</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        $maintenance_qry = mysqli_query($conn, "SELECT * FROM tbl_useraccounts WHERE role = 'maintenance'");
+                                        while($maintenance_res=mysqli_fetch_array($maintenance_qry)){
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $maintenance_res['id']; ?></td>
+                                            <td><?php echo $maintenance_res['name']; ?></td>
+                                            <td>
+                                                <?php if ($maintenance_res["status"]== 'Active') { ?>
+                                                    <i class="fas fa-fw fa-circle fa-xs text-success"></i>&nbsp;<?php echo $maintenance_res['status']; ?>
+                                                <?php } else { ?>
+                                                    <i class="fas fa-fw fa-circle fa-xs text-secondary"></i>&nbsp;<?php echo $maintenance_res['status']; ?>
+                                                <?php } ?>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
