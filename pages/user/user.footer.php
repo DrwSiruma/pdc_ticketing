@@ -13,5 +13,5 @@
     <script src="../../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
     <!-- MAIN JS -->
-    <!-- <script src="../../assets/js/user.js"></script> -->
+    <script src="../../assets/js/user.js"></script>
 </html>
