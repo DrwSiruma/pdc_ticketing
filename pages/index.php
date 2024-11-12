@@ -96,6 +96,12 @@ if (strpos($page, 'admin/') === 0) {
             case 'edit-profile':
                 include 'user/process.profile-edit.php';
                 break;
+            case 'open-ticket':
+                include 'user/process.open-ticket.php';
+                break;
+            case 'track-ticket':
+                include 'user/process.track-ticket.php';
+                break;
         }
     } else {
         switch ($user_page) {
@@ -104,6 +110,15 @@ if (strpos($page, 'admin/') === 0) {
                 break;
             case 'open-ticket':
                 include 'user/user.open-ticket.php';
+                break;
+            case 'ticket':
+                include 'user/user.ticket.php';
+                break;
+            case 'track-ticket':
+                include 'user/user.track-ticket.php';
+                break;
+            case 'my-ticket':
+                include 'user/user.my-ticket.php';
                 break;
             case 'logout':
                 include '../includes/logout.php';

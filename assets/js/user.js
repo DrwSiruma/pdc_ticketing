@@ -19,6 +19,12 @@ function updateButtonStates() {
     });
 }
 
+function copyDescription() {
+    // Get the content of the contenteditable div and set it in the hidden input
+    const description = document.getElementById('form_description').innerHTML;
+    document.getElementById('description_input').value = description;
+}
+
 // Add event listener to update button states when cursor moves in contenteditable div
 document.getElementById("form_description").addEventListener("keyup", updateButtonStates);
 document.getElementById("form_description").addEventListener("mouseup", updateButtonStates);

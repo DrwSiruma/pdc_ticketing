@@ -51,14 +51,20 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link <?php echo ($page == 'user/dashboard') ? 'active' : ''; ?>" aria-current="page" href="dashboard">Support Center Home</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($page == 'user/open-ticket') ? 'active' : ''; ?>" href="open-ticket">Open a New Ticket</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Check Ticket Status</a>
+                            <a class="nav-link <?php echo in_array($page, ['user/track-ticket', 'user/my-ticket']) ? 'active' : ''; ?>" href="track-ticket">Check Ticket Status</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?php echo ($page == 'user/') ? 'active' : ''; ?>" aria-current="page" href="dashboard">Conversations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <?php echo ($page == 'user/') ? 'active' : ''; ?>" aria-current="page" href="dashboard">Notifications</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">

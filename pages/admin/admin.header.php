@@ -15,10 +15,10 @@ $success = isset($_SESSION['success']) ? $_SESSION['success'] : '';
 unset($_SESSION['success']);
 unset($_SESSION['success']);
 
-$accounts_page = ['admin.add.user.php', 'admin.accounts.php'];
-$outlet_page = ['admin.outlet.php', 'admin.add.outlet.php', 'admin.edit.outlet.php'];
-$product_page = ['admin.products.php', 'admin.add.product.php', 'admin.edit.product.php'];
-$pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'admin.edit.pcategory.php']
+// $accounts_page = ['admin.add.user.php', 'admin.accounts.php'];
+// $outlet_page = ['admin.outlet.php', 'admin.add.outlet.php', 'admin.edit.outlet.php'];
+// $product_page = ['admin.products.php', 'admin.add.product.php', 'admin.edit.product.php'];
+// $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'admin.edit.pcategory.php']
 
 ?>
 

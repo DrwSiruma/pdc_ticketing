@@ -12,7 +12,7 @@
                 <a href="open-ticket" class="btn btn-primary2 btn-lg btn-block">Open a New Ticket</a>
             </div>
             <div class="col-md-3">
-                <a href="#" class="btn btn-success2 btn-lg btn-block">Check Ticket Status</a>
+                <a href="track-ticket" class="btn btn-success2 btn-lg btn-block">Check Ticket Status</a>
             </div>
         </div>
     </div>

@@ -13,9 +13,10 @@
             <?php if (!empty($success)) : ?>
                 <div class="alert alert-success"><?php echo $success; ?></div>
             <?php endif; ?>
-            <form action="open-ticket" class="mt-2 mb-2" method="post" enctype="multipart/form-data">
+            <form action="open-ticket" class="mt-2 mb-2" method="post" enctype="multipart/form-data" onsubmit="copyDescription()">
                 <div class="controls">
                     <div class="row">
+                        <input type="hidden" name="outlet" value="<?php echo $_SESSION['id']; ?>">
                         <!-- Designation dropdown -->
                         <div class="col-md-6">
                             <div class="form-group">
@@ -72,7 +73,7 @@
                                 </div>
                                 <!-- Contenteditable div for issue details -->
                                 <div id="form_description" name="description" class="form-control" contenteditable="true" placeholder="Describe the issue..." style="min-height: 150px; border: 1px solid #ced4da; padding: 10px;"></div>
-                                <input type="hidden" id="description_input" name="description">
+                                <input type="hidden" id="description_input" name="description" required="required">
                             </div>
                         </div>
                     </div>
