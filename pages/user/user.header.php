@@ -52,19 +52,19 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
                         <!-- <li class="nav-item">
-                            <a class="nav-link <?php echo ($page == 'user/dashboard') ? 'active' : ''; ?>" aria-current="page" href="dashboard">Support Center Home</a>
+                            <a class="nav-link <?php //echo ($page == 'user/dashboard') ? 'active' : ''; ?>" aria-current="page" href="dashboard">Support Center Home</a>
                         </li> -->
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($page == 'user/open-ticket') ? 'active' : ''; ?>" href="open-ticket">Open a New Ticket</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php echo in_array($page, ['user/track-ticket', 'user/my-ticket']) ? 'active' : ''; ?>" href="track-ticket">Check Ticket Status</a>
+                            <a class="nav-link <?php echo in_array($page, ['user/track-ticket', 'user/my-ticket', 'user/ticket-history']) ? 'active' : ''; ?>" href="track-ticket">Check Ticket Status</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php echo ($page == 'user/') ? 'active' : ''; ?>" aria-current="page" href="dashboard">Conversations</a>
+                            <a class="nav-link <?php echo ($page == 'user/conversations') ? 'active' : ''; ?>" aria-current="page" href="conversations">Conversations&nbsp;<span class="badge bg-secondary text-light">99+</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php echo ($page == 'user/') ? 'active' : ''; ?>" aria-current="page" href="dashboard">Notifications</a>
+                            <a class="nav-link <?php echo ($page == 'user/') ? 'active' : ''; ?>" aria-current="page" href="dashboard">Notifications&nbsp;<span class="badge bg-secondary text-light">99+</span></a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">

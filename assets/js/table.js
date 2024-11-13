@@ -39,3 +39,14 @@ $(document).ready(function () {
     lengthChange: true,
     });
 });
+
+// ticket-history
+$(document).ready(function () {
+    var table = $('#thtbl').DataTable({
+    searching: true,
+    paging: true,
+    info: true,
+    ordering: true,
+    lengthChange: true,
+    });
+});

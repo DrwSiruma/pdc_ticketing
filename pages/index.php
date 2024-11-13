@@ -120,6 +120,12 @@ if (strpos($page, 'admin/') === 0) {
             case 'my-ticket':
                 include 'user/user.my-ticket.php';
                 break;
+            case 'ticket-history':
+                include 'user/user.ticket-history.php';
+                break;
+            case 'conversations':
+                include 'user/user.conversations.php';
+                break;
             case 'logout':
                 include '../includes/logout.php';
                 break;

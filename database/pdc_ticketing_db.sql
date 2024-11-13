@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2024 at 11:12 AM
+-- Generation Time: Nov 13, 2024 at 11:03 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -151,7 +151,54 @@ INSERT INTO `tbl_auditlog` (`id`, `user_id`, `activity`, `type`, `date_posted`) 
 (378, '1', 'User logged in', 'Login', '2024-10-18 14:45:17.981361'),
 (380, '1', 'Updated status of item category: 2', 'Item', '2024-10-23 16:54:10.942825'),
 (381, '1', 'Updated status of item category: 2', 'Item', '2024-10-23 16:54:37.998121'),
-(382, '1', 'Added new item category: Appliances', 'ItemCategory', '2024-10-23 17:10:33.308757');
+(382, '1', 'Added new item category: Appliances', 'ItemCategory', '2024-10-23 17:10:33.308757'),
+(383, '1', 'User logged out', 'Logout', '2024-10-23 17:13:40.793940'),
+(384, '1', 'User logged in', 'Login', '2024-10-23 17:24:47.057847'),
+(385, '1', 'User logged out', 'Logout', '2024-10-24 07:10:01.664501'),
+(386, '1', 'User logged in', 'Login', '2024-10-24 09:14:00.784237'),
+(387, '1', 'User logged out', 'Logout', '2024-10-24 15:24:46.447370'),
+(388, '11', 'User logged in', 'Login', '2024-10-24 15:24:56.016630'),
+(389, '11', 'User logged out', 'Logout', '2024-10-24 17:57:32.215949'),
+(390, '1', 'User logged in', 'Login', '2024-10-24 17:57:52.263780'),
+(391, '1', 'Added new user id: #15 as it', 'Account', '2024-10-24 18:26:18.990607'),
+(392, '1', 'Added new user id: #16 as it', 'Account', '2024-10-25 09:13:57.760300'),
+(393, '1', 'Added new user id: #17 as it-admin', 'Account', '2024-10-25 09:14:28.045032'),
+(394, '1', 'User logged in', 'Login', '2024-10-25 12:34:02.639534'),
+(395, '1', 'Updated status of user: #17 as Inactive', 'Account', '2024-10-25 13:37:41.335082'),
+(396, '1', 'Updated status of user: #17 as Active', 'Account', '2024-10-25 13:37:53.237031'),
+(397, '1', 'User logged out', 'Logout', '2024-10-25 13:41:11.631940'),
+(398, '11', 'User logged in', 'Login', '2024-10-25 13:41:28.966715'),
+(399, '11', 'User logged out', 'Logout', '2024-10-29 15:58:56.516873'),
+(400, '1', 'User logged in', 'Login', '2024-10-29 15:59:04.630118'),
+(401, '1', 'Added new item: Aircon', 'Item', '2024-10-29 15:59:26.970304'),
+(402, '1', 'User logged out', 'Logout', '2024-10-29 15:59:40.966904'),
+(403, '11', 'User logged in', 'Login', '2024-10-29 15:59:49.867000'),
+(404, '11', 'User logged out', 'Logout', '2024-10-29 16:33:43.600645'),
+(405, '1', 'User logged in', 'Login', '2024-10-29 16:35:22.258628'),
+(406, '1', 'User logged out', 'Logout', '2024-10-29 16:43:43.970991'),
+(407, '11', 'User logged in', 'Login', '2024-10-29 16:43:49.415288'),
+(408, '11', 'User logged out', 'Logout', '2024-10-29 16:43:52.048431'),
+(409, '11', 'User logged in', 'Login', '2024-10-29 16:43:58.873739'),
+(410, '11', 'Open new ticket #: PDCS1024001', 'Ticket', '2024-10-30 10:41:49.652457'),
+(411, '11', 'Open new ticket #: PDCS1024002', 'Ticket', '2024-10-30 10:53:27.931979'),
+(412, '11', 'User logged out', 'Logout', '2024-10-30 11:00:18.389286'),
+(413, '1', 'User logged in', 'Login', '2024-10-30 11:00:28.731693'),
+(414, '1', 'User logged out', 'Logout', '2024-10-30 11:27:39.297559'),
+(415, '11', 'User logged in', 'Login', '2024-10-30 11:28:09.450807'),
+(416, '11', 'User logged out', 'Logout', '2024-10-30 11:30:20.816424'),
+(417, '1', 'User logged in', 'Login', '2024-10-30 11:30:32.871470'),
+(418, '1', 'User logged out', 'Logout', '2024-10-30 11:34:31.264017'),
+(419, '11', 'User logged in', 'Login', '2024-10-30 11:34:44.179011'),
+(421, '11', 'Open new ticket #: PDCS1024003', 'Ticket', '2024-10-30 11:55:52.087253'),
+(422, '11', 'User logged in', 'Login', '2024-11-02 13:34:08.178601'),
+(423, '11', 'User logged in', 'Login', '2024-11-11 23:15:35.557823'),
+(424, '11', 'Open new ticket #: PDCS1124001', 'Ticket', '2024-11-12 10:57:30.326157'),
+(425, '11', 'Open new ticket #: PDCS1124002', 'Ticket', '2024-11-12 11:38:15.091609'),
+(426, '11', 'User logged out', 'Logout', '2024-11-12 11:39:04.737213'),
+(427, '1', 'User logged in', 'Login', '2024-11-12 11:50:51.841297'),
+(428, '1', 'User logged out', 'Logout', '2024-11-12 11:51:23.119129'),
+(429, '11', 'User logged in', 'Login', '2024-11-12 11:51:37.989543'),
+(430, '11', 'Open new ticket #: PDCS1124003', 'Ticket', '2024-11-12 11:58:14.114461');
 
 -- --------------------------------------------------------
 
@@ -203,7 +250,45 @@ INSERT INTO `tbl_itemlist` (`id`, `name`, `status`, `category`) VALUES
 (2, 'POS Printer', '1', '1'),
 (3, 'POS', '1', '1'),
 (4, 'PLDT Router', '1', '2'),
-(5, 'Smart Broadband', '1', '2');
+(5, 'Smart Broadband', '1', '2'),
+(6, 'Aircon', '1', '7');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_tickets`
+--
+
+CREATE TABLE `tbl_tickets` (
+  `id` int(100) NOT NULL,
+  `ticket_num` varchar(1000) NOT NULL,
+  `outlet` varchar(1000) NOT NULL,
+  `designation` enum('1','2') NOT NULL,
+  `topiccateg` varchar(1000) NOT NULL,
+  `topicitem` varchar(1000) NOT NULL,
+  `img_name` varchar(1000) NOT NULL,
+  `file_path` varchar(1000) NOT NULL,
+  `description` varchar(5000) NOT NULL,
+  `priority_type` varchar(100) DEFAULT NULL,
+  `concern_type` enum('Issue','Request') DEFAULT NULL,
+  `status` enum('1','2','3','4','5') NOT NULL DEFAULT '1',
+  `remark` varchar(1000) NOT NULL,
+  `date_posted` datetime(6) NOT NULL DEFAULT current_timestamp(6),
+  `date_modified` datetime DEFAULT NULL,
+  `date_closed` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tbl_tickets`
+--
+
+INSERT INTO `tbl_tickets` (`id`, `ticket_num`, `outlet`, `designation`, `topiccateg`, `topicitem`, `img_name`, `file_path`, `description`, `priority_type`, `concern_type`, `status`, `remark`, `date_posted`, `date_modified`, `date_closed`) VALUES
+(1, 'PDCS1024001', '11', '1', '1', '2', 'TRHOANGELO_10232024.jpg', '../img/sup_doc/TRHOANGELO_10232024.jpg', 'Test Data', NULL, NULL, '1', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2024-10-30 10:41:49.643451', NULL, NULL),
+(2, 'PDCS1024002', '11', '1', '1', '2', '457377830_565243119158694_2829328946720226073_n.jpg', '../img/sup_doc/457377830_565243119158694_2829328946720226073_n.jpg', 'Test 2', NULL, NULL, '1', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2024-10-30 10:53:27.928812', NULL, NULL),
+(4, 'PDCS1024003', '11', '2', '7', '6', 'tabletvslaptop.png', '../img/sup_doc/tabletvslaptop.png', 'Test 3', NULL, NULL, '1', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2024-10-30 11:55:52.084329', NULL, NULL),
+(5, 'PDCS1124001', '11', '2', '7', '6', 'PreventiveTR_TIMES110524.jpg', '../img/sup_doc/PreventiveTR_TIMES110524.jpg', 'Test data entry only.', NULL, NULL, '1', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2024-11-12 10:57:30.322534', NULL, NULL),
+(6, 'PDCS1124002', '11', '1', '1', '3', 'PreventiveTR_JMB110624.jpg', '../img/sup_doc/PreventiveTR_JMB110624.jpg', 'kjl', NULL, NULL, '1', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2024-11-12 11:38:15.087404', NULL, NULL),
+(7, 'PDCS1124003', '11', '1', '2', '4', 'PreventiveTR_MANUELA110524.jpg', '../img/sup_doc/PreventiveTR_MANUELA110524.jpg', 'Test data entry only.', NULL, NULL, '1', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2024-11-12 11:58:14.112935', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -233,7 +318,10 @@ INSERT INTO `tbl_useraccounts` (`id`, `name`, `username`, `password`, `role`, `s
 (11, 'Head Office', 'pdc_ho', '$2y$10$nWY2Bcd6XWqTJYkPUmWNuOwW38ujo22VJ8H3a9TL./chXZLKnf4O2', 'office', 'Active', '2024-09-20 14:43:14.609384', '2024-10-03 15:18:30.081311'),
 (12, 'APC', 'pdc_apc', '$2y$10$WHIe9rnaCgpox50HuMtgUuBWFjKE3KKPGHAz3FBzxjh95AyG3Bexq', 'office', 'Inactive', '2024-09-23 13:49:24.181011', '2024-09-23 15:51:14.889388'),
 (13, 'TCK', 'pdc_tck', '$2y$10$eBjroQ4.j.TVnfYbALyTi.b/AfwiS8DAd6Qumo8O3hcAPolYMSBXu', 'office', 'Inactive', '2024-09-23 15:42:51.338461', '2024-09-23 15:51:17.151253'),
-(14, 'DD-ATC', 'dd_atc', '$2y$10$vf9ea6Paw9CVZ2yvmL6zEuwM97gPVo2VQwnJ7EJFyCd1ddmr/Pe7.', 'outlet', 'Active', '2024-10-04 14:27:33.990603', '2024-10-04 14:27:33.990603');
+(14, 'DD-ATC', 'dd_atc', '$2y$10$vf9ea6Paw9CVZ2yvmL6zEuwM97gPVo2VQwnJ7EJFyCd1ddmr/Pe7.', 'outlet', 'Active', '2024-10-04 14:27:33.990603', '2024-10-04 14:27:33.990603'),
+(15, 'Andrew Siruma', 'andrew_it', '$2y$10$SRPdEYwGR6DCI9cLRgsbbOXtq0uNnnISdJDUYr/PVMOVtXYnMiVOy', 'it', 'Active', '2024-10-24 18:26:18.983463', '2024-10-24 18:26:18.983463'),
+(16, 'Adan Flores', 'it_adan', '$2y$10$xOWLUmmXcLY7IVN/gmfXZ.5uV6xQH4rIoI4UWydO0i8cS6iXQne.C', 'it', 'Active', '2024-10-25 09:13:57.750433', '2024-10-25 09:13:57.750433'),
+(17, 'Arjay Oropesa', 'it_arjay', '$2y$10$4DdhReTKWjxAY2WJjBayguHNjiuofdDbtDYhaQ1HWQVx6dOwz7TTm', 'it', 'Active', '2024-10-25 09:14:28.039666', '2024-10-25 13:37:53.233056');
 
 --
 -- Indexes for dumped tables
@@ -258,6 +346,12 @@ ALTER TABLE `tbl_itemlist`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_tickets`
+--
+ALTER TABLE `tbl_tickets`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_useraccounts`
 --
 ALTER TABLE `tbl_useraccounts`
@@ -272,7 +366,7 @@ ALTER TABLE `tbl_useraccounts`
 -- AUTO_INCREMENT for table `tbl_auditlog`
 --
 ALTER TABLE `tbl_auditlog`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=383;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=431;
 
 --
 -- AUTO_INCREMENT for table `tbl_itemcategory`
@@ -284,13 +378,19 @@ ALTER TABLE `tbl_itemcategory`
 -- AUTO_INCREMENT for table `tbl_itemlist`
 --
 ALTER TABLE `tbl_itemlist`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tbl_tickets`
+--
+ALTER TABLE `tbl_tickets`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_useraccounts`
 --
 ALTER TABLE `tbl_useraccounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

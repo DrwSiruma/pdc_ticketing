@@ -1,5 +1,10 @@
 <?php include('user.header.php'); ?>
 
+    <div class="container">
+        <div class="d-flex justify-content-end mt-4">
+            <a href="ticket-history" class="text-secondary"><i class="fas fa-history"></i>&nbsp;Ticket History</a>
+        </div>
+    </div>
     <div class="container text-center my-5">
         <h1 class="display-6 font-weight-bold"><i class="fas fa-map-marker-alt"></i>&nbsp;Track My Ticket</h1>
         <p class="text-secondary">Please enter the Ticket number.</p>
