@@ -59,8 +59,8 @@ if (strpos($page, 'admin/') === 0) {
             case 'profile':
                 include 'admin/admin.profile.php';
                 break;
-            case 'inventory':
-                include 'admin/admin.inventory.php';
+            case 'help-categories':
+                include 'admin/admin.help-category.php';
                 break;
             case 'add-category':
                 include 'admin/admin.add-category.php';

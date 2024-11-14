@@ -23,7 +23,7 @@ if (isset($_GET['id']) && isset($_GET['status'])) {
     // Validate the status value
     if ($status !== '1' && $status !== '0') {
         $_SESSION['error'] = "Invalid status value.";
-        header("Location: inventory");
+        header("Location: help-categories");
         exit();
     }
 
@@ -40,11 +40,11 @@ if (isset($_GET['id']) && isset($_GET['status'])) {
         $_SESSION['error'] = "Failed to update category status. Please try again.";
     }
 
-    header("Location: inventory");
+    header("Location: help-categories");
     exit();
 } else {
     $_SESSION['error'] = "Invalid request.";
-    header("Location: inventory");
+    header("Location: help-categories");
     exit();
 }
 ?>

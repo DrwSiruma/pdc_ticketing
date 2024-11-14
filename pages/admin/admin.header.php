@@ -80,10 +80,10 @@ unset($_SESSION['success']);
                     </a>
                 </li>
 
-                <li class="nav-item <?php echo in_array($page, ['admin/add-category', 'admin/inventory','admin/item-list', 'admin/add-itemlist']) ? 'active' : ''; ?>">
-                    <a class="nav-link" href="inventory">
-                        <i class="fas fa-fw fa-boxes fa-sm"></i>
-                        <span>Inventory</span>
+                <li class="nav-item <?php echo in_array($page, ['admin/add-category', 'admin/help-categories','admin/item-list', 'admin/add-itemlist']) ? 'active' : ''; ?>">
+                    <a class="nav-link" href="help-categories">
+                        <i class="fas fa-fw fa-question-circle fa-sm"></i>
+                        <span>Help Category</span>
                     </a>
                 </li>
                 
