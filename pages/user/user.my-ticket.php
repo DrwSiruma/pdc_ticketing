@@ -48,7 +48,13 @@ if (isset($_GET['id'])) {
                     <div class="col-sm-4 py-1"></div>
                     <div class="col-sm-4 py-1">
                       <h6 class="font-weight-bold">TICKET #: <?php echo $row['ticket_num']; ?></h6> 
-                      <h6>Designation: IT</h6>
+                      <h6>Designation:&nbsp;
+                        <?php if ($row["designation"]== '1') { ?>
+                          IT
+                        <?php } elseif ($row["designation"]== '2') { ?>
+                          Maintenance
+                        <?php } ?>
+                      </h6>
                       <h6></h6>
                     </div>
                 </div>
