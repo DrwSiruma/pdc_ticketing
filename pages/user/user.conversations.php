@@ -18,8 +18,7 @@
                                 <div class="modal-content">
                                     <div class="chat-header">
                                         <div class="msg-search">
-                                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search" aria-label="search">
-                                            <a class="add" href="#"><img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/add.svg" alt="add"></a>
+                                            <h5 class="m-0">Conversations</h5>
                                         </div>
 
                                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -44,8 +43,8 @@
                                                                 <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
-                                                                <h3>Mehedi Hasan</h3>
-                                                                <p>front end developer</p>
+                                                                <h3>PDCS1024001</h3>
+                                                                <p>Open</p>
                                                             </div>
                                                         </a>
                                                         <a href="#" class="d-flex align-items-center chat-item">
@@ -358,32 +357,17 @@
                                 <div class="modal-content">
                                     <div class="msg-head">
                                         <div class="row">
-                                            <div class="col-8">
+                                            <div class="col-12">
                                                 <div class="d-flex align-items-center chat-item">
                                                     <span class="chat-icon"><img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/arroleftt.svg" alt="image title"></span>
                                                     <div class="flex-shrink-0">
                                                         <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
                                                     </div>
                                                     <div class="flex-grow-1 ms-3">
-                                                        <h3>Mehedi Hasan</h3>
-                                                        <p>front end developer</p>
+                                                        <h3>PDCS1024001</h3>
+                                                        <p>Open</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <ul class="moreoption">
-                                                    <li class="navbar nav-item dropdown">
-                                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                            <li>
-                                                                <hr class="dropdown-divider">
-                                                            </li>
-                                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -399,7 +383,7 @@
                                                     <p> Hey, Are you there? </p>
                                                     <span class="time">10:16 am</span>
                                                 </li>
-                                                <li class="repaly">
+                                                <li class="reply">
                                                     <p>yes!</p>
                                                     <span class="time">10:20 am</span>
                                                 </li>
@@ -411,7 +395,7 @@
                                                     <p> Hey, Are you there? </p>
                                                     <span class="time">10:32 am</span>
                                                 </li>
-                                                <li class="repaly">
+                                                <li class="reply">
                                                     <p>How are you?</p>
                                                     <span class="time">10:35 am</span>
                                                 </li>
@@ -421,11 +405,11 @@
                                                     </div>
                                                 </li>
 
-                                                <li class="repaly">
+                                                <li class="reply">
                                                     <p> yes, tell me</p>
                                                     <span class="time">10:36 am</span>
                                                 </li>
-                                                <li class="repaly">
+                                                <li class="reply">
                                                     <p>yes... on it</p>
                                                     <span class="time">junt now</span>
                                                 </li>
