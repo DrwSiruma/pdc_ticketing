@@ -52,8 +52,8 @@
                                                                 <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
-                                                                <h3>Ryhan</h3>
-                                                                <p>front end developer</p>
+                                                                <h3>PDCS1024002</h3>
+                                                                <p>Open</p>
                                                             </div>
                                                         </a>
                                                         <a href="#" class="d-flex align-items-center chat-item">
@@ -61,8 +61,8 @@
                                                                 <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
-                                                                <h3>Malek Hasan</h3>
-                                                                <p>front end developer</p>
+                                                                <h3>PDCS1024003</h3>
+                                                                <p>Open</p>
                                                             </div>
                                                         </a>
                                                         <a href="#" class="d-flex align-items-center chat-item">
@@ -70,8 +70,8 @@
                                                                 <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
-                                                                <h3>Sadik Hasan</h3>
-                                                                <p>front end developer</p>
+                                                                <h3>PDCS1124001</h3>
+                                                                <p>Open</p>
                                                             </div>
                                                         </a>
                                                         <a href="#" class="d-flex align-items-center chat-item">
@@ -79,8 +79,8 @@
                                                                 <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
-                                                                <h3>Bulu </h3>
-                                                                <p>front end developer</p>
+                                                                <h3>PDCS1124002</h3>
+                                                                <p>Open</p>
                                                             </div>
                                                         </a>
                                                         <a href="#" class="d-flex align-items-center chat-item">
@@ -88,101 +88,10 @@
                                                                 <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
-                                                                <h3>Maria SK</h3>
-                                                                <p>front end developer</p>
+                                                                <h3>PDCS1124003</h3>
+                                                                <p>Open</p>
                                                             </div>
                                                         </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Dipa Hasan</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Jhon Hasan</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Tumpa Moni</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Payel Akter</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Baby Akter</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Zuwel Rana</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Habib </h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Jalal Ahmed</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Hasan Ali</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Mehedi Hasan</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-
 
                                                     </div>
                                                     <!-- chat-list -->
@@ -191,151 +100,7 @@
 
                                                     <!-- chat-list -->
                                                     <div class="chat-list">
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Mehedi Hasan</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Ryhan</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Malek Hasan</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Sadik Hasan</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Bulu </h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Maria SK</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Dipa Hasan</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Jhon Hasan</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Tumpa Moni</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Payel Akter</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Baby Akter</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Zuwel Rana</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Habib </h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Jalal Ahmed</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Hasan Ali</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="d-flex align-items-center chat-item">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>Mehedi Hasan</h3>
-                                                                <p>front end developer</p>
-                                                            </div>
-                                                        </a>
-
+                                                        <span style="font-style: italic;">No conversation.</span>
                                                     </div>
                                                     <!-- chat-list -->
                                                 </div>
@@ -411,7 +176,7 @@
                                                 </li>
                                                 <li class="reply">
                                                     <p>yes... on it</p>
-                                                    <span class="time">junt now</span>
+                                                    <span class="time">just now</span>
                                                 </li>
 
                                             </ul>
