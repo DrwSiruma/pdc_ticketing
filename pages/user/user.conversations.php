@@ -40,7 +40,7 @@
                                                     <div class="chat-list">
                                                         <a href="#" class="d-flex align-items-center chat-item">
                                                             <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
+                                                                <img class="img-fluid img-avatar" src="../../img/customer-support.png" alt="user img">
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
                                                                 <h3>PDCS1024001</h3>
@@ -49,7 +49,7 @@
                                                         </a>
                                                         <a href="#" class="d-flex align-items-center chat-item">
                                                             <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
+                                                                <img class="img-fluid img-avatar" src="../../img/customer-support.png" alt="user img">
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
                                                                 <h3>PDCS1024002</h3>
@@ -58,7 +58,7 @@
                                                         </a>
                                                         <a href="#" class="d-flex align-items-center chat-item">
                                                             <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
+                                                                <img class="img-fluid img-avatar" src="../../img/customer-support.png" alt="user img">
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
                                                                 <h3>PDCS1024003</h3>
@@ -67,7 +67,7 @@
                                                         </a>
                                                         <a href="#" class="d-flex align-items-center chat-item">
                                                             <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
+                                                                <img class="img-fluid img-avatar" src="../../img/customer-support.png" alt="user img">
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
                                                                 <h3>PDCS1124001</h3>
@@ -76,7 +76,7 @@
                                                         </a>
                                                         <a href="#" class="d-flex align-items-center chat-item">
                                                             <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
+                                                                <img class="img-fluid img-avatar" src="../../img/customer-support.png" alt="user img">
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
                                                                 <h3>PDCS1124002</h3>
@@ -85,7 +85,7 @@
                                                         </a>
                                                         <a href="#" class="d-flex align-items-center chat-item">
                                                             <div class="flex-shrink-0">
-                                                                <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
+                                                                <img class="img-fluid img-avatar" src="../../img/customer-support.png" alt="user img">
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
                                                                 <h3>PDCS1124003</h3>
@@ -126,7 +126,7 @@
                                                 <div class="d-flex align-items-center chat-item">
                                                     <span class="chat-icon"><img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/arroleftt.svg" alt="image title"></span>
                                                     <div class="flex-shrink-0">
-                                                        <img class="img-fluid img-avatar" src="../../img/avatar-default.png" alt="user img">
+                                                        <img class="img-fluid img-avatar" src="../../img/customer-support.png" alt="user img">
                                                     </div>
                                                     <div class="flex-grow-1 ms-3">
                                                         <h3>PDCS1024001</h3>
