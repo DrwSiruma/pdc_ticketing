@@ -474,7 +474,8 @@ a.add img {
 }
 
 .chat-list a.d-flex {
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
+    padding: 8px 3px;
     position: relative;
     text-decoration: none;
 }
@@ -547,8 +548,16 @@ a.add img {
     margin-top: 0.125rem;
 }
 
-.msg-body ul {
+.msg-body {
+    /* overflow-y: auto; */
     overflow: hidden;
+    height: calc(100% - 60px);
+}
+
+.msg-body ul {
+    /* overflow: hidden; */
+    margin: 0;
+    padding: 0;
 }
 
 .msg-body ul li {

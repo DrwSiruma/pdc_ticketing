@@ -1,13 +1,13 @@
 <?php include('user.header.php'); ?>
-<style>
-    ol,
-    ul {
-        list-style: none;
-    }
-</style>
+    <style>
+        ol,
+        ul {
+            list-style: none;
+        }
+    </style>
 
-<!-- char-area -->
-<section class="message-area">
+    <!-- char-area -->
+    <section class="message-area">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -31,7 +31,7 @@
                                         </ul>
                                     </div>
 
-                                    <div class="modal-body">
+                                    <div class="modal-body" style="padding: 0px;">
                                         <!-- chat-list -->
                                         <div class="chat-lists">
                                             <div class="tab-content" id="myTabContent">
@@ -99,10 +99,11 @@
                                                 <div class="tab-pane fade" id="Closed" role="tabpanel" aria-labelledby="Closed-tab">
 
                                                     <!-- chat-list -->
-                                                    <div class="chat-list">
+                                                    <div class="chat-list" style="padding: 1rem;">
                                                         <span style="font-style: italic;">No conversation.</span>
                                                     </div>
                                                     <!-- chat-list -->
+                                                     
                                                 </div>
                                             </div>
 
