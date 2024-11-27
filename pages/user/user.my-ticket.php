@@ -97,7 +97,7 @@ if (isset($_GET['id'])) {
                       <table width="100%">
                         <tbody>
                           <tr>
-                            <td><button class="btn btn-primary w-100">Open Chat</button></td>
+                            <td><button class="btn btn-primary w-100" disabled>Open Chat</button></td>
                             <td><a href="track-ticket" class="btn btn-primary w-100">Close</a></td>
                           </tr>
                         </tbody>

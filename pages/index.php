@@ -126,6 +126,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'conversations':
                 include 'user/user.conversations.php';
                 break;
+            case 'notification':
+                include 'user/user.notification.php';
+                break;
             case 'logout':
                 include '../includes/logout.php';
                 break;

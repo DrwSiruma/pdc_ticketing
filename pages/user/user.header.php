@@ -14,11 +14,6 @@ unset($_SESSION['error']);
 $success = isset($_SESSION['success']) ? $_SESSION['success'] : '';
 unset($_SESSION['success']);
 unset($_SESSION['success']);
-
-$accounts_page = ['admin.add.user.php', 'admin.accounts.php'];
-$outlet_page = ['admin.outlet.php', 'admin.add.outlet.php', 'admin.edit.outlet.php'];
-$product_page = ['admin.products.php', 'admin.add.product.php', 'admin.edit.product.php'];
-$pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'admin.edit.pcategory.php']
 ?>
 
 <!DOCTYPE html>
@@ -60,11 +55,11 @@ $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'adm
                         <li class="nav-item">
                             <a class="nav-link <?php echo in_array($page, ['user/track-ticket', 'user/my-ticket', 'user/ticket-history']) ? 'active' : ''; ?>" href="track-ticket">Check Ticket Status</a>
                         </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link <?php //echo ($page == 'user/conversations') ? 'active' : ''; ?>" aria-current="page" href="conversations">Conversations&nbsp;<span class="badge bg-secondary text-light">99+</span></a>
+                        </li> -->
                         <li class="nav-item">
-                            <a class="nav-link <?php echo ($page == 'user/conversations') ? 'active' : ''; ?>" aria-current="page" href="conversations">Conversations&nbsp;<span class="badge bg-secondary text-light">99+</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php echo ($page == 'user/') ? 'active' : ''; ?>" aria-current="page" href="dashboard">Notifications&nbsp;<span class="badge bg-secondary text-light">99+</span></a>
+                            <a class="nav-link <?php echo ($page == 'user/notification') ? 'active' : ''; ?>" aria-current="page" href="notification">Notifications&nbsp;<span class="badge bg-secondary text-light">99+</span></a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
