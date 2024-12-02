@@ -41,6 +41,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'dashboard':
                 include 'admin/admin.dashboard.php';
                 break;
+            case 'ticket':
+                include 'admin/admin.ticket.php';
+                break;
             case 'users':
                 include 'admin/admin.users.php';
                 break;

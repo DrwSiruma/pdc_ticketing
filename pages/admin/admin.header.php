@@ -73,6 +73,13 @@ unset($_SESSION['success']);
                     Interface
                 </div>
 
+                <li class="nav-item <?php echo in_array($page, ['admin/ticket']) ? 'active' : ''; ?>">
+                    <a class="nav-link" href="ticket">
+                        <i class="fas fa-fw fa-ticket-alt fa-sm"></i>
+                        <span>Tickets</span>
+                    </a>
+                </li>
+
                 <li class="nav-item <?php echo in_array($page, ['admin/add-user', 'admin/edit-user', 'admin/users']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="users">
                         <i class="fas fa-fw fa-user fa-sm"></i>
