@@ -50,3 +50,14 @@ $(document).ready(function () {
     lengthChange: true,
     });
 });
+
+// notification
+$(document).ready(function () {
+    var table = $('#notif_tbl').DataTable({
+    searching: true,
+    paging: true,
+    info: true,
+    ordering: true,
+    lengthChange: true,
+    });
+});
