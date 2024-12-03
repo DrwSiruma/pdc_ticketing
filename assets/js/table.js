@@ -61,3 +61,15 @@ $(document).ready(function () {
     lengthChange: true,
     });
 });
+
+// ticket table
+$(document).ready(function () {
+    var table = $('#ticket_tbl').DataTable({
+    searching: true,
+    paging: true,
+    info: true,
+    ordering: true,
+    lengthChange: true,
+    order: [[0, 'desc']],
+    });
+});

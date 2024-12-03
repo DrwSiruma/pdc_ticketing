@@ -119,19 +119,19 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-sm w-100" id="syslogtbl">
-                                <thead>
-                                    <th>User ID</th>
+                                <thead class="bg-dark text-light">
+                                    <th>User</th>
                                     <th>Activity</th>
                                     <th>Date</th>
                                 </thead>
                                 <tbody>
                                 <?php
-                                    $adlog_qry = mysqli_query($conn, "SELECT * FROM tbl_auditlog ORDER BY date_posted DESC");
+                                    $adlog_qry = mysqli_query($conn, "SELECT a.*, u.username FROM tbl_auditlog a LEFT JOIN tbl_useraccounts u ON a.user_id = u.id ORDER BY a.date_posted DESC;");
                                     while($adlog_res=mysqli_fetch_array($adlog_qry)){
                                         $createDT = new DateTime($adlog_res["date_posted"]);
                                 ?>
                                 <tr>
-                                    <td><?php echo $adlog_res['user_id']; ?></td>
+                                    <td><?php echo $adlog_res['username']; ?></td>
                                     <td><?php echo $adlog_res['activity']; ?></td>
                                     <td><?php echo $formattedDate = $createDT->format('m/d/Y - h:i A'); ?></td>
                                 </tr>

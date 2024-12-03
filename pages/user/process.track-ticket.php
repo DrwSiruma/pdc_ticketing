@@ -4,8 +4,9 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ticketnum  = trim($_POST['ticket']);
+    $user_id = $_SESSION['id'];
 
-    $result = $conn->query("SELECT id, ticket_num FROM tbl_tickets WHERE ticket_num LIKE '$ticketnum' ORDER BY ticket_num DESC LIMIT 1");
+    $result = $conn->query("SELECT id, ticket_num FROM tbl_tickets WHERE ticket_num LIKE '$ticketnum' AND outlet = '$user_id' ORDER BY ticket_num DESC LIMIT 1");
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $ticketid = $row['id'];

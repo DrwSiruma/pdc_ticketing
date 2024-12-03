@@ -7,7 +7,7 @@
 <!-- Topbar Navbar -->
 <ul class="navbar-nav ml-auto">
 
-    <li class="nav-item dropdown no-arrow">
+    <li class="nav-item dropdown no-arrow position">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell"></i>
         </a>
