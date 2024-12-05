@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2024 at 11:03 AM
+-- Generation Time: Dec 05, 2024 at 09:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -198,7 +198,67 @@ INSERT INTO `tbl_auditlog` (`id`, `user_id`, `activity`, `type`, `date_posted`) 
 (427, '1', 'User logged in', 'Login', '2024-11-12 11:50:51.841297'),
 (428, '1', 'User logged out', 'Logout', '2024-11-12 11:51:23.119129'),
 (429, '11', 'User logged in', 'Login', '2024-11-12 11:51:37.989543'),
-(430, '11', 'Open new ticket #: PDCS1124003', 'Ticket', '2024-11-12 11:58:14.114461');
+(430, '11', 'Open new ticket #: PDCS1124003', 'Ticket', '2024-11-12 11:58:14.114461'),
+(431, '11', 'User logged out', 'Logout', '2024-11-13 19:08:27.561700'),
+(432, '1', 'User logged in', 'Login', '2024-11-13 19:08:34.201706'),
+(433, '1', 'Updated status of item category: 2', 'Item', '2024-11-13 19:22:42.242266'),
+(434, '1', 'Updated status of item category: 2', 'Item', '2024-11-13 19:22:44.190392'),
+(435, '1', 'Added new item: LCD Monitor', 'Item', '2024-11-13 19:24:56.002711'),
+(436, '1', 'User logged out', 'Logout', '2024-11-14 10:52:58.387602'),
+(437, '11', 'User logged in', 'Login', '2024-11-14 10:53:05.797201'),
+(438, '11', 'User logged in', 'Login', '2024-11-15 13:50:56.674789'),
+(439, '11', 'User logged in', 'Login', '2024-11-15 17:18:46.177599'),
+(440, '11', 'User logged out', 'Logout', '2024-11-18 09:32:47.687613'),
+(441, '1', 'User logged in', 'Login', '2024-11-18 09:32:58.218432'),
+(442, '1', 'User logged out', 'Logout', '2024-11-18 09:36:40.479374'),
+(443, '11', 'User logged in', 'Login', '2024-11-18 09:36:46.680764'),
+(444, '11', 'User logged out', 'Logout', '2024-11-21 10:10:43.827535'),
+(445, '1', 'User logged in', 'Login', '2024-11-21 14:22:40.296546'),
+(446, '1', 'User logged out', 'Logout', '2024-11-21 14:23:09.031538'),
+(447, '11', 'User logged in', 'Login', '2024-11-21 14:23:17.286046'),
+(448, '11', 'User logged in', 'Login', '2024-11-25 09:50:59.811778'),
+(449, '11', 'User logged out', 'Logout', '2024-11-25 16:43:43.596892'),
+(450, '1', 'User logged in', 'Login', '2024-11-25 16:43:49.580848'),
+(451, '1', 'User logged out', 'Logout', '2024-11-25 16:43:56.996584'),
+(452, '11', 'User logged in', 'Login', '2024-11-25 16:44:02.449359'),
+(453, '1', 'User logged in', 'Login', '2024-11-27 09:55:41.889536'),
+(454, '1', 'User logged out', 'Logout', '2024-11-27 09:56:23.295450'),
+(455, '11', 'User logged in', 'Login', '2024-11-27 09:56:28.684481'),
+(456, '11', 'User logged out', 'Logout', '2024-11-28 14:06:33.938190'),
+(457, '1', 'User logged in', 'Login', '2024-11-28 14:06:42.807476'),
+(458, '1', 'User logged out', 'Logout', '2024-11-28 16:40:04.410467'),
+(459, '11', 'User logged in', 'Login', '2024-11-28 16:40:12.307695'),
+(460, '11', 'User logged out', 'Logout', '2024-12-02 15:42:32.625348'),
+(461, '1', 'User logged in', 'Login', '2024-12-02 15:42:42.977685'),
+(462, '1', 'User logged in', 'Login', '2024-12-02 21:12:55.947217'),
+(463, '1', 'User logged out', 'Logout', '2024-12-03 11:26:56.771598'),
+(464, '11', 'User logged in', 'Login', '2024-12-03 11:27:03.668752'),
+(465, '11', 'User logged out', 'Logout', '2024-12-03 11:27:12.222370'),
+(466, '14', 'User logged in', 'Login', '2024-12-03 11:27:32.643916'),
+(467, '14', 'Open new ticket #: PDCS1224001', 'Ticket', '2024-12-03 11:28:10.682898'),
+(468, '14', 'User logged out', 'Logout', '2024-12-03 11:34:26.404822'),
+(469, '1', 'User logged in', 'Login', '2024-12-03 11:34:34.060706'),
+(470, '1', 'User logged out', 'Logout', '2024-12-03 11:42:06.318859'),
+(471, '1', 'User logged in', 'Login', '2024-12-03 11:42:27.169928'),
+(472, '1', 'User logged in', 'Login', '2024-12-03 11:47:34.620623'),
+(473, '1', 'User logged out', 'Logout', '2024-12-03 12:57:31.959583'),
+(474, '1', 'User logged in', 'Login', '2024-12-03 12:57:51.425236'),
+(475, '1', 'User logged out', 'Logout', '2024-12-03 21:22:02.931970'),
+(476, '14', 'User logged in', 'Login', '2024-12-04 09:47:05.903801'),
+(477, '14', 'User logged out', 'Logout', '2024-12-04 09:48:38.093955'),
+(478, '1', 'User logged in', 'Login', '2024-12-04 09:48:44.649920'),
+(479, '1', 'User logged in', 'Login', '2024-12-04 09:57:25.870362'),
+(480, '1', 'User logged out', 'Logout', '2024-12-05 16:31:14.526867'),
+(481, '14', 'User logged in', 'Login', '2024-12-05 16:31:23.983822'),
+(482, '14', 'User logged out', 'Logout', '2024-12-05 16:32:08.956630'),
+(483, '1', 'User logged in', 'Login', '2024-12-05 16:32:17.417725'),
+(484, '1', 'Added new item: Tablet', 'Item', '2024-12-05 16:45:57.771532'),
+(485, '1', 'Added new item: Laptop', 'Item', '2024-12-05 16:46:04.761870'),
+(486, '1', 'Added new item: Desktop/Computer', 'Item', '2024-12-05 16:46:20.683507'),
+(487, '1', 'Added new item: CCTV Camera', 'Item', '2024-12-05 16:46:58.227921'),
+(488, '1', 'Added new item: Digital Video Recorder (DVR)', 'Item', '2024-12-05 16:47:23.612385'),
+(489, '1', 'Added new item: Converge Router', 'Item', '2024-12-05 16:47:56.174770'),
+(490, '1', 'Added new item: Can\'t Edit', 'Item', '2024-12-05 16:49:05.960504');
 
 -- --------------------------------------------------------
 
@@ -251,7 +311,15 @@ INSERT INTO `tbl_itemlist` (`id`, `name`, `status`, `category`) VALUES
 (3, 'POS', '1', '1'),
 (4, 'PLDT Router', '1', '2'),
 (5, 'Smart Broadband', '1', '2'),
-(6, 'Aircon', '1', '7');
+(6, 'Aircon', '1', '7'),
+(7, 'LCD Monitor', '1', '7'),
+(8, 'Tablet', '1', '3'),
+(9, 'Laptop', '1', '3'),
+(10, 'Desktop/Computer', '1', '3'),
+(11, 'CCTV Camera', '1', '4'),
+(12, 'Digital Video Recorder (DVR)', '1', '4'),
+(13, 'Converge Router', '1', '2'),
+(14, 'Can\'t Edit', '1', '6');
 
 -- --------------------------------------------------------
 
@@ -271,10 +339,14 @@ CREATE TABLE `tbl_tickets` (
   `description` varchar(5000) NOT NULL,
   `priority_type` varchar(100) DEFAULT NULL,
   `concern_type` enum('Issue','Request') DEFAULT NULL,
-  `status` enum('1','2','3','4','5') NOT NULL DEFAULT '1',
+  `status` enum('1','2','3','4','5') NOT NULL DEFAULT '2',
   `remark` varchar(1000) NOT NULL,
+  `sched` datetime(6) DEFAULT NULL,
+  `assigned` varchar(1000) NOT NULL,
+  `overdue` enum('0','1') NOT NULL DEFAULT '0',
+  `msg_ses` varchar(5000) NOT NULL DEFAULT '0',
   `date_posted` datetime(6) NOT NULL DEFAULT current_timestamp(6),
-  `date_modified` datetime DEFAULT NULL,
+  `date_modified` datetime(6) DEFAULT current_timestamp(6),
   `date_closed` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -282,13 +354,14 @@ CREATE TABLE `tbl_tickets` (
 -- Dumping data for table `tbl_tickets`
 --
 
-INSERT INTO `tbl_tickets` (`id`, `ticket_num`, `outlet`, `designation`, `topiccateg`, `topicitem`, `img_name`, `file_path`, `description`, `priority_type`, `concern_type`, `status`, `remark`, `date_posted`, `date_modified`, `date_closed`) VALUES
-(1, 'PDCS1024001', '11', '1', '1', '2', 'TRHOANGELO_10232024.jpg', '../img/sup_doc/TRHOANGELO_10232024.jpg', 'Test Data', NULL, NULL, '1', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2024-10-30 10:41:49.643451', NULL, NULL),
-(2, 'PDCS1024002', '11', '1', '1', '2', '457377830_565243119158694_2829328946720226073_n.jpg', '../img/sup_doc/457377830_565243119158694_2829328946720226073_n.jpg', 'Test 2', NULL, NULL, '1', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2024-10-30 10:53:27.928812', NULL, NULL),
-(4, 'PDCS1024003', '11', '2', '7', '6', 'tabletvslaptop.png', '../img/sup_doc/tabletvslaptop.png', 'Test 3', NULL, NULL, '1', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2024-10-30 11:55:52.084329', NULL, NULL),
-(5, 'PDCS1124001', '11', '2', '7', '6', 'PreventiveTR_TIMES110524.jpg', '../img/sup_doc/PreventiveTR_TIMES110524.jpg', 'Test data entry only.', NULL, NULL, '1', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2024-11-12 10:57:30.322534', NULL, NULL),
-(6, 'PDCS1124002', '11', '1', '1', '3', 'PreventiveTR_JMB110624.jpg', '../img/sup_doc/PreventiveTR_JMB110624.jpg', 'kjl', NULL, NULL, '1', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2024-11-12 11:38:15.087404', NULL, NULL),
-(7, 'PDCS1124003', '11', '1', '2', '4', 'PreventiveTR_MANUELA110524.jpg', '../img/sup_doc/PreventiveTR_MANUELA110524.jpg', 'Test data entry only.', NULL, NULL, '1', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2024-11-12 11:58:14.112935', NULL, NULL);
+INSERT INTO `tbl_tickets` (`id`, `ticket_num`, `outlet`, `designation`, `topiccateg`, `topicitem`, `img_name`, `file_path`, `description`, `priority_type`, `concern_type`, `status`, `remark`, `sched`, `assigned`, `overdue`, `msg_ses`, `date_posted`, `date_modified`, `date_closed`) VALUES
+(1, 'PDCS1024001', '11', '1', '1', '2', 'TRHOANGELO_10232024.jpg', '../img/sup_doc/TRHOANGELO_10232024.jpg', 'Test Data', NULL, NULL, '2', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', NULL, '', '0', '0', '2024-10-30 10:41:49.643451', NULL, NULL),
+(2, 'PDCS1024002', '11', '1', '1', '2', '457377830_565243119158694_2829328946720226073_n.jpg', '../img/sup_doc/457377830_565243119158694_2829328946720226073_n.jpg', 'Test 2', NULL, NULL, '2', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', NULL, '', '0', '0', '2024-10-30 10:53:27.928812', NULL, NULL),
+(4, 'PDCS1024003', '11', '2', '7', '6', 'tabletvslaptop.png', '../img/sup_doc/tabletvslaptop.png', 'Test 3', NULL, NULL, '2', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', NULL, '', '0', '0', '2024-10-30 11:55:52.084329', NULL, NULL),
+(5, 'PDCS1124001', '11', '2', '7', '6', 'PreventiveTR_TIMES110524.jpg', '../img/sup_doc/PreventiveTR_TIMES110524.jpg', 'Test data entry only.', NULL, NULL, '2', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', NULL, '', '0', '0', '2024-11-12 10:57:30.322534', NULL, NULL),
+(6, 'PDCS1124002', '11', '1', '1', '3', 'PreventiveTR_JMB110624.jpg', '../img/sup_doc/PreventiveTR_JMB110624.jpg', 'kjl', NULL, NULL, '2', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', NULL, '', '0', '0', '2024-11-12 11:38:15.087404', NULL, NULL),
+(7, 'PDCS1124003', '11', '1', '2', '4', 'PreventiveTR_MANUELA110524.jpg', '../img/sup_doc/PreventiveTR_MANUELA110524.jpg', 'Test data entry only.', NULL, NULL, '2', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', NULL, '', '0', '0', '2024-11-12 11:58:14.112935', NULL, NULL),
+(8, 'PDCS1224001', '14', '2', '7', '7', 'PreventiveTR_ATC110424.jpg', '../img/sup_doc/PreventiveTR_ATC110424.jpg', 'Test Data Only', NULL, NULL, '2', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', NULL, '', '0', '0', '2024-12-03 11:28:10.680195', '2024-12-03 11:28:10.680195', NULL);
 
 -- --------------------------------------------------------
 
@@ -366,7 +439,7 @@ ALTER TABLE `tbl_useraccounts`
 -- AUTO_INCREMENT for table `tbl_auditlog`
 --
 ALTER TABLE `tbl_auditlog`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=431;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=491;
 
 --
 -- AUTO_INCREMENT for table `tbl_itemcategory`
@@ -378,13 +451,13 @@ ALTER TABLE `tbl_itemcategory`
 -- AUTO_INCREMENT for table `tbl_itemlist`
 --
 ALTER TABLE `tbl_itemlist`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_tickets`
 --
 ALTER TABLE `tbl_tickets`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_useraccounts`
