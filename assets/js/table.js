@@ -64,7 +64,27 @@ $(document).ready(function () {
 
 // ticket table
 $(document).ready(function () {
-    var table = $('#ticket_tbl').DataTable({
+    var table = $('#pendingtck_tbl').DataTable({
+    searching: true,
+    paging: true,
+    info: true,
+    ordering: true,
+    lengthChange: true,
+    order: [[0, 'desc']],
+    });
+});
+$(document).ready(function () {
+    var table = $('#opentck_tbl').DataTable({
+    searching: true,
+    paging: true,
+    info: true,
+    ordering: true,
+    lengthChange: true,
+    order: [[0, 'desc']],
+    });
+});
+$(document).ready(function () {
+    var table = $('#overdue_tbl').DataTable({
     searching: true,
     paging: true,
     info: true,

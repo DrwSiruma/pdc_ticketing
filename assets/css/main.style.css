@@ -15,6 +15,7 @@ table.dataTable tbody td {
    font-weight: 500;
    border: none;
    background-color: transparent;
+   cursor: pointer;
 }
 .nav-link:hover, .nav-link:focus {
    color: #FFD700;
