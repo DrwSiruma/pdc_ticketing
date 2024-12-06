@@ -73,10 +73,10 @@ unset($_SESSION['success']);
                     Interface
                 </div>
 
-                <li class="nav-item <?php echo in_array($page, ['admin/ticket']) ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo in_array($page, ['admin/ticket', 'admin/view-ticket']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="ticket">
                         <i class="fas fa-fw fa-ticket-alt fa-sm"></i>
-                        <span>Tickets</span>
+                        <span>Tickets&nbsp;<span class="badge bg-secondary text-light">99+</span></span>
                     </a>
                 </li>
 
@@ -93,7 +93,7 @@ unset($_SESSION['success']);
                         <span>Help Category</span>
                     </a>
                 </li>
-                
+
                 <li class="nav-item <?php echo in_array($page, ['admin/personnels', 'admin/it']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="personnels">
                         <i class="fas fa-fw fa-user-cog fa-sm"></i>

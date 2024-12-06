@@ -82,7 +82,7 @@
                                 <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
                                 <?php echo $rows['designation'] == 1 ? "<td class='bg-info text-dark'>IT</td>" : "<td class='bg-warning text-dark'>Maintenance</td>"; ?>
                                 <td>
-                                    <a href="#" class="btn-sm btn-secondary" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View"><i class="fas fa-eye"></i></a>
                                     <a href="#" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
                                 </td>
                             </tr>
