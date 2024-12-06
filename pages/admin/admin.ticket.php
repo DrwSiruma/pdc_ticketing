@@ -13,7 +13,7 @@
             <li class="nav-item position-relative" role="presentation">
                 <a class="nav-link active" id="ex-with-icons-tab-1" data-toggle="pill" data-target="#ex-with-icons-tabs-1" role="tab"
                 aria-controls="ex-with-icons-tabs-1" aria-selected="true">
-                    <i class="fas fa-spinner fa-fw me-2"></i>Pending</a>
+                    <i class="far fa-clock fa-fw me-2"></i>Pending</a>
                 </a>
 
                 <?php if ($pending_count > 0) { ?>
@@ -46,11 +46,11 @@
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="ex-with-icons-tab-4" data-toggle="pill" data-target="#ex-with-icons-tabs-4" role="tab"
-                aria-controls="ex-with-icons-tabs-4" aria-selected="false"><i class="fas fa-cogs fa-fw me-2"></i>Closed</a>
+                aria-controls="ex-with-icons-tabs-4" aria-selected="false"><i class="fas fa-folder fa-fw me-2"></i>Closed</a>
             </li>
             <li class="nav-item" role="presentation">
                 <a class="nav-link" id="ex-with-icons-tab-5" data-toggle="pill" data-target="#ex-with-icons-tabs-5" role="tab"
-                aria-controls="ex-with-icons-tabs-5" aria-selected="false"><i class="fas fa-times-circle fa-fw me-2"></i>Re-Schedule</a>
+                aria-controls="ex-with-icons-tabs-5" aria-selected="false"><i class="fas fa-times-circle fa-fw me-2"></i>Rejected</a>
             </li>
         </ul>
         <!-- Tabs navs -->
@@ -82,8 +82,8 @@
                                 <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
                                 <?php echo $rows['designation'] == 1 ? "<td class='bg-info text-dark'>IT</td>" : "<td class='bg-warning text-dark'>Maintenance</td>"; ?>
                                 <td>
-                                    <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
+                                    <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View Report"><i class="fas fa-eye"></i></a>
+                                    <!-- <a href="#" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a> -->
                                 </td>
                             </tr>
                             <?php } ?>
