@@ -46,8 +46,8 @@
                     <i class="fas fa-info-circle"></i>&nbsp;Ticket Summary
                 </h5>
                 <div>
-                    <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;Approve</a>
-                    <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-times"></i>&nbsp;Decline</a>
+                    <a href="ticket-approval?id=<?php echo $ticket_num; ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;Approve</a>
+                    <a href="logout" data-toggle="modal" data-target="#DeclineModal" class="btn btn-danger btn-sm"><i class="fas fa-times"></i>&nbsp;Decline</a>
                 </div>
             </div>
             <div class="card-body">
@@ -115,4 +115,7 @@
 
     </div>
 
-<?php include('admin.footer.php'); ?>
+<?php 
+    include('admin.decline-modal.php');
+    include('admin.footer.php'); 
+?>

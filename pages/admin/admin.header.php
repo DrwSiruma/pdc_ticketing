@@ -13,7 +13,6 @@ unset($_SESSION['error']);
 
 $success = isset($_SESSION['success']) ? $_SESSION['success'] : '';
 unset($_SESSION['success']);
-unset($_SESSION['success']);
 
 // $accounts_page = ['admin.add.user.php', 'admin.accounts.php'];
 // $outlet_page = ['admin.outlet.php', 'admin.add.outlet.php', 'admin.edit.outlet.php'];
@@ -73,7 +72,7 @@ unset($_SESSION['success']);
                     Interface
                 </div>
 
-                <li class="nav-item <?php echo in_array($page, ['admin/ticket', 'admin/view-ticket']) ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo in_array($page, ['admin/ticket', 'admin/view-ticket', 'admin/ticket-approval']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="ticket">
                         <i class="fas fa-fw fa-ticket-alt fa-sm"></i>
                         <span>Tickets&nbsp;<span class="badge bg-secondary text-light">99+</span></span>

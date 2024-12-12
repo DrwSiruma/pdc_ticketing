@@ -35,6 +35,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'add-itemlist':
                 include 'admin/process.add-itemlist.php';
                 break;
+            case 'ticket-approval':
+                include 'admin/process.ticket-approval.php';
+                break;
         }
     } else {
         switch ($admin_page) {
@@ -85,6 +88,9 @@ if (strpos($page, 'admin/') === 0) {
                 break;
             case 'view-ticket':
                 include 'admin/admin.view-ticket.php';
+                break;
+            case 'ticket-approval':
+                include 'admin/admin.ticket-approval.php';
                 break;
             case 'logout':
                 include '../includes/logout.php';
