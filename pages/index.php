@@ -38,6 +38,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'ticket-approval':
                 include 'admin/process.ticket-approval.php';
                 break;
+            case 'reject-ticket':
+                include 'admin/process.ticket-decline.php';
+                break;
         }
     } else {
         switch ($admin_page) {

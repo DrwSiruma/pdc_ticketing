@@ -93,3 +93,13 @@ $(document).ready(function () {
     order: [[0, 'desc']],
     });
 });
+$(document).ready(function () {
+    var table = $('#rejtck_tbl').DataTable({
+    searching: true,
+    paging: true,
+    info: true,
+    ordering: true,
+    lengthChange: true,
+    order: [[0, 'desc']],
+    });
+});

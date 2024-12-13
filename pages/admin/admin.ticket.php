@@ -173,7 +173,40 @@
                 Tab 4 content
             </div>
             <div class="tab-pane fade" id="ex-with-icons-tabs-5" role="tabpanel" aria-labelledby="ex-with-icons-tab-5">
-                Tab 5 content
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-sm w-100" id="rejtck_tbl">
+                        <thead>
+                            <tr>
+                                <th>Post Date</th>
+                                <th>Ticket #</th>
+                                <th>Subject</th>
+                                <th>From</th>
+                                <th>Remarks</th>
+                                <th>Last Modified</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                foreach ($rejected_tickets as $rows) {
+                                    $postDT = new DateTime($rows["date_posted"]);
+                                    $modDT = new DateTime($rows["date_modified"]);
+                            ?>
+                            <tr>
+                                <td><?php echo $postDT->format('m/d/Y - h:i A'); ?></td>
+                                <td><?php echo $rows['ticket_num']; ?></td>
+                                <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
+                                <td><?php echo $rows['outlet_name']; ?></td>
+                                <td><?php echo $rows['remark']; ?></td>
+                                <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
+                                <td>
+                                    <a href="#" class="btn-sm btn-secondary" title="View"><i class="fas fa-eye"></i> View</a>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <!-- Tabs content -->

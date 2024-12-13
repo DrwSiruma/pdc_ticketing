@@ -51,65 +51,69 @@
                 </div>
             </div>
             <div class="card-body">
-                <form>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="from">From:</label>
-                                        <input type="text" name="from" id="from" class="form-control" value="<?php echo $ticket_row['outlet_name']; ?>" disabled>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="date-posted">Date Posted:</label>
-                                        <input type="datetime-local" name="date-posted" id="date-posted" class="form-control" value="<?php echo $formattedDatePosted; ?>" disabled>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="status">Ticket State:</label>
-                                        <input type="text" name="status" id="status" class="form-control" value="<?php echo $ticket_status; ?>" disabled>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="dept">Department:</label>
-                                        <input type="text" name="dept" id="dept" class="form-control" value="<?php echo $ticket_dept; ?>" disabled>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="categ">Topic Category:</label>
-                                        <input type="text" name="categ" id="categ" class="form-control" value="<?php echo $ticket_row['categ_name']; ?>" disabled>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="item">Topic Item:</label>
-                                        <input type="text" name="item" id="item" class="form-control" value="<?php echo $ticket_row['item_name']; ?>" disabled>
-                                    </div>
+                <?php if (!empty($error)) : ?>
+                    <div class="alert alert-danger"><?php echo $error; ?></div>
+                <?php endif; ?>
+                <?php if (!empty($success)) : ?>
+                    <div class="alert alert-success"><?php echo $success; ?></div>
+                <?php endif; ?>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="from">From:</label>
+                                    <input type="text" name="from" id="from" class="form-control" value="<?php echo $ticket_row['outlet_name']; ?>" disabled>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="statement">Statement:</label>
-                                        <textarea name="statement" id="statement" class="form-control" rows="6" disabled><?php echo $ticket_row['description']; ?></textarea>
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="date-posted">Date Posted:</label>
+                                    <input type="datetime-local" name="date-posted" id="date-posted" class="form-control" value="<?php echo $formattedDatePosted; ?>" disabled>
                                 </div>
-                                <div class="col-md-12">
-                                    <label>Supporting Image:</label>
-                                    <span class="form-control" style="background: #eaecf4"><a href="../<?php echo $ticket_row['file_path']; ?>"><i class="fas fa-download"></i>&nbsp;View Image</a></span>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="status">Ticket State:</label>
+                                    <input type="text" name="status" id="status" class="form-control" value="<?php echo $ticket_status; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="dept">Department:</label>
+                                    <input type="text" name="dept" id="dept" class="form-control" value="<?php echo $ticket_dept; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="categ">Topic Category:</label>
+                                    <input type="text" name="categ" id="categ" class="form-control" value="<?php echo $ticket_row['categ_name']; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="item">Topic Item:</label>
+                                    <input type="text" name="item" id="item" class="form-control" value="<?php echo $ticket_row['item_name']; ?>" disabled>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="statement">Statement:</label>
+                                    <textarea name="statement" id="statement" class="form-control" rows="6" disabled><?php echo $ticket_row['description']; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Supporting Image:</label>
+                                <span class="form-control" style="background: #eaecf4"><a href="../<?php echo $ticket_row['file_path']; ?>"><i class="fas fa-download"></i>&nbsp;View Image</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

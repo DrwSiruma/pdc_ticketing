@@ -8,13 +8,31 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="">
-                    <div></div>
+                <form method="post" action="reject-ticket?id=<?php echo $ticket_num; ?>">
+                    <div class="form-group">
+                        <label for="rejectReason">Select Reason for Rejection</label>
+                        <select class="form-control" id="rejectReason" name="reject_reason" required>
+                            <option value="" hidden selected>Select a reason</option>
+                            <option value="Incomplete Information">Incomplete Information</option>
+                            <option value="Duplicate Request">Duplicate Request</option>
+                            <option value="Not Applicable">Not Applicable</option>
+                            <option value="Other">Other (Specify)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="otherReasonContainer" style="display: none;">
+                        <label for="otherReason">Specify Other Reason</label>
+                        <input type="text" class="form-control" id="otherReason" placeholder="Enter specific reason">
+                    </div>
+
+                    <!-- Hidden input to capture the final reason -->
+                    <input type="hidden" id="finalReason" name="final_reason">
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger" onclick="setFinalReason()">Submit</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger" href="">Submit</a>
             </div>
         </div>
     </div>
