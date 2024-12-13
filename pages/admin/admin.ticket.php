@@ -146,7 +146,7 @@
                         </thead>
                         <tbody>
                             <?php
-                                foreach ($open_tickets as $rows) {
+                                foreach ($overdue_tickets as $rows) {
                                     $postDT = new DateTime($rows["date_posted"]);
                                     $modDT = new DateTime($rows["date_modified"]);
                             ?>
@@ -156,7 +156,7 @@
                                 <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
                                 <td><?php echo $rows['outlet_name']; ?></td>
                                 <td><?php echo $rows['priority_type']; ?></td>
-                                <td><?php echo $rows['sched']; ?></td>
+                                <td><?php echo formatSchedule($rows['sched_start'], $rows['sched_end']); ?></td>
                                 <td><?php echo $rows['assigned']; ?></td>
                                 <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
                                 <td>
@@ -200,7 +200,7 @@
                                 <td><?php echo $rows['remark']; ?></td>
                                 <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
                                 <td>
-                                    <a href="#" class="btn-sm btn-secondary" title="View"><i class="fas fa-eye"></i> View</a>
+                                    <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View"><i class="fas fa-eye"></i> View</a>
                                 </td>
                             </tr>
                             <?php } ?>

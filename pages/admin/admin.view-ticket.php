@@ -37,7 +37,21 @@
 
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"><a href="ticket" class="text-danger"><i class="far fa-times-circle"></i></a>&nbsp;Ticket # <span style="font-weight: 600;"><?php echo $ticket_num; ?></span></h1>
+            <h1 class="h3 mb-0 text-gray-800"><a href="
+            <?php
+                if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4') {
+                    echo "ticket?tab=open";
+                } elseif ($ticket_row["status"]== '2') {
+                    echo "ticket?tab=pending";
+                } elseif ($ticket_row["status"]== '3') {
+                    echo "ticket?tab=rejected";
+                } elseif ($ticket_row['sched_end'] < date('Y-m-d H:i:s') && $ticket_row['ticket_status'] != '5') {
+                    echo "ticket?tab=overdue";
+                } elseif ($ticket_row["status"]== '5') {
+                    echo "ticket?tab=closed";
+                }
+            ?>
+            " class="text-danger"><i class="far fa-times-circle"></i></a>&nbsp;Ticket # <span style="font-weight: 600;"><?php echo $ticket_num; ?></span></h1>
         </div>
 
         <div class="card mt-4">
@@ -46,8 +60,10 @@
                     <i class="fas fa-info-circle"></i>&nbsp;Ticket Summary
                 </h5>
                 <div>
-                    <a href="ticket-approval?id=<?php echo $ticket_num; ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;Approve</a>
-                    <a href="logout" data-toggle="modal" data-target="#DeclineModal" class="btn btn-danger btn-sm"><i class="fas fa-times"></i>&nbsp;Decline</a>
+                    <?php if ($ticket_row["ticket_status"] == '2') { ?>
+                        <a href="ticket-approval?id=<?php echo $ticket_num; ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;Approve</a>
+                        <a href="logout" data-toggle="modal" data-target="#DeclineModal" class="btn btn-danger btn-sm"><i class="fas fa-times"></i>&nbsp;Decline</a>
+                    <?php } ?>
                 </div>
             </div>
             <div class="card-body">
