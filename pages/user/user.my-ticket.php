@@ -3,7 +3,23 @@ include('user.header.php');
 
 if (isset($_GET['id'])) {
   $ticket_id = intval($_GET['id']);
-  $query = $conn->prepare("SELECT tk.*, tc.name AS categ_name, tl.name AS item_name, ua.name AS str_name FROM `tbl_tickets` tk LEFT JOIN `tbl_itemcategory` tc ON tk.topiccateg = tc.id LEFT JOIN `tbl_itemlist` tl ON tk.topicitem = tl.id LEFT JOIN `tbl_useraccounts` ua ON tk.outlet = ua.id WHERE tk.id = ?");
+  $query = $conn->prepare("SELECT 
+        tk.*, 
+        tc.name AS categ_name, 
+        tl.name AS item_name, 
+        ua_outlet.name AS str_name,
+        ua_assigned.name AS assigned_name
+    FROM 
+        `tbl_tickets` tk
+    LEFT JOIN 
+        `tbl_itemcategory` tc ON tk.topiccateg = tc.id
+    LEFT JOIN 
+        `tbl_itemlist` tl ON tk.topicitem = tl.id
+    LEFT JOIN 
+        `tbl_useraccounts` ua_outlet ON tk.outlet = ua_outlet.id
+    LEFT JOIN 
+        `tbl_useraccounts` ua_assigned ON tk.assigned = ua_assigned.id
+    WHERE tk.id = ?");
   $query->bind_param("i", $ticket_id);
   $query->execute();
   $result = $query->get_result();
@@ -12,6 +28,29 @@ if (isset($_GET['id'])) {
   $_SESSION['error'] = "Invalid request.";
   header("Location: track-ticket");
   exit();
+}
+
+function formatSchedule($start, $end) {
+  $startDate = new DateTime($start);
+  $endDate = new DateTime($end);
+
+  // If the start and end dates are the same
+  if ($startDate->format('Y-m-d') === $endDate->format('Y-m-d')) {
+      return $startDate->format('F j, Y'); // February 12, 2024
+  }
+
+  // If the dates are in the same month and year but different days
+  if ($startDate->format('Y-m') === $endDate->format('Y-m')) {
+      return $startDate->format('F j') . '-' . $endDate->format('j, Y'); // February 12-15, 2024
+  }
+
+  // If the dates are in the same year but different months
+  if ($startDate->format('Y') === $endDate->format('Y')) {
+      return $startDate->format('F j') . ' - ' . $endDate->format('F j, Y'); // February 12 - March 12, 2024
+  }
+
+  // If the dates are in different years
+  return $startDate->format('F j, Y') . ' - ' . $endDate->format('F j, Y'); // February 12, 2024 - February 12, 2025
 }
 ?>
 
@@ -90,6 +129,25 @@ if (isset($_GET['id'])) {
                     </tbody>
                   </table>
                 </div>
+                <?php if ($row["status"]== '1') { ?>
+                <br>
+                <div class="table-responsive">
+                  <table class="table table-bordered w-100" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th scope="col">Assigned Personnel</th>
+                        <th scope="col">Schedule</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td scope="row" width="20"><?php echo $row['assigned_name']; ?></td>
+                        <td scope="row" width="20"><?php echo formatSchedule($row['sched_start'], $row['sched_end']); ?></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <?php } ?>
                 <div class="form-group row text-left mb-0 py-2">
                     <div class="col-sm-4 py-1"></div>
                     <div class="col-sm-3 py-1"></div>
