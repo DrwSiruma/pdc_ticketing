@@ -14,10 +14,13 @@ unset($_SESSION['error']);
 $success = isset($_SESSION['success']) ? $_SESSION['success'] : '';
 unset($_SESSION['success']);
 
-// $accounts_page = ['admin.add.user.php', 'admin.accounts.php'];
-// $outlet_page = ['admin.outlet.php', 'admin.add.outlet.php', 'admin.edit.outlet.php'];
-// $product_page = ['admin.products.php', 'admin.add.product.php', 'admin.edit.product.php'];
-// $pcategory_page = ['admin.product.category.php', 'admin.add.pcategory.php', 'admin.edit.pcategory.php']
+$ticketcnt_qry = $conn->query("SELECT COUNT(*) AS ticket_count FROM tbl_tickets WHERE status = '1' OR status = '2' OR status = '4'");
+
+$unread_count = 0;
+if ($ticketcnt_qry) {
+    $ticketcnt_res = $ticketcnt_qry->fetch_assoc();
+    $ticket_cnt = $ticketcnt_res['ticket_count'];
+}
 
 ?>
 
@@ -75,7 +78,13 @@ unset($_SESSION['success']);
                 <li class="nav-item <?php echo in_array($page, ['admin/ticket', 'admin/view-ticket', 'admin/ticket-approval']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="ticket">
                         <i class="fas fa-fw fa-ticket-alt fa-sm"></i>
-                        <span>Tickets&nbsp;<span class="badge bg-secondary text-light">99+</span></span>
+                        <span>Tickets&nbsp;
+                            <?php if ($ticket_cnt > 0) { ?>
+                                <span class="badge bg-secondary text-light">
+                                    <?php echo ($ticket_cnt > 99) ? '99+' : $ticket_cnt; ?>
+                                </span>
+                            <?php } ?>
+                        </span>
                     </a>
                 </li>
 
