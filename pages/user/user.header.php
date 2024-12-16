@@ -14,6 +14,16 @@ unset($_SESSION['error']);
 $success = isset($_SESSION['success']) ? $_SESSION['success'] : '';
 unset($_SESSION['success']);
 unset($_SESSION['success']);
+
+// Query to count unread notifications
+$notifcnt_qry = $conn->query("SELECT COUNT(*) AS unread_count FROM tbl_notif WHERE status = '1'");
+
+// Fetch the unread count
+$unread_count = 0;
+if ($notifcnt_qry) {
+    $notifcnt_row = $notifcnt_qry->fetch_assoc();
+    $unread_count = $notifcnt_row['unread_count'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +43,7 @@ unset($_SESSION['success']);
         <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
         <link href="../../assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
         <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="../../assets/vendor/datatables/jquery.dataTables.min.css" rel="stylesheet">
         <!-- MAIN CSS -->
         <link href="../../assets/css/user.style.css" rel="stylesheet">
     </head>
@@ -59,7 +70,13 @@ unset($_SESSION['success']);
                             <a class="nav-link <?php //echo ($page == 'user/conversations') ? 'active' : ''; ?>" aria-current="page" href="conversations">Conversations&nbsp;<span class="badge bg-secondary text-light">99+</span></a>
                         </li> -->
                         <li class="nav-item">
-                            <a class="nav-link <?php echo ($page == 'user/notification') ? 'active' : ''; ?>" aria-current="page" href="notification">Notifications&nbsp;<span class="badge bg-secondary text-light">99+</span></a>
+                            <a class="nav-link <?php echo ($page == 'user/notification') ? 'active' : ''; ?>" aria-current="page" href="notification">Notifications&nbsp;
+                                <?php if ($unread_count > 0) { ?>
+                                    <span class="badge bg-secondary text-light">
+                                        <?php echo ($unread_count > 99) ? '99+' : $unread_count; ?>
+                                    </span>
+                                <?php } ?>
+                            </a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">

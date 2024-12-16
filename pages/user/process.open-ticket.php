@@ -14,6 +14,18 @@ function log_activity($conn, $user_id, $activity, $type) {
     }
 }
 
+function notifications($conn, $notif_msg, $user_id) {
+    $sql = "INSERT INTO tbl_notif (notif_msg, user_id, post_date) VALUES (?, ?, NOW(6))";
+    $stmt = $conn->prepare($sql);
+    if ($stmt) {
+        $stmt->bind_param("si", $notif_msg, $user_id);
+        $stmt->execute();
+        $stmt->close();
+    } else {
+        error_log("Failed to prepare statement for logging activity: " . $conn->error);
+    }
+}
+
 // Function to generate unique ticket number
 function generate_ticket_number($conn) {
     $month = date('m'); // Current month in 2 digits
@@ -104,6 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->execute()) {
         $user_id = $_SESSION['id'];
         log_activity($conn, $user_id, "Open new ticket #: $ticketnum", "Ticket");
+        notifications($conn, "You have successfully created ticket #: $ticketnum", $user_id);
 
         $_SESSION['success'] = "Successful.";
         header("Location: ticket?id=$ticketnum");

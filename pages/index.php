@@ -144,6 +144,12 @@ if (strpos($page, 'admin/') === 0) {
             case 'notification':
                 include 'user/user.notification.php';
                 break;
+            case 'mark-read':
+                include 'user/process.mark-read.php';
+                break;
+            case 'mark-all-read':
+                include 'user/process.mark-all-read.php';
+                break;
             case 'logout':
                 include '../includes/logout.php';
                 break;
