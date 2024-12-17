@@ -1,7 +1,7 @@
 <?php
 include('user.header.php');
 $user_id = $_SESSION['id'];
-$notif_qry = mysqli_query($conn, "SELECT * FROM `tbl_notif` WHERE user_id = $user_id");
+$notif_qry = mysqli_query($conn, "SELECT * FROM `tbl_notif` WHERE user_id = $user_id ORDER BY post_date DESC");
 ?>
 
     <div class="container my-5">
@@ -36,13 +36,14 @@ $notif_qry = mysqli_query($conn, "SELECT * FROM `tbl_notif` WHERE user_id = $use
                             </tr>
                             <?php } else{ ?>
                                 <tr>
-                                    <td colspan="2"><?php echo $notif_row['notif_msg']; ?></td>
+                                    <td><?php echo $notif_row['notif_msg']; ?></td>
+                                    <td></td>
                                 </tr>
                             <?php 
                                         }
                                     }
                                 } else {
-                                    echo "<tr><td colspan='2'><td colspan='2'><i>No notifications yet.</i></td></td></tr>";
+                                    echo "<tr><td colspan='2'><i>No notifications yet.</i></td></tr>";
                                 }
                             ?>
                         </tbody>

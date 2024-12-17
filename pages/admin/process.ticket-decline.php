@@ -15,8 +15,21 @@ function log_activity($conn, $user_id, $activity, $type) {
     }
 }
 
+function notifications($conn, $notif_msg, $outlet_id) {
+    $sql = "INSERT INTO tbl_notif (notif_msg, user_id, post_date) VALUES (?, ?, NOW(6))";
+    $stmt = $conn->prepare($sql);
+    if ($stmt) {
+        $stmt->bind_param("si", $notif_msg, $outlet_id);
+        $stmt->execute();
+        $stmt->close();
+    } else {
+        error_log("Failed to prepare statement for logging activity: " . $conn->error);
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    $outlet_id = $_GET['user'];
     $ticket_num = $_GET['id'];
     $remarks = trim($_POST['final_reason']);
     $status = "3";
@@ -34,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             $admin_id = $_SESSION['id'];
             log_activity($conn, $admin_id, "Reject ticket #: $ticket_num", "Ticket");
+            notifications($conn, "Your ticket #: $ticket_num, is declined due to <i>$remarks</i>.", $outlet_id);
 
             $_SESSION['success'] = "Ticket rejected successfully.";
             header("Location: ticket?tab=rejected");

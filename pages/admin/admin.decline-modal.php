@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="reject-ticket?id=<?php echo $ticket_num; ?>">
+                <form method="post" action="reject-ticket?id=<?php echo $ticket_num; ?>&user=<?php echo $ticket_row['outlet']; ?>">
                     <div class="form-group">
                         <label for="rejectReason">Select Reason for Rejection</label>
                         <select class="form-control" id="rejectReason" name="reject_reason" required>

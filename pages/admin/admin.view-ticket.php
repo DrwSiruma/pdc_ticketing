@@ -62,7 +62,7 @@
                 <div>
                     <?php if ($ticket_row["ticket_status"] == '2') { ?>
                         <a href="ticket-approval?id=<?php echo $ticket_num; ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;Approve</a>
-                        <a href="logout" data-toggle="modal" data-target="#DeclineModal" class="btn btn-danger btn-sm"><i class="fas fa-times"></i>&nbsp;Decline</a>
+                        <a href="#" data-toggle="modal" data-target="#DeclineModal" class="btn btn-danger btn-sm"><i class="fas fa-times"></i>&nbsp;Decline</a>
                     <?php } ?>
                 </div>
             </div>
