@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('Asia/Manila');
 $all_tickets = mysqli_query($conn, "SELECT t.*, t.status AS ticket_status, u.name AS outlet_name, c.name AS categ_name, l.name AS item_name, a.name AS staff_name 
         FROM tbl_tickets t 
         LEFT JOIN tbl_useraccounts u ON t.outlet = u.id 
@@ -15,6 +15,21 @@ $closed_tickets = [];
 $rejected_tickets = [];
 
 while ($rows = mysqli_fetch_array($all_tickets)) {
+    // Get the current date and time
+    $current_date = new DateTime();
+    
+    // Check if sched_end is not empty or NULL
+    if (!empty($rows['sched_end']) && $rows['sched_end'] !== 'NULL') {
+        // Convert sched_end to DateTime for comparison
+        $sched_end_date = new DateTime($rows['sched_end']);
+        
+        // Check if the sched_end is overdue and the status is not Closed (5)
+        if ($sched_end_date < $current_date && $rows['ticket_status'] != '5') {
+            $overdue_tickets[] = $rows;
+        }
+    }
+
+    // Categorize tickets based on their status
     if ($rows['ticket_status'] == '2') { // Pending
         $pending_tickets[] = $rows;
     } elseif ($rows['ticket_status'] == '1' || $rows['ticket_status'] == '4') { // Open
@@ -23,8 +38,6 @@ while ($rows = mysqli_fetch_array($all_tickets)) {
         $rejected_tickets[] = $rows;
     } elseif ($rows['ticket_status'] == '5') { // Closed
         $closed_tickets[] = $rows;
-    } elseif ($rows['sched_end'] < date('Y-m-d H:i:s') && $rows['ticket_status'] != '5') { // Overdue
-        $overdue_tickets[] = $rows;
     }
 }
 
