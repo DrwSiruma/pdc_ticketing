@@ -37,11 +37,11 @@
 
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"><a href="view-ticket?id=<?php echo $ticket_num ?>" class="text-secondary"><i class="fas fa-arrow-circle-left"></i></a>&nbsp;Approve Ticket</h1>
+            <h1 class="h3 mb-0 text-gray-800"><a href="view-ticket?id=<?php echo $ticket_num; ?>" class="text-secondary"><i class="fas fa-arrow-circle-left"></i></a>&nbsp;Approve Ticket</h1>
         </div>
 
         <div class="container">
-            <form action="ticket-approval?id=<?php echo $ticket_num; ?>" method="post" enctype="multipart/form-data">
+            <form action="ticket-approval?id=<?php echo $ticket_num; ?>&user=<?php echo $ticket_row['outlet']; ?>" method="post" enctype="multipart/form-data">
             <div class="card mt-4">
                 <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #fff;">
                     <h5 class="mb-0">

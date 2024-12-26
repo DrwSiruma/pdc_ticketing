@@ -15,9 +15,22 @@ function log_activity($conn, $user_id, $activity, $type) {
     }
 }
 
+function notifications($conn, $notif_msg, $outlet_id) {
+    $sql = "INSERT INTO tbl_notif (notif_msg, user_id, post_date) VALUES (?, ?, NOW(6))";
+    $stmt = $conn->prepare($sql);
+    if ($stmt) {
+        $stmt->bind_param("si", $notif_msg, $outlet_id);
+        $stmt->execute();
+        $stmt->close();
+    } else {
+        error_log("Failed to prepare statement for logging activity: " . $conn->error);
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $ticket_num = $_GET['id'];
+    $outlet_id = $_GET['user'];
     $concern_type = trim($_POST['concern_type']);
     $priority_type = trim($_POST['priority_type']);
     $remarks = trim($_POST['remarks']);
@@ -39,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             $admin_id = $_SESSION['id'];
             log_activity($conn, $admin_id, "Approve ticket #: $ticket_num", "Ticket");
+            notifications($conn, "Your ticket #: $ticket_num, is approved. You may check the ticket status.", $outlet_id);
 
             echo "<script>alert('Ticket #$ticket_num approved successfully.');</script>";
             $_SESSION['success'] = "Ticket approved successfully.";
@@ -46,9 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         } else {
             $_SESSION['error'] = "Failed to approve ticket. Please try again.";
+            
+            header("Location: ticket-approval?id=$ticket_num");
+            exit();
         }
-        header("Location: ticket-approval?id=$ticket_num");
-        exit();
     }
 
 } else {
