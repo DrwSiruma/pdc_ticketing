@@ -1,11 +1,12 @@
 <?php 
     include('admin.header.php');
     $ticket_num = $_GET['id'];
-    $ticket_qry = mysqli_query($conn, "SELECT t.*, t.status AS ticket_status, u.name AS outlet_name, c.name AS categ_name, l.name AS item_name 
+    $ticket_qry = mysqli_query($conn, "SELECT t.*, t.status AS ticket_status, u.name AS outlet_name, c.name AS categ_name, l.name AS item_name, a.name AS staff_name 
         FROM tbl_tickets t 
         LEFT JOIN tbl_useraccounts u ON t.outlet = u.id 
         LEFT JOIN tbl_itemcategory c ON t.topiccateg = c.id 
         LEFT JOIN tbl_itemlist l ON t.topicitem = l.id 
+        LEFT JOIN tbl_useraccounts a ON t.assigned = a.id
         WHERE t.ticket_num = '$ticket_num'");
     $ticket_row = mysqli_fetch_array($ticket_qry);
     $datePosted = new DateTime($ticket_row['date_posted']);
@@ -60,7 +61,12 @@
                     <i class="fas fa-info-circle"></i>&nbsp;Ticket Summary
                 </h5>
                 <div>
-                    <?php if ($ticket_row["ticket_status"] == '2') { ?>
+                    <?php if ($ticket_row["ticket_status"] == '1') { ?>
+                        <button data-toggle="modal" data-target="#rschdModal" class="btn btn-primary btn-sm"><i class="fas fa-calendar"></i>&nbsp;Re-Schedule</button>
+                        <a href="#?id=<?php echo $ticket_num; ?>" class="btn btn-warning btn-sm"><i class="fas fa-user-edit"></i>&nbsp;Re-Assign</a>
+                        <button type="button" class="btn btn-success btn-sm" disabled><i class="fas fa-check"></i>&nbsp;Resolve</button>
+                        <!-- <a href="#?id=<?php echo $ticket_num; ?>" class="btn btn-success btn-sm"><i class="fas fa-check"></i>&nbsp;Resolve</a> -->
+                    <?php } elseif ($ticket_row["ticket_status"] == '2') { ?>
                         <a href="ticket-approval?id=<?php echo $ticket_num; ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;Approve</a>
                         <a href="#" data-toggle="modal" data-target="#DeclineModal" class="btn btn-danger btn-sm"><i class="fas fa-times"></i>&nbsp;Decline</a>
                     <?php } ?>
@@ -119,8 +125,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="statement">Statement:</label>
-                                    <textarea name="statement" id="statement" class="form-control" rows="6" disabled><?php echo $ticket_row['description']; ?></textarea>
+                                    <label>Statement:</label>
+                                    <p class="p-control"><i><?php echo $ticket_row['description']; ?></i></p>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -133,9 +139,71 @@
             </div>
         </div>
 
+        <?php
+                if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4') {
+        ?>
+        <div class="card mt-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="concern_type">Type of Concern:</label>
+                                    <input type="text" name="concern_type" id="concern_type" class="form-control" value="<?php echo $ticket_row['concern_type']; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="priority_type">Priority Level:</label>
+                                    <input type="text" name="priority_type" id="priority_type" class="form-control" value="<?php echo $ticket_row['priority_type']; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="remarks">Remarks:</label>
+                                    <p class="p-control"><i><?php echo $ticket_row['remark']; ?></i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="assigned">Assign To:</label>
+                                    <input type="text" name="assigned" id="assigned" class="form-control" value="<?php echo $ticket_row['staff_name']; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group m-0">
+                                    <label class="text-primary">Schedule:</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="startdate">Start Date:</label>
+                                    <input type="date" name="startdate" id="startdate" class="form-control" value="<?php echo $ticket_row['sched_start']; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="enddate">End Date:</label>
+                                    <input type="date" name="enddate" id="enddate" class="form-control" value="<?php echo $ticket_row['sched_end']; ?>" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+
     </div>
 
 <?php 
+    include('admin.rschd-modal.php');
     include('admin.decline-modal.php');
     include('admin.footer.php'); 
 ?>
