@@ -61,7 +61,7 @@
                     <i class="fas fa-info-circle"></i>&nbsp;Ticket Summary
                 </h5>
                 <div>
-                    <?php if ($ticket_row["ticket_status"] == '1') { ?>
+                    <?php if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4') { ?>
                         <button data-toggle="modal" data-target="#rschdModal" class="btn btn-primary btn-sm"><i class="fas fa-calendar"></i>&nbsp;Re-Schedule</button>
                         <a href="#?id=<?php echo $ticket_num; ?>" class="btn btn-warning btn-sm"><i class="fas fa-user-edit"></i>&nbsp;Re-Assign</a>
                         <button type="button" class="btn btn-success btn-sm" disabled><i class="fas fa-check"></i>&nbsp;Resolve</button>

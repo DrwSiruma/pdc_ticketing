@@ -22,3 +22,25 @@ function setFinalReason() {
         finalReasonInput.value = selectBox.value;
     }
 }
+
+function showOtherReason() {
+    var reasonSelect = document.getElementById("rschdReason");
+    var otherRReasonContainer = document.getElementById("otherRReasonContainer");
+    if (reasonSelect.value == "3") {
+        otherRReasonContainer.style.display = "block";
+    } else {
+        otherRReasonContainer.style.display = "none";
+    }
+}
+
+document.querySelector('form').addEventListener('submit', function(event) {
+    var reasonSelect = document.getElementById("rschdReason");
+    var otherRReasonInput = document.getElementById("otherRReason");
+    var finalRReasonInput = document.getElementById("finalRReason");
+
+    if (reasonSelect.value == "3") {
+        finalRReasonInput.value = otherRReasonInput.value.trim();
+    } else {
+        finalRReasonInput.value = reasonSelect.options[reasonSelect.selectedIndex].text;
+    }
+});
