@@ -160,7 +160,7 @@
                                 <td><?php echo $rows['staff_name']; ?></td>
                                 <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
                                 <td>
-                                    <a href="#" class="btn-sm btn-secondary" title="View"><i class="fas fa-eye"></i></a>
+                                    <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View"><i class="fas fa-eye"></i></a>
                                     <a href="#" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
                                 </td>
                             </tr>

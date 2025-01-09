@@ -31,26 +31,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $outlet_id = $_GET['user'];
     $ticket_num = $_GET['id'];
-    $start_date = trim($_POST['resched_sdate']);
-    $end_date = trim($_POST['resched_edate']);
-    $remarks = trim($_POST['final_rreason']);
-    $status = "4";
+    $rasgn_to = trim($_POST['rasgn_to']);
+    $remarks = trim($_POST['final_rreason2']);
 
-    if (empty($start_date) || empty($end_date) || empty($remarks)) {
+    if (empty($rasgn_to) || empty($remarks)) {
         $_SESSION['error'] = "All fields are required.";
         header("Location: view-ticket?id=$ticket_num");
         exit();
     } else {
-        $final_remarks = "Re-scheduled from $start_date to $end_date. Reason: $remarks";
+        $final_remarks = "Re-assigned to: $rasgn_to. Reason: $remarks";
         // Update ticket in the database
-        $sql = "UPDATE tbl_tickets SET status = ?, remark = ?, sched_start = ?, sched_end = ?, date_modified = NOW() WHERE ticket_num = ?";
+        $sql = "UPDATE tbl_tickets SET remark = ?, assigned = ?, date_modified = NOW() WHERE ticket_num = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssss", $status, $final_remarks, $start_date, $end_date, $ticket_num);
+        $stmt->bind_param("sss", $final_remarks, $rasgn_to, $ticket_num);
 
         if ($stmt->execute()) {
             $admin_id = $_SESSION['id'];
-            log_activity($conn, $admin_id, "Re-scheduled ticket #: $ticket_num", "Ticket");
-            notifications($conn, "Your ticket #: $ticket_num, is re-scheduled for the reason \"$remarks\".", $outlet_id);
+            log_activity($conn, $admin_id, "Re-assigned ticket #: $ticket_num", "Ticket");
+            notifications($conn, "Your ticket #: $ticket_num, is re-assigned to \"$rasgn_to\".", $outlet_id);
 
             $_SESSION['success'] = "Ticket re-scheduled successfully.";
             header("Location: ticket?tab=open");

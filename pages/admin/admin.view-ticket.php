@@ -1,7 +1,7 @@
 <?php 
     include('admin.header.php');
     $ticket_num = $_GET['id'];
-    $ticket_qry = mysqli_query($conn, "SELECT t.*, t.status AS ticket_status, u.name AS outlet_name, c.name AS categ_name, l.name AS item_name, a.name AS staff_name 
+    $ticket_qry = mysqli_query($conn, "SELECT t.*, t.status AS ticket_status, u.name AS outlet_name, c.name AS categ_name, l.name AS item_name, a.id AS staff_id, a.name AS staff_name 
         FROM tbl_tickets t 
         LEFT JOIN tbl_useraccounts u ON t.outlet = u.id 
         LEFT JOIN tbl_itemcategory c ON t.topiccateg = c.id 
@@ -63,7 +63,7 @@
                 <div>
                     <?php if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4') { ?>
                         <button data-toggle="modal" data-target="#rschdModal" class="btn btn-primary btn-sm"><i class="fas fa-calendar"></i>&nbsp;Re-Schedule</button>
-                        <a href="#?id=<?php echo $ticket_num; ?>" class="btn btn-warning btn-sm"><i class="fas fa-user-edit"></i>&nbsp;Re-Assign</a>
+                        <button data-toggle="modal" data-target="#rasgnModal" class="btn btn-warning btn-sm"><i class="fas fa-user-edit"></i>&nbsp;Re-Assign</button>
                         <button type="button" class="btn btn-success btn-sm" disabled><i class="fas fa-check"></i>&nbsp;Resolve</button>
                         <!-- <a href="#?id=<?php echo $ticket_num; ?>" class="btn btn-success btn-sm"><i class="fas fa-check"></i>&nbsp;Resolve</a> -->
                     <?php } elseif ($ticket_row["ticket_status"] == '2') { ?>
@@ -204,6 +204,7 @@
 
 <?php 
     include('admin.rschd-modal.php');
+    include('admin.rasgn-modal.php');
     include('admin.decline-modal.php');
     include('admin.footer.php'); 
 ?>

@@ -27,9 +27,10 @@
                     <div class="form-group">
                         <label for="rschdReason">Select Reason for Re-Schedule</label>
                         <select class="form-control" id="rschdReason" name="resched_reason" onchange="showOtherReason()">
-                            <option value="0">Customer Request</option>
-                            <option value="1">Technical Issue</option>
-                            <option value="2">Unavailability of Assigned Personnel</option>
+                            <option value="" hidden selected>Select Option</option>
+                            <option value="Customer Request">Customer Request</option>
+                            <option value="Technical Issue">Technical Issue</option>
+                            <option value="Unavailability of Assigned Personnel">Unavailability of Assigned Personnel</option>
                             <option value="3">Other</option>
                         </select>
                     </div>

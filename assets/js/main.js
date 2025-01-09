@@ -33,7 +33,8 @@ function showOtherReason() {
     }
 }
 
-document.querySelector('form').addEventListener('submit', function(event) {
+// Replace the form submit event listener with the button click event listener
+document.getElementById('rasgn_btn').addEventListener('click', function(event) {
     var reasonSelect = document.getElementById("rschdReason");
     var otherRReasonInput = document.getElementById("otherRReason");
     var finalRReasonInput = document.getElementById("finalRReason");
@@ -42,5 +43,27 @@ document.querySelector('form').addEventListener('submit', function(event) {
         finalRReasonInput.value = otherRReasonInput.value.trim();
     } else {
         finalRReasonInput.value = reasonSelect.options[reasonSelect.selectedIndex].text;
+    }
+});
+
+function showOtherReason2() {
+    var reasonSelect2 = document.getElementById("rasgnReason");
+    var otherRReasonContainer2 = document.getElementById("otherRReasonContainer2");
+    if (reasonSelect2.value == "3") {
+        otherRReasonContainer2.style.display = "block";
+    } else {
+        otherRReasonContainer2.style.display = "none";
+    }
+}
+
+document.getElementById('rasgn_btn').addEventListener('click', function(event) {
+    var reasonSelect2 = document.getElementById("rasgnReason");
+    var otherRReasonInput2 = document.getElementById("otherRReason2");
+    var finalRReasonInput2 = document.getElementById("finalRReason2");
+
+    if (reasonSelect2.value == "3") {
+        finalRReasonInput2.value = otherRReasonInput2.value.trim();
+    } else {
+        finalRReasonInput2.value = reasonSelect2.options[reasonSelect2.selectedIndex].text;
     }
 });
