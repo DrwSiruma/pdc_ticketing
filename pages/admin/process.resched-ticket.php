@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 } else {
-    header("Location: ticket-approval?id=$ticket_num");
+    header("Location: view-ticket?id=$ticket_num");
     exit();
 }
 ?>

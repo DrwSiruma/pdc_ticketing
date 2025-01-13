@@ -65,7 +65,7 @@
                         <button data-toggle="modal" data-target="#rschdModal" class="btn btn-primary btn-sm"><i class="fas fa-calendar"></i>&nbsp;Re-Schedule</button>
                         <button data-toggle="modal" data-target="#rasgnModal" class="btn btn-warning btn-sm"><i class="fas fa-user-edit"></i>&nbsp;Re-Assign</button>
                         <button type="button" class="btn btn-success btn-sm" disabled><i class="fas fa-check"></i>&nbsp;Resolve</button>
-                        <!-- <a href="#?id=<?php echo $ticket_num; ?>" class="btn btn-success btn-sm"><i class="fas fa-check"></i>&nbsp;Resolve</a> -->
+                        <!-- <a href="#?id=<?php //echo $ticket_num; ?>" class="btn btn-success btn-sm"><i class="fas fa-check"></i>&nbsp;Resolve</a> -->
                     <?php } elseif ($ticket_row["ticket_status"] == '2') { ?>
                         <a href="ticket-approval?id=<?php echo $ticket_num; ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;Approve</a>
                         <a href="#" data-toggle="modal" data-target="#DeclineModal" class="btn btn-danger btn-sm"><i class="fas fa-times"></i>&nbsp;Decline</a>
@@ -149,13 +149,19 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="concern_type">Type of Concern:</label>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <label for="concern_type">Type of Concern:</label>
+                                        <a href="#" data-toggle="modal" data-target="#TCModal"><i class="fas fa-edit"></i></a>
+                                    </div>
                                     <input type="text" name="concern_type" id="concern_type" class="form-control" value="<?php echo $ticket_row['concern_type']; ?>" disabled>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="priority_type">Priority Level:</label>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <label for="priority_type">Priority Level:</label>
+                                        <a href="#"><i class="fas fa-edit"></i></a>
+                                    </div>
                                     <input type="text" name="priority_type" id="priority_type" class="form-control" value="<?php echo $ticket_row['priority_type']; ?>" disabled>
                                 </div>
                             </div>
@@ -203,6 +209,7 @@
     </div>
 
 <?php 
+    include('admin.tc-modal.php');
     include('admin.rschd-modal.php');
     include('admin.rasgn-modal.php');
     include('admin.decline-modal.php');

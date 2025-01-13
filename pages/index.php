@@ -47,6 +47,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'reassign-ticket':
                 include 'admin/process.reassign-ticket.php';
                 break;
+            case 'edit-tc':
+                include 'admin/process.edit-tc.php';
+                break;
         }
     } else {
         switch ($admin_page) {

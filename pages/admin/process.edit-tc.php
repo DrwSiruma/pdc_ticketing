@@ -15,42 +15,27 @@ function log_activity($conn, $user_id, $activity, $type) {
     }
 }
 
-function notifications($conn, $notif_msg, $outlet_id) {
-    $sql = "INSERT INTO tbl_notif (notif_msg, user_id, post_date) VALUES (?, ?, NOW(6))";
-    $stmt = $conn->prepare($sql);
-    if ($stmt) {
-        $stmt->bind_param("si", $notif_msg, $outlet_id);
-        $stmt->execute();
-        $stmt->close();
-    } else {
-        error_log("Failed to prepare statement for logging activity: " . $conn->error);
-    }
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $outlet_id = $_GET['user'];
     $ticket_num = $_GET['id'];
-    $remarks = trim($_POST['final_reason']);
-    $status = "3";
+    $new_tc = trim($_POST['new_tc']);
 
-    if (empty($remarks)) {
+    if (empty($new_tc) || !isset($ticket_num)) {
         $_SESSION['error'] = "All fields are required.";
         header("Location: view-ticket?id=$ticket_num");
         exit();
     } else {
         // Update ticket in the database
-        $sql = "UPDATE tbl_tickets SET status = ?, remark = ?, date_modified = NOW() WHERE ticket_num = ?";
+        $sql = "UPDATE tbl_tickets SET concern_type = ?, date_modified = NOW() WHERE ticket_num = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sss", $status, $remarks, $ticket_num);
+        $stmt->bind_param("ss", $new_tc, $ticket_num);
 
         if ($stmt->execute()) {
             $admin_id = $_SESSION['id'];
-            log_activity($conn, $admin_id, "Reject ticket #: $ticket_num", "Ticket");
-            notifications($conn, "Your ticket #: $ticket_num, is declined due to <i>$remarks</i>.", $outlet_id);
+            log_activity($conn, $admin_id, "Change ticket type of ticket #: $ticket_num", "Ticket");
 
-            $_SESSION['success'] = "Ticket rejected successfully.";
-            header("Location: ticket?tab=rejected");
+            $_SESSION['success'] = "Ticket type changed successfully.";
+            header("Location: view-ticket?id=$ticket_num");
             exit();
         } else {
             $_SESSION['error'] = "Failed to update ticket. Please try again.";
