@@ -34,6 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $rasgn_to = trim($_POST['rasgn_to']);
     $remarks = trim($_POST['final_rreason2']);
 
+    $name_sql = "SELECT `name` FROM tbl_useraccounts WHERE `id` = ?";
+    $stmt = $conn->prepare($name_sql);
+    $stmt->bind_param("i", $rasgn_to);
+    $stmt->execute();
+    $name_res = $stmt->get_result();
+    $name_row = $name_res->fetch_assoc();
+    $name_val = $name_row['name'];
+
     if (empty($rasgn_to) || empty($remarks)) {
         $_SESSION['error'] = "All fields are required.";
         header("Location: view-ticket?id=$ticket_num");
@@ -48,10 +56,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             $admin_id = $_SESSION['id'];
             log_activity($conn, $admin_id, "Re-assigned ticket #: $ticket_num", "Ticket");
-            notifications($conn, "Your ticket #: $ticket_num, is re-assigned to \"$rasgn_to\".", $outlet_id);
+            notifications($conn, "Your ticket #: $ticket_num, is re-assigned to \"$name_val\".", $outlet_id);
 
             $_SESSION['success'] = "Ticket re-scheduled successfully.";
-            header("Location: ticket?tab=open");
+            header("Location: view-ticket?id=$ticket_num");
             exit();
         } else {
             $_SESSION['error'] = "Failed to update ticket. Please try again.";

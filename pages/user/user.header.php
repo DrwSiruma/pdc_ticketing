@@ -16,7 +16,7 @@ unset($_SESSION['success']);
 unset($_SESSION['success']);
 
 // Query to count unread notifications
-$notifcnt_qry = $conn->query("SELECT COUNT(*) AS unread_count FROM tbl_notif WHERE status = '1'");
+$notifcnt_qry = $conn->query("SELECT COUNT(*) AS unread_count FROM tbl_notif WHERE user_id = $_SESSION[id] AND status = '1'");
 
 // Fetch the unread count
 $unread_count = 0;
