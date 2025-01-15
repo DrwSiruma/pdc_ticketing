@@ -160,7 +160,7 @@
                                 <div class="form-group">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <label for="priority_type">Priority Level:</label>
-                                        <a href="#"><i class="fas fa-edit"></i></a>
+                                        <a href="#" data-toggle="modal" data-target="#PLModal"><i class="fas fa-edit"></i></a>
                                     </div>
                                     <input type="text" name="priority_type" id="priority_type" class="form-control" value="<?php echo $ticket_row['priority_type']; ?>" disabled>
                                 </div>
@@ -210,6 +210,7 @@
 
 <?php 
     include('admin.tc-modal.php');
+    include('admin.pl-modal.php');
     include('admin.rschd-modal.php');
     include('admin.rasgn-modal.php');
     include('admin.decline-modal.php');

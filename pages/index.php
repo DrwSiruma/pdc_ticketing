@@ -50,6 +50,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'edit-tc':
                 include 'admin/process.edit-tc.php';
                 break;
+            case 'edit-pl':
+                include 'admin/process.edit-pl.php';
+                break;
         }
     } else {
         switch ($admin_page) {
