@@ -84,6 +84,12 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label for="reported_by">Reported By:</label>
+                                    <input type="text" name="reported_by" id="reported_by" class="form-control" value="<?php echo $ticket_row['reported_by']; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label for="from">From:</label>
                                     <input type="text" name="from" id="from" class="form-control" value="<?php echo $ticket_row['outlet_name']; ?>" disabled>
                                 </div>
@@ -102,7 +108,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="dept">Department:</label>
+                                    <label for="dept">Designated to:</label>
                                     <input type="text" name="dept" id="dept" class="form-control" value="<?php echo $ticket_dept; ?>" disabled>
                                 </div>
                             </div>

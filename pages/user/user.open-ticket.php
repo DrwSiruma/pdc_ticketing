@@ -15,12 +15,20 @@
             <?php endif; ?>
             <form action="open-ticket" class="mt-2 mb-2" method="post" enctype="multipart/form-data" onsubmit="copyDescription()">
                 <div class="controls">
+                    <input type="hidden" name="outlet" value="<?php echo $_SESSION['id']; ?>">
                     <div class="row">
-                        <input type="hidden" name="outlet" value="<?php echo $_SESSION['id']; ?>">
+                        <!-- Topic dropdown, initially disabled -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="reported_by">Reported By (Name) <span class="text-danger">*</span></label>
+                                <input type="text" id="reported_by" name="reported_by" class="form-control" required="required">
+                            </div>
+                        </div>
+
                         <!-- Designation dropdown -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="form_designation">Designation <span class="text-danger">*</span></label>
+                                <label for="form_designation">Designation To <span class="text-danger">*</span></label>
                                 <select id="form_designation" name="designation" class="form-control" required="required">
                                     <option value="" selected disabled>--Select Designation--</option>
                                     <option value="1">IT</option>
@@ -28,7 +36,9 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="row">
                         <!-- Topic dropdown, initially disabled -->
                         <div class="col-md-6">
                             <div class="form-group">
@@ -38,9 +48,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
                         <!-- Item dropdown, initially disabled -->
                         <div class="col-md-6">
                             <div class="form-group">
@@ -50,18 +58,10 @@
                                 </select>
                             </div>
                         </div>
-
-                        <!-- Supporting Image upload -->
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="form_image">Supporting Image <span class="text-danger">*</span></label>
-                                <input id="form_image" type="file" name="image" class="form-control" required="required" accept="image/*">
-                            </div>
-                        </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form_description">Description <span class="text-danger">*</span></label>
                                 <!-- Toolbar for formatting options -->
@@ -74,6 +74,14 @@
                                 <!-- Contenteditable div for issue details -->
                                 <div id="form_description" name="description" class="form-control" contenteditable="true" placeholder="Describe the issue..." style="min-height: 150px; border: 1px solid #ced4da; padding: 10px;"></div>
                                 <input type="hidden" id="description_input" name="description" required="required">
+                            </div>
+                        </div>
+                        
+                        <!-- Supporting Image upload -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_image">Supporting Image <span class="text-danger">*</span></label>
+                                <input id="form_image" type="file" name="image" class="form-control" required="required" accept="image/*">
                             </div>
                         </div>
                     </div>

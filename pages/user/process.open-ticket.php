@@ -51,6 +51,7 @@ function generate_ticket_number($conn) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $outlet = trim($_POST['outlet']);
+    $reported_name = trim($_POST['reported_by']);
     $designation = trim($_POST['designation']);
     $topic = trim($_POST['topic']);
     $item = trim($_POST['item']);
@@ -109,9 +110,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Insert new ticket into the database
-    $sql = "INSERT INTO tbl_tickets (ticket_num, outlet, designation, topiccateg, topicitem, img_name, file_path, description, remark) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO tbl_tickets (ticket_num, outlet, reported_by, designation, topiccateg, topicitem, img_name, file_path, description, remark) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssssss", $ticketnum, $outlet, $designation, $topic, $item, $image, $target_file, $description, $remark);
+    $stmt->bind_param("ssssssssss", $ticketnum, $outlet, $reported_name, $designation, $topic, $item, $image, $target_file, $description, $remark);
 
     if ($stmt->execute()) {
         $user_id = $_SESSION['id'];
