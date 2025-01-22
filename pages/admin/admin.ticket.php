@@ -53,6 +53,7 @@
 
         <!-- Tabs content -->
         <div class="tab-content" id="ex-with-icons-content">
+            <!-- Pending Tab -->
             <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel" aria-labelledby="ex-with-icons-tab-1">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-sm w-100" id="pendingtck_tbl">
@@ -87,6 +88,7 @@
                     </table>
                 </div>
             </div>
+            <!-- Open Tab -->
             <div class="tab-pane fade" id="ex-with-icons-tabs-2" role="tabpanel" aria-labelledby="ex-with-icons-tab-2">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-sm w-100" id="opentck_tbl">
@@ -119,8 +121,8 @@
                                 <td><?php echo $rows['staff_name']; ?></td>
                                 <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
                                 <td>
-                                <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View Report"><i class="fas fa-eye"></i></a>
-                                    <a href="#" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
+                                    <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View Report"><i class="fas fa-eye"></i></a>
+                                    <a href="edit-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
                                 </td>
                             </tr>
                             <?php } ?>
@@ -128,6 +130,7 @@
                     </table>
                 </div>
             </div>
+            <!-- Overdue Tab -->
             <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel" aria-labelledby="ex-with-icons-tab-3">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-sm w-100" id="overdue_tbl">
@@ -169,9 +172,11 @@
                     </table>
                 </div>
             </div>
+            <!-- Closed Tab -->
             <div class="tab-pane fade" id="ex-with-icons-tabs-4" role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
                 Tab 4 content
             </div>
+            <!-- Reject Tab -->
             <div class="tab-pane fade" id="ex-with-icons-tabs-5" role="tabpanel" aria-labelledby="ex-with-icons-tab-5">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-sm w-100" id="rejtck_tbl">
