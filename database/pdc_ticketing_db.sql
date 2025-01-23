@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2025 at 02:59 AM
+-- Generation Time: Jan 23, 2025 at 10:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -349,7 +349,15 @@ INSERT INTO `tbl_auditlog` (`id`, `user_id`, `activity`, `type`, `date_posted`) 
 (582, '12', 'User logged in', 'Login', '2025-01-15 16:34:17.031057'),
 (583, '12', 'Open new ticket #: PDCS0125001', 'Ticket', '2025-01-15 16:35:13.795408'),
 (584, '12', 'User logged out', 'Logout', '2025-01-15 16:35:26.722306'),
-(585, '1', 'User logged in', 'Login', '2025-01-15 16:35:35.380584');
+(585, '1', 'User logged in', 'Login', '2025-01-15 16:35:35.380584'),
+(586, '1', 'User logged in', 'Login', '2025-01-22 11:30:23.739061'),
+(587, '1', 'User logged out', 'Logout', '2025-01-22 14:58:49.247501'),
+(588, '11', 'User logged in', 'Login', '2025-01-22 14:58:54.103358'),
+(589, '11', 'User logged out', 'Logout', '2025-01-22 16:14:05.525619'),
+(590, '1', 'User logged in', 'Login', '2025-01-22 16:14:11.881422'),
+(595, '1', 'Approve ticket #: PDCS1224002', 'Ticket', '2025-01-23 16:27:18.268462'),
+(596, '1', 'User logged in', 'Login', '2025-01-23 16:44:51.346692'),
+(597, '1', 'User logged in', 'Login', '2025-01-23 17:03:18.241203');
 
 -- --------------------------------------------------------
 
@@ -442,7 +450,41 @@ INSERT INTO `tbl_notif` (`id`, `notif_msg`, `status`, `user_id`, `post_date`) VA
 (9, 'Your ticket #: PDCS1024002, is re-assigned to \"17\".', '0', 11, '2025-01-09 16:57:02.162838'),
 (10, 'Your ticket #: PDCS1224005, is re-assigned to \"16\".', '0', 14, '2025-01-15 13:31:53.146635'),
 (11, 'Your ticket #: PDCS1124002, is re-assigned to \"Andrew Siruma\".', '0', 11, '2025-01-15 14:27:26.515596'),
-(12, 'You have successfully created ticket #: PDCS0125001', '1', 12, '2025-01-15 16:35:13.796757');
+(12, 'You have successfully created ticket #: PDCS0125001', '1', 12, '2025-01-15 16:35:13.796757'),
+(17, 'Your ticket #: PDCS1224002, is approved. You may check the ticket status.', '1', 14, '2025-01-23 16:27:18.269189');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_ticketreport`
+--
+
+CREATE TABLE `tbl_ticketreport` (
+  `id` int(100) NOT NULL,
+  `ticket_num` varchar(1000) NOT NULL,
+  `outlet_id` varchar(1000) NOT NULL,
+  `emp_id` varchar(1000) NOT NULL,
+  `status` enum('0','1') NOT NULL DEFAULT '0',
+  `report_type` enum('1','2') NOT NULL,
+  `outlet_name` varchar(1000) NOT NULL,
+  `emp_name` varchar(1000) NOT NULL,
+  `ticket_date` date NOT NULL,
+  `time_in` time(6) DEFAULT NULL,
+  `time_out` time(6) DEFAULT NULL,
+  `subj` varchar(1000) NOT NULL,
+  `findings` longtext NOT NULL,
+  `recom_at` longtext NOT NULL,
+  `fn_client` varchar(100) NOT NULL,
+  `modify_date` datetime(6) NOT NULL DEFAULT current_timestamp(6),
+  `posted_date` datetime(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tbl_ticketreport`
+--
+
+INSERT INTO `tbl_ticketreport` (`id`, `ticket_num`, `outlet_id`, `emp_id`, `status`, `report_type`, `outlet_name`, `emp_name`, `ticket_date`, `time_in`, `time_out`, `subj`, `findings`, `recom_at`, `fn_client`, `modify_date`, `posted_date`) VALUES
+(1, 'PDCS1224002', '14', '15', '0', '1', 'DD-ATC', '', '2024-12-13', NULL, NULL, 'Internet - Smart Broadband', '', '', '', '2025-01-23 16:27:18.269846', '0000-00-00 00:00:00.000000');
 
 -- --------------------------------------------------------
 
@@ -468,8 +510,8 @@ CREATE TABLE `tbl_tickets` (
   `sched_start` date DEFAULT NULL,
   `sched_end` date DEFAULT NULL,
   `assigned` varchar(1000) NOT NULL,
-  `overdue` enum('0','1') NOT NULL DEFAULT '0',
   `msg_ses` varchar(5000) NOT NULL DEFAULT '0',
+  `rprt` enum('0','1') NOT NULL DEFAULT '0',
   `date_posted` datetime(6) NOT NULL DEFAULT current_timestamp(6),
   `date_modified` datetime(6) DEFAULT current_timestamp(6),
   `date_closed` datetime DEFAULT NULL
@@ -479,15 +521,15 @@ CREATE TABLE `tbl_tickets` (
 -- Dumping data for table `tbl_tickets`
 --
 
-INSERT INTO `tbl_tickets` (`id`, `ticket_num`, `outlet`, `reported_by`, `designation`, `topiccateg`, `topicitem`, `img_name`, `file_path`, `description`, `priority_type`, `concern_type`, `status`, `remark`, `sched_start`, `sched_end`, `assigned`, `overdue`, `msg_ses`, `date_posted`, `date_modified`, `date_closed`) VALUES
-(1, 'PDCS1024001', '11', 'Daryl Yap', '1', '1', '2', 'TRHOANGELO_10232024.jpg', '../img/sup_doc/TRHOANGELO_10232024.jpg', 'Test Data', NULL, NULL, '2', 'For data testing only.', NULL, NULL, '', '0', '0', '2024-10-30 10:41:49.643451', NULL, NULL),
+INSERT INTO `tbl_tickets` (`id`, `ticket_num`, `outlet`, `reported_by`, `designation`, `topiccateg`, `topicitem`, `img_name`, `file_path`, `description`, `priority_type`, `concern_type`, `status`, `remark`, `sched_start`, `sched_end`, `assigned`, `msg_ses`, `rprt`, `date_posted`, `date_modified`, `date_closed`) VALUES
+(1, 'PDCS1024001', '11', 'Hanamichi Sakuragi', '1', '1', '2', 'TRHOANGELO_10232024.jpg', '../img/sup_doc/TRHOANGELO_10232024.jpg', 'Test Data', NULL, NULL, '2', 'For data testing only.', NULL, NULL, '', '0', '0', '2024-10-30 10:41:49.643451', NULL, NULL),
 (2, 'PDCS1024002', '11', 'Joshua Garcia', '1', '1', '2', '457377830_565243119158694_2829328946720226073_n.jpg', '../img/sup_doc/457377830_565243119158694_2829328946720226073_n.jpg', 'Test 2', 'P2', 'Issue', '1', 'Unavailability of Previous Assigned Personnel', '2024-12-26', '2024-12-27', '17', '0', '0', '2024-10-30 10:53:27.928812', '2025-01-09 16:57:02.000000', NULL),
 (4, 'PDCS1024003', '11', 'AJ Raval', '2', '7', '6', 'tabletvslaptop.png', '../img/sup_doc/tabletvslaptop.png', 'Test 3', NULL, NULL, '2', 'For data testing only.', NULL, NULL, '', '0', '0', '2024-10-30 11:55:52.084329', NULL, NULL),
 (5, 'PDCS1124001', '11', 'LeBron James', '2', '7', '6', 'PreventiveTR_TIMES110524.jpg', '../img/sup_doc/PreventiveTR_TIMES110524.jpg', 'Test data entry only.', NULL, NULL, '3', 'Not Applicable', NULL, NULL, '', '0', '0', '2024-11-12 10:57:30.322534', '2024-12-13 13:38:56.000000', NULL),
 (6, 'PDCS1124002', '11', 'James Harden', '1', '1', '3', 'PreventiveTR_JMB110624.jpg', '../img/sup_doc/PreventiveTR_JMB110624.jpg', 'kjl', 'P1', 'Issue', '4', 'Re-assigned to: 15. Reason: Unavailability of Previous Assigned Personnel', '2025-01-08', '2025-01-09', '15', '0', '0', '2024-11-12 11:38:15.087404', '2025-01-15 14:27:26.000000', NULL),
 (7, 'PDCS1124003', '11', 'Stephen Curry', '1', '2', '4', 'PreventiveTR_MANUELA110524.jpg', '../img/sup_doc/PreventiveTR_MANUELA110524.jpg', 'Test data entry only.', NULL, NULL, '3', 'For data testing only.', NULL, NULL, '', '0', '0', '2024-11-12 11:58:14.112935', '2024-12-13 13:27:32.000000', NULL),
 (8, 'PDCS1224001', '14', 'Kai Sotto', '2', '7', '7', 'PreventiveTR_ATC110424.jpg', '../img/sup_doc/PreventiveTR_ATC110424.jpg', 'Test Data Only', NULL, NULL, '2', 'For data testing only.', NULL, NULL, '', '0', '0', '2024-12-03 11:28:10.680195', NULL, NULL),
-(9, 'PDCS1224002', '14', 'Steve Nash', '1', '2', '5', 'PreventiveTR_SFPILAR110424.jpg', '../img/sup_doc/PreventiveTR_SFPILAR110424.jpg', 'For data testing only.', NULL, NULL, '2', 'Our team has received your request, and weâ€™re already reviewing the details. Weâ€™ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', NULL, NULL, '', '0', '0', '2024-12-13 19:03:25.950482', '2024-12-13 19:03:25.950482', NULL),
+(9, 'PDCS1224002', '14', 'Steve Nash', '1', '2', '5', 'PreventiveTR_SFPILAR110424.jpg', '../img/sup_doc/PreventiveTR_SFPILAR110424.jpg', 'For data testing only.', 'P2', 'Issue', '1', 'Our team has received your request, and we\'re already reviewing the details. We\'ll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.', '2025-01-27', '2025-01-28', '15', '0', '0', '2024-12-13 19:03:25.950482', '2025-01-23 16:27:18.000000', NULL),
 (10, 'PDCS1224003', '14', 'Michael Jordan', '1', '2', '5', 'PreventiveTR_SFPILAR110424.jpg', '../img/sup_doc/PreventiveTR_SFPILAR110424.jpg', 'For data testing only.', NULL, NULL, '3', 'Duplicate Request', NULL, NULL, '', '0', '0', '2024-12-13 19:07:07.700117', '2024-12-16 13:36:28.000000', NULL),
 (11, 'PDCS1224004', '14', 'John Doe', '1', '2', '5', 'PreventiveTR_FSKIOSK110424.jpg', '../img/sup_doc/PreventiveTR_FSKIOSK110424.jpg', 'For data testing only.', NULL, NULL, '3', 'Duplicate Request', NULL, NULL, '', '0', '0', '2024-12-13 19:08:23.315041', '2024-12-17 15:56:14.000000', NULL),
 (12, 'PDCS1224005', '14', 'Donald Trump', '1', '3', '9', 'bootstrap-messages-or-conversations as Smart Object-1.png', '../img/sup_doc/bootstrap-messages-or-conversations as Smart Object-1.png', 'For data testing only', 'P3', 'Issue', '4', 'Re-assigned to: 16. Reason: The assigned personnel is on Leave', '2025-01-10', '2025-01-12', '16', '0', '0', '2024-12-17 16:08:00.718386', '2025-01-15 13:31:53.000000', NULL),
@@ -555,6 +597,12 @@ ALTER TABLE `tbl_notif`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_ticketreport`
+--
+ALTER TABLE `tbl_ticketreport`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_tickets`
 --
 ALTER TABLE `tbl_tickets`
@@ -575,7 +623,7 @@ ALTER TABLE `tbl_useraccounts`
 -- AUTO_INCREMENT for table `tbl_auditlog`
 --
 ALTER TABLE `tbl_auditlog`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=586;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=598;
 
 --
 -- AUTO_INCREMENT for table `tbl_itemcategory`
@@ -593,7 +641,13 @@ ALTER TABLE `tbl_itemlist`
 -- AUTO_INCREMENT for table `tbl_notif`
 --
 ALTER TABLE `tbl_notif`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `tbl_ticketreport`
+--
+ALTER TABLE `tbl_ticketreport`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_tickets`

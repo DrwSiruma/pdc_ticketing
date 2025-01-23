@@ -8,6 +8,13 @@
             <h1 class="h3 mb-0 text-gray-800">Ticket Request</h1>
         </div>
 
+        <?php if (!empty($error)) : ?>
+            <div class="alert alert-danger"><?php echo $error; ?></div>
+        <?php endif; ?>
+        <?php if (!empty($success)) : ?>
+            <div class="alert alert-success"><?php echo $success; ?></div>
+        <?php endif; ?>
+
         <!-- Tabs navs -->
         <ul class="nav nav-pills mb-3" id="ex-with-icons" role="tablist">
             <li class="nav-item position-relative" role="presentation">

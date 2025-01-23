@@ -1,11 +1,12 @@
 <?php 
     include('admin.header.php');
     $ticket_num = $_GET['id'];
-    $ticket_qry = mysqli_query($conn, "SELECT t.*, t.id AS ticket_id, t.status AS ticket_status, u.name AS outlet_name, c.name AS categ_name, l.name AS item_name 
+    $ticket_qry = mysqli_query($conn, "SELECT t.*, t.id AS ticket_id, t.status AS ticket_status, u.name AS outlet_name, c.name AS categ_name, l.name AS item_name, a.name AS staff_name 
         FROM tbl_tickets t 
         LEFT JOIN tbl_useraccounts u ON t.outlet = u.id 
         LEFT JOIN tbl_itemcategory c ON t.topiccateg = c.id 
         LEFT JOIN tbl_itemlist l ON t.topicitem = l.id 
+        LEFT JOIN tbl_useraccounts a ON t.assigned = a.id
         WHERE t.ticket_num = '$ticket_num'");
     $ticket_row = mysqli_fetch_array($ticket_qry);
     $datePosted = new DateTime($ticket_row['date_posted']);
@@ -84,7 +85,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="remarks">Remarks:</label>
-                                        <textarea name="remarks" id="remarks" class="form-control" rows="5" require></textarea>
+                                        <textarea name="remarks" id="remarks" class="form-control" rows="5" require>Our team has received your request, and we're already reviewing the details. We'll keep you updated on the progress and reach out shortly with any next steps. For quick reference, please save your ticket number.</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -138,6 +139,11 @@
                         </div>
                     </div>
                 </div>
+                <input type="hidden" name="outlet_name" value="<?php echo $ticket_row['outlet_name']; ?>" require>
+                <input type="hidden" name="staff_name" value="<?php echo $ticket_row['staff_name']; ?>" require>
+                <input type="hidden" name="designation" value="<?php echo $ticket_row['designation']; ?>" require>
+                <input type="hidden" name="date_posted" value="<?php echo $ticket_row['date_posted']; ?>" require>
+                <input type="hidden" name="subject" value="<?php echo $ticket_row['categ_name'].' - '.$ticket_row['item_name']; ?>" require>
                 <div class="card-footer d-flex justify-content-between align-items-center" style="background-color: #fff;">
                     <div></div>
                     <div>
