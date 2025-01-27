@@ -27,6 +27,18 @@ function notifications($conn, $notif_msg, $outlet_id) {
     }
 }
 
+function ticket_report($conn, $staff_id, $staff_name, $ticket_num) {
+    $sql = "UPDATE tbl_ticketreport SET emp_id = ?, emp_name = ?, modify_date = NOW() WHERE ticket_num = ?";
+    $stmt = $conn->prepare($sql);
+    if ($stmt) {
+        $stmt->bind_param("iss", $staff_id, $staff_name, $ticket_num);
+        $stmt->execute();
+        $stmt->close();
+    } else {
+        error_log("Failed to prepare statement for ticket report: " . $conn->error);
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $outlet_id = $_GET['user'];
@@ -57,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $admin_id = $_SESSION['id'];
             log_activity($conn, $admin_id, "Re-assigned ticket #: $ticket_num", "Ticket");
             notifications($conn, "Your ticket #: $ticket_num, is re-assigned to \"$name_val\".", $outlet_id);
+            ticket_report($conn, $rasgn_to, $name_val, $ticket_num);
 
             $_SESSION['success'] = "Ticket re-scheduled successfully.";
             header("Location: view-ticket?id=$ticket_num");

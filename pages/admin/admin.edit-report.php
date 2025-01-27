@@ -24,7 +24,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Date:</label>
-                                <input type="date" class="form-control" value="<?php echo $ticket_date->format('Y-m-d'); ?>" readonly>
+                                <input type="date" class="form-control" value="<?php echo !empty($ticket_row['ticket_date']) ? $ticket_date->format('Y-m-d') : ''; ?>" readonly>
                             </div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
             </div>
 
             <div class="report-footer">
-                <button class="btn btn-secondary">Cancel</button>
+                <button class="btn btn-secondary" onclick="window.history.back();">Cancel</button>
                 <button class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;Save Report</button>
                 <button class="btn btn-success"><i class="fas fa-check"></i>&nbsp;Finish Report</button>
             </div>
