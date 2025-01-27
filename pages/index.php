@@ -53,6 +53,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'edit-pl':
                 include 'admin/process.edit-pl.php';
                 break;
+            case 'update-treport':
+                include 'admin/process.update-report.php';
+                break;
         }
     } else {
         switch ($admin_page) {

@@ -24,6 +24,8 @@
             </div>
         </div>
     </div>
+
+    <?php include 'admin.loader.php'; ?>
 </body>
     <!-- VENDOR JS -->
     <script src="../../assets/vendor/jquery/jquery.min.js"></script>

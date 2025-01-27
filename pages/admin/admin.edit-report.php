@@ -6,132 +6,185 @@
     $ticket_date = new DateTime($ticket_row['ticket_date']);
 ?>
     <div class="container-fluid">
-        <div class="report-container">
-            <div class="report-header">
-                <h5 class="mb-0">TICKET SERVICE REPORT</h5>
-            </div>
+        <?php if (!empty($error)) : ?>
+            <div class="alert alert-danger"><?php echo $error; ?></div>
+        <?php endif; ?>
+        <?php if (!empty($success)) : ?>
+            <div class="alert alert-success"><?php echo $success; ?></div>
+        <?php endif; ?>
+        <form method="post" id="ticketForm" action="update-treport?id=<?php echo $ticket_num; ?>" enctype="multipart/form-data">
+            <div class="report-container">
+                <div class="report-header">
+                    <h5 class="mb-0">TICKET SERVICE REPORT</h5>
+                </div>
 
-            <div class="report-section">
-                <div class="report-section-header">SERVICE DETAILS</div>
-                <div class="report-section-body">
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Establishment:</label>
-                                <input type="text" class="form-control" value="<?php echo !empty($ticket_row['outlet_name']) ? $ticket_row['outlet_name'] : ''; ?>" readonly>
+                <div class="report-section">
+                    <div class="report-section-header">SERVICE DETAILS</div>
+                    <div class="report-section-body">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Establishment:</label>
+                                    <input type="text" class="form-control" value="<?php echo !empty($ticket_row['outlet_name']) ? $ticket_row['outlet_name'] : ''; ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Date:</label>
+                                    <input type="date" class="form-control" value="<?php echo !empty($ticket_row['ticket_date']) ? $ticket_date->format('Y-m-d') : ''; ?>" readonly>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Date:</label>
-                                <input type="date" class="form-control" value="<?php echo !empty($ticket_row['ticket_date']) ? $ticket_date->format('Y-m-d') : ''; ?>" readonly>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Serviced By:</label>
-                                <input type="text" class="form-control" value="<?php echo !empty($ticket_row['emp_name']) ? $ticket_row['emp_name'] : ''; ?>" readonly>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Serviced By:</label>
+                                    <input type="text" class="form-control" value="<?php echo !empty($ticket_row['emp_name']) ? $ticket_row['emp_name'] : ''; ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Ticket No.:</label>
+                                    <input type="text" class="form-control" value="<?php echo !empty($ticket_row['ticket_num']) ? $ticket_row['ticket_num'] : ''; ?>" readonly>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Ticket No.:</label>
-                                <input type="text" class="form-control" value="<?php echo !empty($ticket_row['ticket_num']) ? $ticket_row['ticket_num'] : ''; ?>" readonly>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="form-row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Time In:</label>
-                                <input type="time" class="form-control" name="time_in" value="<?php echo !empty($ticket_row['time_in']) ? $ticket_row['time_in'] : ''; ?>">
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Time In:</label>
+                                    <input type="time" class="form-control" name="time_in" value="<?php echo !empty($ticket_row['time_in']) ? date('H:i', strtotime($ticket_row['time_in'])) : ''; ?>">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Time Out:</label>
-                                <input type="time" class="form-control" name="time_out" value="<?php echo !empty($ticket_row['time_out']) ? $ticket_row['time_out'] : ''; ?>">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Time Out:</label>
+                                    <input type="time" class="form-control" name="time_out" value="<?php echo !empty($ticket_row['time_out']) ? date('H:i', strtotime($ticket_row['time_out'])) : ''; ?>">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="report-section">
-                <div class="report-section-header">DIAGNOSTICS AND RECOMMENDATION</div>
-                <div class="report-section-body">
-                    <div class="form-group">
-                        <label>Subject:</label>
-                        <input type="text" class="form-control" value="<?php echo !empty($ticket_row['subj']) ? $ticket_row['subj'] : ''; ?>" name="subject" readonly>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Findings:</label>
-                                <textarea class="form-control" rows="6" name="findings"><?php echo !empty($ticket_row['findings']) ? $ticket_row['findings'] : ''; ?></textarea>
-                            </div>
+                <div class="report-section">
+                    <div class="report-section-header">DIAGNOSTICS AND RECOMMENDATION</div>
+                    <div class="report-section-body">
+                        <div class="form-group">
+                            <label>Subject:</label>
+                            <input type="text" class="form-control" value="<?php echo !empty($ticket_row['subj']) ? $ticket_row['subj'] : ''; ?>" name="subject" readonly>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Recommendation/Action Taken:</label>
-                                <textarea class="form-control" rows="6" name="recom_at"><?php echo !empty($ticket_row['recom_at']) ? $ticket_row['recom_at'] : ''; ?></textarea>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Findings:</label>
+                                    <textarea class="form-control" rows="6" name="findings"><?php echo !empty($ticket_row['findings']) ? $ticket_row['findings'] : ''; ?></textarea>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="report-section">
-                <div class="report-section-header">CLIENT ACKNOWLEDGEMENT</div>
-                <div class="report-section-body">
-                    <p class="text-center">The Authorized Signature below indicates that the service requested (technical support, service, or replacement of parts) indicated above was completed and in good working.</p>
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Full Name:</label>
-                                <input type="text" class="form-control" name="fn_client" <?php echo !empty($ticket_row['fn_client']) ? $ticket_row['fn_client'] : ''; ?>>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Signature:</label>
-                                
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Recommendation/Action Taken:</label>
+                                    <textarea class="form-control" rows="6" name="recom_at"><?php echo !empty($ticket_row['recom_at']) ? $ticket_row['recom_at'] : ''; ?></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="report-section">
-                <div class="report-section-header">SERVICE PERSONNEL ACKNOWLEDGEMENT</div>
-                <div class="report-section-body">
-                    <p class="text-center">I confirm that all reported issues were addressed, and the system is in working condition as of service completion. Recommendations are noted above.</p>
-                    <div class="form-row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Full Name:</label>
-                                <input type="text" class="form-control" name="fn_personnel" value="<?php echo !empty($ticket_row['emp_name']) ? $ticket_row['emp_name'] : ''; ?>" readonly>
+                <div class="report-section">
+                    <div class="report-section-header">CLIENT ACKNOWLEDGEMENT</div>
+                    <div class="report-section-body">
+                        <p class="text-center">The Authorized Signature below indicates that the service requested (technical support, service, or replacement of parts) indicated above was completed and in good working.</p>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Full Name:</label>
+                                    <input type="text" class="form-control" name="fn_client" <?php echo !empty($ticket_row['fn_client']) ? $ticket_row['fn_client'] : ''; ?>>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Signature:</label>
-                                
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Signature:</label>
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="report-footer">
-                <button class="btn btn-secondary" onclick="window.history.back();">Cancel</button>
-                <button class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;Save Report</button>
-                <button class="btn btn-success"><i class="fas fa-check"></i>&nbsp;Finish Report</button>
+                <div class="report-section">
+                    <div class="report-section-header">SERVICE PERSONNEL ACKNOWLEDGEMENT</div>
+                    <div class="report-section-body">
+                        <p class="text-center">I confirm that all reported issues were addressed, and the system is in working condition as of service completion. Recommendations are noted above.</p>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Full Name:</label>
+                                    <input type="text" class="form-control" name="fn_personnel" value="<?php echo !empty($ticket_row['emp_name']) ? $ticket_row['emp_name'] : ''; ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Signature:</label>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-footer">
+                    <input type="hidden" name="action_type" id="actionType" value="">
+                    <button class="btn btn-secondary" onclick="window.history.back();">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveReportBtn">
+                        <i class="fas fa-save"></i>&nbsp;Save Report
+                    </button>
+                    <button type="button" class="btn btn-success" id="finishReportBtn">
+                        <i class="fas fa-check"></i>&nbsp;Finish Report
+                    </button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
-<?php include('admin.footer.php'); ?>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("ticketForm");
+            const loader = document.getElementById("loader");
+
+            // Save Report Button
+            document.getElementById("saveReportBtn").addEventListener("click", () => {
+                document.getElementById("actionType").value = "save";
+                showLoaderThenSubmit();
+            });
+
+            // Finish Report Button
+            document.getElementById("finishReportBtn").addEventListener("click", () => {
+                $("#confirmFinishModal").modal("show");
+            });
+
+            // Confirm Finish Button in Modal
+            document.getElementById("confirmFinishBtn").addEventListener("click", () => {
+                $("#confirmFinishModal").modal("hide");
+                document.getElementById("actionType").value = "finish";
+                showLoaderThenSubmit();
+            });
+
+            function showLoaderThenSubmit() {
+                if (loader) loader.style.display = "block"; // Show the loader
+                setTimeout(() => {
+                    form.submit();
+                }, 1800);
+            }
+        });
+    </script>
+<?php 
+    $filesToInclude = [
+        'admin.finish-modal.php',
+        'admin.footer.php'
+    ];
+    
+    foreach ($filesToInclude as $file) {
+        include($file);
+    }
+?>
