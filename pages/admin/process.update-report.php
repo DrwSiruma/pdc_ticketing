@@ -24,7 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $time_out = trim($_POST['time_out']);
     $findings = trim($_POST['findings']);
     $recom_at = trim($_POST['recom_at']);
-    $client_name = trim($_POST['client_name']);
+    $client_name = trim($_POST['fn_client']);
+    $signature_client = mysqli_real_escape_string($conn, $_POST['signature_client']);
+    $signature_personnel = mysqli_real_escape_string($conn, $_POST['signature_personnel']);
 
     if ($action_type === 'save') {
         // Logic for saving the report
@@ -33,7 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             time_out = '$time_out',
             findings = '$findings',
             recom_at = '$recom_at',
-            fn_client = '$client_name'
+            fn_client = '$client_name',
+            signature_client = '$signature_client',
+            signature_personnel = '$signature_personnel'
             WHERE ticket_num = '$ticket_num'";
         mysqli_query($conn, $query);
         log_activity($conn, $admin_id, "Updated ticket report of: #$ticket_num", "Report");
@@ -42,19 +46,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     } elseif ($action_type === 'finish') {
         // Logic for finishing the report (set status to 1)
-        $query = "UPDATE tbl_ticketreport SET 
-            status = 1, 
-            time_in = '$time_in',
-            time_out = '$time_out',
-            findings = '$findings',
-            recom_at = '$recom_at',
-            fn_client = '$client_name'
-            WHERE ticket_num = '$ticket_num'";
-        mysqli_query($conn, $query);
-        log_activity($conn, $admin_id, "Finished ticket report of: #$ticket_num", "Report");
-        $_SESSION['success'] = "Report updated successfully.";
-        header("Location: ticket"); // Redirect after success
-        exit();
+        if (empty($findings) || empty($recom_at) || empty($client_name)) {
+            $_SESSION['error'] = "All fields are required.";
+            header("Location: edit-report?id=$ticket_num");
+            exit();
+        } else {
+            $query = "UPDATE tbl_ticketreport SET 
+                status = 1, 
+                time_in = '$time_in',
+                time_out = '$time_out',
+                findings = '$findings',
+                recom_at = '$recom_at',
+                fn_client = '$client_name',
+                signature_client = '$signature_client',
+                signature_personnel = '$signature_personnel'
+                WHERE ticket_num = '$ticket_num'";
+            mysqli_query($conn, $query);
+            log_activity($conn, $admin_id, "Finished ticket report of: #$ticket_num", "Report");
+            $_SESSION['success'] = "Report updated successfully.";
+            header("Location: ticket"); // Redirect after success
+            exit();
+        }
     } else {
         $_SESSION['error'] = "failed to update report.";
         header("Location: edit-report?id=$ticket_num");

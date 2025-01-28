@@ -100,14 +100,30 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Full Name:</label>
-                                    <input type="text" class="form-control" name="fn_client" <?php echo !empty($ticket_row['fn_client']) ? $ticket_row['fn_client'] : ''; ?>>
+                                    <input type="text" class="form-control" name="fn_client" value="<?php echo !empty($ticket_row['fn_client']) ? $ticket_row['fn_client'] : ''; ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Signature:</label>
-                                    
+                                    <canvas id="clientSignature" width="400" height="150" style="border: 1px solid #ccc;"></canvas>
+                                    <br>
+                                    <button type="button" class="btn btn-secondary" id="clearSignature">Clear</button>
+                                    <input type="hidden" id="signatureInput" name="signature_client" value="<?php echo !empty($ticket_row['signature_client']) ? $ticket_row['signature_client'] : ''; ?>">
                                 </div>
+                                <script>
+                                    // If signature exists, render it on the canvas
+                                    const clientSignatureData = '<?php echo !empty($ticket_row['signature_client']) ? $ticket_row['signature_client'] : ''; ?>';
+                                    if (clientSignatureData) {
+                                        const clientCanvas = document.getElementById('clientSignature');
+                                        const clientCtx = clientCanvas.getContext('2d');
+                                        const clientImg = new Image();
+                                        clientImg.onload = () => {
+                                            clientCtx.drawImage(clientImg, 0, 0);
+                                        };
+                                        clientImg.src = clientSignatureData;
+                                    }
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -127,8 +143,24 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Signature:</label>
-                                    
+                                    <canvas id="personnelSignature" width="400" height="150" style="border: 1px solid #ccc;"></canvas>
+                                    <br>
+                                    <button type="button" class="btn btn-secondary" id="clearPersonnelSignature">Clear</button>
+                                    <input type="hidden" id="signaturePersonnelInput" name="signature_personnel" value="<?php echo !empty($ticket_row['signature_personnel']) ? $ticket_row['signature_personnel'] : ''; ?>">
                                 </div>
+                                <script>
+                                    // If signature exists, render it on the canvas
+                                    const personnelSignatureData = '<?php echo !empty($ticket_row['signature_personnel']) ? $ticket_row['signature_personnel'] : ''; ?>';
+                                    if (personnelSignatureData) {
+                                        const personnelCanvas = document.getElementById('personnelSignature');
+                                        const personnelCtx = personnelCanvas.getContext('2d');
+                                        const personnelImg = new Image();
+                                        personnelImg.onload = () => {
+                                            personnelCtx.drawImage(personnelImg, 0, 0);
+                                        };
+                                        personnelImg.src = personnelSignatureData;
+                                    }
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -147,37 +179,8 @@
             </div>
         </form>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const form = document.getElementById("ticketForm");
-            const loader = document.getElementById("loader");
-
-            // Save Report Button
-            document.getElementById("saveReportBtn").addEventListener("click", () => {
-                document.getElementById("actionType").value = "save";
-                showLoaderThenSubmit();
-            });
-
-            // Finish Report Button
-            document.getElementById("finishReportBtn").addEventListener("click", () => {
-                $("#confirmFinishModal").modal("show");
-            });
-
-            // Confirm Finish Button in Modal
-            document.getElementById("confirmFinishBtn").addEventListener("click", () => {
-                $("#confirmFinishModal").modal("hide");
-                document.getElementById("actionType").value = "finish";
-                showLoaderThenSubmit();
-            });
-
-            function showLoaderThenSubmit() {
-                if (loader) loader.style.display = "block"; // Show the loader
-                setTimeout(() => {
-                    form.submit();
-                }, 1800);
-            }
-        });
-    </script>
+<script src="../../assets/js/loader.js"></script>
+<script src="../../assets/js/sign-pad.js"></script>
 <?php 
     $filesToInclude = [
         'admin.finish-modal.php',
