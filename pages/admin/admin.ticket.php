@@ -129,7 +129,11 @@
                                 <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
                                 <td>
                                     <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View Report"><i class="fas fa-eye"></i></a>
-                                    <a href="edit-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
+                                    <?php if ($rows['rprt'] == 1) { ?>
+                                        <a href="edit-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="View Report"><i class="fas fa-file"></i></a>
+                                    <?php } elseif($rows['rprt'] == 0) { ?>
+                                        <a href="edit-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
+                                    <?php } ?>
                                 </td>
                             </tr>
                             <?php } ?>

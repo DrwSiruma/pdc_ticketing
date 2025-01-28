@@ -51,6 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: edit-report?id=$ticket_num");
             exit();
         } else {
+            $tckt_qry = "UPDATE tbl_tickets SET rprt = '1' WHERE ticket_num = '$ticket_num'";
+            mysqli_query($conn, $tckt_qry);
+            
             $query = "UPDATE tbl_ticketreport SET 
                 status = 1, 
                 time_in = '$time_in',
