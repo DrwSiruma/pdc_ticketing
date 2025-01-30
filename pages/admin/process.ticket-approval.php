@@ -50,11 +50,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $startdate = trim($_POST['startdate']);
     $enddate = trim($_POST['enddate']);
     $outlet_name = trim($_POST['outlet_name']);
-    $staff_name = trim($_POST['staff_name']);
     $designation = trim($_POST['designation']);
     $ticket_date = trim($_POST['date_posted']);
     $subject = trim($_POST['subject']);
     $status = "1";
+
+    // query to get staff name
+    $staff_qry = "SELECT name FROM tbl_useraccounts WHERE id = ?";
+    $stmt = $conn->prepare($staff_qry);
+    if ($stmt) {
+        $stmt->bind_param("i", $assigned);
+        $stmt->execute();
+        $stmt->bind_result($staff_name);
+        $stmt->fetch();
+        $stmt->close();
+    } else {
+        error_log("Failed to prepare statement for fetching staff name: " . $conn->error);
+    }
 
     if (empty($concern_type) || empty($priority_type) || empty($assigned) || empty($startdate) || empty($enddate)) {
         $_SESSION['error'] = "All fields are required.";

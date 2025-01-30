@@ -23,7 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $time_in = trim($_POST['time_in']);
     $time_out = trim($_POST['time_out']);
     $findings = trim($_POST['findings']);
-    $recom_at = trim($_POST['recom_at']);
+    $action = trim($_POST['action']);
+    $diagnosis = trim($_POST['diagnosis']);
+    $recom = trim($_POST['recom']);
     $client_name = trim($_POST['fn_client']);
     $signature_client = mysqli_real_escape_string($conn, $_POST['signature_client']);
     $signature_personnel = mysqli_real_escape_string($conn, $_POST['signature_personnel']);
@@ -34,7 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             time_in = '$time_in',
             time_out = '$time_out',
             findings = '$findings',
-            recom_at = '$recom_at',
+            action = '$action',
+            diagnosis = '$diagnosis',
+            recom = '$recom',
             fn_client = '$client_name',
             signature_client = '$signature_client',
             signature_personnel = '$signature_personnel'
@@ -59,7 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 time_in = '$time_in',
                 time_out = '$time_out',
                 findings = '$findings',
-                recom_at = '$recom_at',
+                action = '$action',
+                diagnosis = '$diagnosis',
+                recom = '$recom',
                 fn_client = '$client_name',
                 signature_client = '$signature_client',
                 signature_personnel = '$signature_personnel'

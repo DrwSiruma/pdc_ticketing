@@ -84,8 +84,20 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Recommendation/Action Taken:</label>
-                                    <textarea class="form-control" rows="6" name="recom_at"><?php echo !empty($ticket_row['recom_at']) ? $ticket_row['recom_at'] : ''; ?></textarea>
+                                    <label>Action Taken:</label>
+                                    <textarea class="form-control" rows="6" name="action"><?php echo !empty($ticket_row['action']) ? $ticket_row['action'] : ''; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Diagnosis:</label>
+                                    <textarea class="form-control" rows="6" name="diagnosis"><?php echo !empty($ticket_row['diagnosis']) ? $ticket_row['diagnosis'] : ''; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Recommendation(s):</label>
+                                    <textarea class="form-control" rows="6" name="recom"><?php echo !empty($ticket_row['recom']) ? $ticket_row['recom'] : ''; ?></textarea> 
                                 </div>
                             </div>
                         </div>

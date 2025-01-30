@@ -76,9 +76,9 @@
                                             <option value="" hidden>Select Type</option>
                                             <option value="P1">P1</option>
                                             <option value="P2">P2</option>
-                                            <option value="P2">P3</option>
-                                            <option value="P2">P4</option>
-                                            <option value="P2">P5</option>
+                                            <option value="P3">P3</option>
+                                            <option value="P4">P4</option>
+                                            <option value="P5">P5</option>
                                         </select>
                                     </div>
                                 </div>
@@ -140,7 +140,6 @@
                     </div>
                 </div>
                 <input type="hidden" name="outlet_name" value="<?php echo $ticket_row['outlet_name']; ?>" require>
-                <input type="hidden" name="staff_name" value="<?php echo $ticket_row['staff_name']; ?>" require>
                 <input type="hidden" name="designation" value="<?php echo $ticket_row['designation']; ?>" require>
                 <input type="hidden" name="date_posted" value="<?php echo $ticket_row['date_posted']; ?>" require>
                 <input type="hidden" name="subject" value="<?php echo $ticket_row['categ_name'].' - '.$ticket_row['item_name']; ?>" require>
