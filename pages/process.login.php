@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         header("Location: user/dashboard");
                     } elseif ($user['role'] === 'dev') {
                         header("Location: ../dev/dashboard");
-                    } elseif ($user['role'] === 'hr') {
-                        header("Location: ../hr/dashboard");
+                    } elseif ($user['role'] === 'it' || $user['role'] === 'maintenance') {
+                        header("Location: staff/dashboard");
                     }
                     exit();
                 } else {

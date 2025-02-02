@@ -185,7 +185,29 @@ if (strpos($page, 'admin/') === 0) {
                 break;
         }
     }
-}else {
+} elseif (strpos($page, 'staff/') === 0) {
+    $staff_page = str_replace('staff/', '', $page);
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        switch ($staff_page) {
+        }
+    } else {
+        switch ($staff_page) {
+            case 'dashboard':
+                include 'staff/staff.dashboard.php';
+                break;
+            case 'notifications':
+                include 'staff/staff.notifications.php';
+                break;
+            case 'logout':
+                include '../includes/logout.php';
+                break;
+            default:
+                include 'staff/staff.dashboard.php';
+                break;
+        }
+    }
+} else {
     switch ($page) {
         case 'login':
             include 'login.php';
