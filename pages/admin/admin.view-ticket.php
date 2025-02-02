@@ -64,8 +64,11 @@
                     <?php if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4') { ?>
                         <button data-toggle="modal" data-target="#rschdModal" class="btn btn-primary btn-sm"><i class="fas fa-calendar"></i>&nbsp;Re-Schedule</button>
                         <button data-toggle="modal" data-target="#rasgnModal" class="btn btn-warning btn-sm"><i class="fas fa-user-edit"></i>&nbsp;Re-Assign</button>
-                        <button type="button" class="btn btn-success btn-sm" disabled><i class="fas fa-check"></i>&nbsp;Resolve</button>
-                        <!-- <a href="#?id=<?php //echo $ticket_num; ?>" class="btn btn-success btn-sm"><i class="fas fa-check"></i>&nbsp;Resolve</a> -->
+                        <?php if ($ticket_row['rprt'] == '1') { ?>
+                            <button data-toggle="modal" data-target="#closeModal" class="btn btn-info btn-sm"><i class="fas fa-check"></i>&nbsp;Resolve</button>
+                        <?php }else { ?>
+                            <button type="button" class="btn btn-success btn-sm" disabled><i class="fas fa-check"></i>&nbsp;Resolve</button>
+                        <?php } ?>
                     <?php } elseif ($ticket_row["ticket_status"] == '2') { ?>
                         <a href="ticket-approval?id=<?php echo $ticket_num; ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;Approve</a>
                         <a href="#" data-toggle="modal" data-target="#DeclineModal" class="btn btn-danger btn-sm"><i class="fas fa-times"></i>&nbsp;Decline</a>
@@ -146,7 +149,7 @@
         </div>
 
         <?php
-                if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4') {
+                if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4' || $ticket_row["ticket_status"] == '5') {
         ?>
         <div class="card mt-4">
             <div class="card-body">
@@ -157,7 +160,11 @@
                                 <div class="form-group">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <label for="concern_type">Type of Concern:</label>
-                                        <a href="#" data-toggle="modal" data-target="#TCModal"><i class="fas fa-edit"></i></a>
+                                        <?php
+                                            if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4') {
+                                        ?>
+                                            <a href="#" data-toggle="modal" data-target="#TCModal"><i class="fas fa-edit"></i></a>
+                                        <?php } ?>
                                     </div>
                                     <input type="text" name="concern_type" id="concern_type" class="form-control" value="<?php echo $ticket_row['concern_type']; ?>" disabled>
                                 </div>
@@ -166,7 +173,11 @@
                                 <div class="form-group">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <label for="priority_type">Priority Level:</label>
-                                        <a href="#" data-toggle="modal" data-target="#PLModal"><i class="fas fa-edit"></i></a>
+                                        <?php
+                                            if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4') {
+                                        ?>
+                                            <a href="#" data-toggle="modal" data-target="#PLModal"><i class="fas fa-edit"></i></a>
+                                        <?php } ?>
                                     </div>
                                     <input type="text" name="priority_type" id="priority_type" class="form-control" value="<?php echo $ticket_row['priority_type']; ?>" disabled>
                                 </div>
@@ -219,6 +230,7 @@
     include('admin.pl-modal.php');
     include('admin.rschd-modal.php');
     include('admin.rasgn-modal.php');
+    include('admin.closeticket-modal.php');
     include('admin.decline-modal.php');
     include('admin.footer.php'); 
 ?>

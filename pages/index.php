@@ -119,6 +119,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'generate-pdf':
                 include 'admin/admin.generate-report.php';
                 break;
+            case 'close-ticket':
+                include 'admin/process.close-ticket.php';
+                break;
             case 'logout':
                 include '../includes/logout.php';
                 break;

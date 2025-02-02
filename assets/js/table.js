@@ -94,6 +94,16 @@ $(document).ready(function () {
     });
 });
 $(document).ready(function () {
+    var table = $('#closetck_tbl').DataTable({
+    searching: true,
+    paging: true,
+    info: true,
+    ordering: true,
+    lengthChange: true,
+    order: [[0, 'desc']],
+    });
+});
+$(document).ready(function () {
     var table = $('#rejtck_tbl').DataTable({
     searching: true,
     paging: true,
