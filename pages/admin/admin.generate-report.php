@@ -117,7 +117,7 @@ $pdf->Ln(0);
 
 // Client Acknowledgment
 sectionHeader($pdf, 'CLIENT ACKNOWLEDGEMENT');
-$pdf->ln(1);
+$pdf->ln(2);
 $pdf->SetFont('helvetica', '', 10);
 $pdf->MultiCell(190, 7, 'The Authorized Signature below indicates that the service requested (technical support, service, or replacement of parts) indicated above was completed and in good working condition.', 0, 'C');
 $pdf->Ln(8);
@@ -129,27 +129,26 @@ if (!empty($ticket['signature_client'])) {
         $signature = base64_decode($signature_data[1]);
         $file_path = tempnam(sys_get_temp_dir(), 'sig') . '.png';
         file_put_contents($file_path, $signature);
-        $pdf->Image($file_path, 60, $pdf->GetY() - 7, 60); // Adjusted Y position to move the signature up
+        $x = ($pdf->GetPageWidth() - 60) / 2; // Center the signature
+        $pdf->Image($file_path, $x, $pdf->GetY() - 7, 60); // Adjusted Y position to move the signature up
         unlink($file_path);
         $pdf->Ln(2);
     }
 }
-$pdf->SetFont('helvetica', '', 10);
-$pdf->Cell(47.5, 7, "Print Name and Signature:", 0, 0);
 $pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(47.5, 7, strtoupper($ticket['fn_client']), 'B', 0, 'C');
-$pdf->Cell(95, 7, '', 0, 1);
-
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(47.5, 7, "", 0, 0);
-$pdf->Cell(47.5, 7, "REPRESENTATIVE", 0, 1, 'C');
+$pdf->Cell(63.33333333333333, 7, '', 0, 0);
+$pdf->Cell(63.33333333333333, 7, strtoupper($ticket['fn_client']), 'B', 0, 'C');
+$pdf->Cell(63.33333333333333, 7, '', 0, 1);
+$pdf->Cell(190, 7, "REPRESENTATIVE", 0, 1, 'C');
+$pdf->SetFont('helvetica', 'I', 8);
+$pdf->Cell(190, 7, "(Printed Name and Signature)", 0, 1, 'C', 0, '', 0, false, 'T');
 $pdf->Ln(3);
 
 // Personnel Acknowledgment
 // sectionHeader($pdf, 'IT TECHNICIAN ACKNOWLEDGEMENT');
 $acknowledgment_title = ($ticket['designation'] == 1) ? 'IT TECHNICIAN ACKNOWLEDGEMENT' : 'PERSONNEL ACKNOWLEDGEMENT';
 sectionHeader($pdf, $acknowledgment_title);
-$pdf->ln(1);
+$pdf->ln(2);
 $pdf->SetFont('helvetica', '', 10);
 $pdf->MultiCell(190, 7, 'I confirm that all reported issues were addressed, and the system is in working condition as of service completion. Recommendations are noted above.', 0, 'C');
 $pdf->Ln(8);
@@ -161,24 +160,23 @@ if (!empty($ticket['signature_personnel'])) {
         $signature = base64_decode($signature_data[1]);
         $file_path = tempnam(sys_get_temp_dir(), 'sig') . '.png';
         file_put_contents($file_path, $signature);
-        $pdf->Image($file_path, 60, $pdf->GetY() - 11, 47); // Adjusted Y position to move the signature up
+        $x = ($pdf->GetPageWidth() - 47) / 2; // Center the signature
+        $pdf->Image($file_path, $x, $pdf->GetY() - 11, 47); // Adjusted Y position to move the signature up
         unlink($file_path);
         $pdf->Ln(2);
     }
 }
-$pdf->SetFont('helvetica', '', 10);
-$pdf->Cell(47.5, 7, "Printed Name and Signature:", 0, 0);
 $pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(47.5, 7, strtoupper($ticket['emp_name']), 'B', 0, 'C');
-$pdf->Cell(95, 7, '', 0, 1);
-
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(47.5, 7, "", 0, 0);
+$pdf->Cell(63.33333333333333, 7, '', 0, 0);
+$pdf->Cell(63.33333333333333, 7, strtoupper($ticket['emp_name']), 'B', 0, 'C');
+$pdf->Cell(63.33333333333333, 7, '', 0, 1);
 if ($ticket['designation'] == 1) {
-    $pdf->Cell(47.5, 7, "SYSTEM ENGINEER", 0, 1, 'C');
+    $pdf->Cell(190, 7, "SYSTEM ENGINEER", 0, 1, 'C');
 } else {
-    $pdf->Cell(47.5, 7, "SUPPORT PERSONNEL", 0, 1, 'C');
+    $pdf->Cell(190, 7, "SUPPORT PERSONNEL", 0, 1, 'C');
 }
+$pdf->SetFont('helvetica', 'I', 8);
+$pdf->Cell(190, 7, "(Printed Name and Signature)", 0, 1, 'C', 0, '', 0, false, 'T');
 $pdf->Ln(3);
 
 // Save the PDF
@@ -189,6 +187,8 @@ if (!file_exists($export_folder)) {
 $file_path = $export_folder . "Service_Report_$ticket_num.pdf";
 $pdf->Output($file_path, 'F');
 
+// header("Location: view-report?id={$ticket_num}");
+// exit();
 // Force download the PDF file
 header('Content-Type: application/pdf');
 header('Content-Disposition: attachment; filename="Service_Report_' . $ticket_num . '.pdf"');
