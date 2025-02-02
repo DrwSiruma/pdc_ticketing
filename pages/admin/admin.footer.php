@@ -33,7 +33,6 @@
     <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
     <!-- FullCalendar JS -->
-    <script src="../../assets/vendor/fullcalendar/index.global.min.js"></script>
     <!-- <script src="../../assets/vendor/datatables/jquery-3.5.1.js" ></script> -->
     <script src="../../assets/vendor/datatables/jquery.dataTables.min.js" ></script>
     <script src="../../assets/js/popper.min.js"></script>

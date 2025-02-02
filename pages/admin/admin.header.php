@@ -75,7 +75,7 @@ if ($ticketcnt_qry) {
                     Interface
                 </div>
 
-                <li class="nav-item <?php echo in_array($page, ['admin/ticket', 'admin/view-ticket', 'admin/ticket-approval']) ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo in_array($page, ['admin/ticket', 'admin/view-ticket', 'admin/ticket-approval', 'admin/edit-report', 'admin/view-report']) ? 'active' : ''; ?>">
                     <a class="nav-link" href="ticket">
                         <i class="fas fa-fw fa-ticket-alt fa-sm"></i>
                         <span>Tickets&nbsp;

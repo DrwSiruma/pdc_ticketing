@@ -113,6 +113,12 @@ if (strpos($page, 'admin/') === 0) {
             case 'edit-report':
                 include 'admin/admin.edit-report.php';
                 break;
+            case 'view-report':
+                include 'admin/admin.view-report.php';
+                break;
+            case 'generate-pdf':
+                include 'admin/admin.generate-report.php';
+                break;
             case 'logout':
                 include '../includes/logout.php';
                 break;
