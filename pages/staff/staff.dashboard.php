@@ -65,7 +65,7 @@ $overdueTicketsCount = count($overdueTickets);
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h5 class="card-title">Total Resolved Tickets (This Month)</h5>
+                            <h5 class="card-title">Resolved Tickets (This Month)</h5>
                             <p class="card-text"><?php echo $resolvedTickets; ?></p>
                         </div>
                     </div>

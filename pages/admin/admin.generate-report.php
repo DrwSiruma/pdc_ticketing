@@ -98,51 +98,30 @@ $pdf->Cell(95, 7, "Findings:", 1, 0);
 $pdf->Cell(95, 7, "Action Taken:", 1, 1);
 
 $pdf->SetFont('helvetica', '', 10);
-$y = $pdf->GetY();
-$pdf->MultiCell(95, 7, $ticket['findings'], 1, 'L', 0, 0);
-$pdf->SetXY(105, $y);
-$pdf->MultiCell(95, 7, $ticket['action'], 1, 'L', 0, 1);
-$pdf->Ln(0);
+$findings = $ticket['findings'];
+$action = $ticket['action'];
+
+// Get the maximum height needed
+$maxHeight = max($pdf->GetStringHeight(95, $findings), $pdf->GetStringHeight(95, $action));
+
+// Print columns with dynamic height
+$pdf->MultiCell(95, $maxHeight, $findings, 1, 'L', 0, 0);
+$pdf->SetXY(105, $pdf->GetY());
+$pdf->MultiCell(95, $maxHeight, $action, 1, 'L', 0, 1);
 
 $pdf->SetFont('helvetica', 'B', 10);
 $pdf->Cell(95, 7, "Diagnosis:", 1, 0);
 $pdf->Cell(95, 7, "Recommendation(s):", 1, 1);
 
 $pdf->SetFont('helvetica', '', 10);
-$y = $pdf->GetY();
-$pdf->MultiCell(95, 7, $ticket['diagnosis'], 1, 'L', 0, 0);
-$pdf->SetXY(105, $y);
-$pdf->MultiCell(95, 7, $ticket['recom'], 1, 'L', 0, 1);
-$pdf->Ln(0);
+$diagnosis = $ticket['diagnosis'];
+$recommendations = $ticket['recom'];
 
-// Client Acknowledgment
-sectionHeader($pdf, 'CLIENT ACKNOWLEDGEMENT');
-$pdf->ln(2);
-$pdf->SetFont('helvetica', '', 10);
-$pdf->MultiCell(190, 7, 'The Authorized Signature below indicates that the service requested (technical support, service, or replacement of parts) indicated above was completed and in good working condition.', 0, 'C');
-$pdf->Ln(8);
+$maxHeight = max($pdf->GetStringHeight(95, $diagnosis), $pdf->GetStringHeight(95, $recommendations));
 
-// Client Signature
-if (!empty($ticket['signature_client'])) {
-    $signature_data = explode(',', $ticket['signature_client']);
-    if (count($signature_data) == 2 && strpos($signature_data[0], 'base64') !== false) {
-        $signature = base64_decode($signature_data[1]);
-        $file_path = tempnam(sys_get_temp_dir(), 'sig') . '.png';
-        file_put_contents($file_path, $signature);
-        $x = ($pdf->GetPageWidth() - 60) / 2; // Center the signature
-        $pdf->Image($file_path, $x, $pdf->GetY() - 7, 60); // Adjusted Y position to move the signature up
-        unlink($file_path);
-        $pdf->Ln(2);
-    }
-}
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(63.33333333333333, 7, '', 0, 0);
-$pdf->Cell(63.33333333333333, 7, strtoupper($ticket['fn_client']), 'B', 0, 'C');
-$pdf->Cell(63.33333333333333, 7, '', 0, 1);
-$pdf->Cell(190, 7, "REPRESENTATIVE", 0, 1, 'C');
-$pdf->SetFont('helvetica', 'I', 8);
-$pdf->Cell(190, 7, "(Printed Name and Signature)", 0, 1, 'C', 0, '', 0, false, 'T');
-$pdf->Ln(3);
+$pdf->MultiCell(95, $maxHeight, $diagnosis, 1, 'L', 0, 0);
+$pdf->SetXY(105, $pdf->GetY());
+$pdf->MultiCell(95, $maxHeight, $recommendations, 1, 'L', 0, 1);
 
 // Personnel Acknowledgment
 // sectionHeader($pdf, 'IT TECHNICIAN ACKNOWLEDGEMENT');
@@ -175,6 +154,35 @@ if ($ticket['designation'] == 1) {
 } else {
     $pdf->Cell(190, 7, "SUPPORT PERSONNEL", 0, 1, 'C');
 }
+$pdf->SetFont('helvetica', 'I', 8);
+$pdf->Cell(190, 7, "(Printed Name and Signature)", 0, 1, 'C', 0, '', 0, false, 'T');
+$pdf->Ln(3);
+
+// Client Acknowledgment
+sectionHeader($pdf, 'CLIENT ACKNOWLEDGEMENT');
+$pdf->ln(2);
+$pdf->SetFont('helvetica', '', 10);
+$pdf->MultiCell(190, 7, 'The Authorized Signature below indicates that the service requested (technical support, service, or replacement of parts) indicated above was completed and in good working condition.', 0, 'C');
+$pdf->Ln(8);
+
+// Client Signature
+if (!empty($ticket['signature_client'])) {
+    $signature_data = explode(',', $ticket['signature_client']);
+    if (count($signature_data) == 2 && strpos($signature_data[0], 'base64') !== false) {
+        $signature = base64_decode($signature_data[1]);
+        $file_path = tempnam(sys_get_temp_dir(), 'sig') . '.png';
+        file_put_contents($file_path, $signature);
+        $x = ($pdf->GetPageWidth() - 60) / 2; // Center the signature
+        $pdf->Image($file_path, $x, $pdf->GetY() - 7, 60); // Adjusted Y position to move the signature up
+        unlink($file_path);
+        $pdf->Ln(2);
+    }
+}
+$pdf->SetFont('helvetica', 'B', 10);
+$pdf->Cell(63.33333333333333, 7, '', 0, 0);
+$pdf->Cell(63.33333333333333, 7, strtoupper($ticket['fn_client']), 'B', 0, 'C');
+$pdf->Cell(63.33333333333333, 7, '', 0, 1);
+$pdf->Cell(190, 7, "REPRESENTATIVE", 0, 1, 'C');
 $pdf->SetFont('helvetica', 'I', 8);
 $pdf->Cell(190, 7, "(Printed Name and Signature)", 0, 1, 'C', 0, '', 0, false, 'T');
 $pdf->Ln(3);

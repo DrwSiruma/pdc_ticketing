@@ -62,8 +62,8 @@
                 </h5>
                 <div>
                     <?php if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4') { ?>
-                        <button data-toggle="modal" data-target="#rschdModal" class="btn btn-primary btn-sm"><i class="fas fa-calendar"></i>&nbsp;Re-Schedule</button>
-                        <button data-toggle="modal" data-target="#rasgnModal" class="btn btn-warning btn-sm"><i class="fas fa-user-edit"></i>&nbsp;Re-Assign</button>
+                        <button data-toggle="modal" data-target="#rschdModal" class="btn btn-primary btn-sm" <?php echo ($ticket_row['rprt'] == '1') ? 'disabled' : ''; ?>><i class="fas fa-calendar"></i>&nbsp;Re-Schedule</button>
+                        <button data-toggle="modal" data-target="#rasgnModal" class="btn btn-warning btn-sm" <?php echo ($ticket_row['rprt'] == '1') ? 'disabled' : ''; ?>><i class="fas fa-user-edit"></i>&nbsp;Re-Assign</button>
                         <?php if ($ticket_row['rprt'] == '1') { ?>
                             <button data-toggle="modal" data-target="#closeModal" class="btn btn-info btn-sm"><i class="fas fa-check"></i>&nbsp;Resolve</button>
                         <?php }else { ?>
@@ -163,7 +163,7 @@
                                         <?php
                                             if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4') {
                                         ?>
-                                            <a href="#" data-toggle="modal" data-target="#TCModal"><i class="fas fa-edit"></i></a>
+                                            <a href="#" <?php echo ($ticket_row['rprt'] == '1') ? 'class="btn btn-link disabled p-0"' : ''; ?> data-toggle="modal" data-target="#TCModal"><i class="fas fa-edit"></i></a>
                                         <?php } ?>
                                     </div>
                                     <input type="text" name="concern_type" id="concern_type" class="form-control" value="<?php echo $ticket_row['concern_type']; ?>" disabled>
@@ -176,7 +176,7 @@
                                         <?php
                                             if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4') {
                                         ?>
-                                            <a href="#" data-toggle="modal" data-target="#PLModal"><i class="fas fa-edit"></i></a>
+                                            <a href="#" <?php echo ($ticket_row['rprt'] == '1') ? 'class="btn btn-link disabled p-0"' : ''; ?> data-toggle="modal" data-target="#PLModal"><i class="fas fa-edit"></i></a>
                                         <?php } ?>
                                     </div>
                                     <input type="text" name="priority_type" id="priority_type" class="form-control" value="<?php echo $ticket_row['priority_type']; ?>" disabled>

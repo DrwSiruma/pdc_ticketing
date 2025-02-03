@@ -199,6 +199,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'notifications':
                 include 'staff/staff.notifications.php';
                 break;
+            case 'tickets':
+                include 'staff/staff.tickets.php';
+                break;
             case 'logout':
                 include '../includes/logout.php';
                 break;

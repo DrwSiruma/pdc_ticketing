@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     } elseif ($action_type === 'finish') {
         // Logic for finishing the report (set status to 1)
-        if (empty($findings) || empty($recom_at) || empty($client_name)) {
+        if (empty($findings) || empty($recom) || empty($client_name)) {
             $_SESSION['error'] = "All fields are required.";
             header("Location: edit-report?id=$ticket_num");
             exit();
