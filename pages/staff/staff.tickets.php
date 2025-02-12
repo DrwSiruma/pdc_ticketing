@@ -189,5 +189,6 @@
             </div>
         </div>
     </div>
+    
     <script src="../../assets/js/tab.staff.js"></script>
 <?php include('staff.footer.php'); ?>
