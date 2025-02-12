@@ -42,13 +42,16 @@
                 <h1 class="h3 mb-0 text-gray-800"><a href="
                 <?php
                     if ($ticket_row["ticket_status"] == '1' || $ticket_row["ticket_status"] == '4') {
+                        if ($ticket_row['sched_end'] < date('Y-m-d H:i:s')) {
+                            echo "tickets?tab=overdue";
+                        } else {
+                            echo "tickets?tab=open";
+                        }
                         echo "tickets?tab=open";
                     } elseif ($ticket_row["status"]== '2') {
                         echo "tickets?tab=pending";
                     } elseif ($ticket_row["status"]== '3') {
                         echo "tickets?tab=rejected";
-                    } elseif ($ticket_row['sched_end'] < date('Y-m-d H:i:s') && $ticket_row['ticket_status'] != '5') {
-                        echo "tickets?tab=overdue";
                     } elseif ($ticket_row["status"]== '5') {
                         echo "tickets?tab=closed";
                     }
@@ -63,12 +66,11 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <?php if (!empty($error)) : ?>
-                        <div class="alert alert-danger"><?php echo $error; ?></div>
-                    <?php endif; ?>
-                    <?php if (!empty($success)) : ?>
-                        <div class="alert alert-success"><?php echo $success; ?></div>
-                    <?php endif; ?>
+                    <?php
+                    if ($ticket_row['sched_end'] < date('Y-m-d H:i:s')) {
+                            echo '<div class="alert" style="background: red;color: #fff;"><i class="fas fa-exclamation-triangle"></i>&nbsp;Ticket Schedule is Overdue!</div>';
+                    }
+                    ?>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row">
@@ -190,7 +192,15 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="enddate">End Date:</label>
-                                        <input type="date" name="enddate" id="enddate" class="form-control" value="<?php echo $ticket_row['sched_end']; ?>" disabled>
+                                        <input type="date" name="enddate" id="enddate" class="form-control 
+                                            <?php
+                                                if ($ticket_row['sched_end'] < date('Y-m-d H:i:s')) {
+                                                    echo 'bg-danger text-light';
+                                                } else {
+                                                    echo 'bg-success text-light';
+                                                }
+                                            ?>
+                                        " value="<?php echo $ticket_row['sched_end']; ?>" disabled>
                                     </div>
                                 </div>
                             </div>
