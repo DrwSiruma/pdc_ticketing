@@ -83,7 +83,6 @@
                                         <td>
                                             <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View Report"><i class="fas fa-eye"></i></a>
                                             <?php if ($rows['rprt'] == 1) { ?>
-                                                <!-- <a href="view-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="View Report"><i class="fas fa-file"></i></a> -->
                                                 <a href="generate-pdf?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="Download Report"><i class="fas fa-download"></i></a>
                                             <?php } elseif($rows['rprt'] == 0) { ?>
                                                 <a href="edit-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>

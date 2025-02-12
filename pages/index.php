@@ -202,6 +202,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'tickets':
                 include 'staff/staff.tickets.php';
                 break;
+            case 'view-ticket':
+                include 'staff/staff.view-ticket.php';
+                break;
             case 'logout':
                 include '../includes/logout.php';
                 break;
