@@ -46,57 +46,66 @@ $overdueTicketsCount = count($overdueTickets);
 ?>
 
 <div class="container my-5">
-    <div class="card shadow mb-4">
-        <div class="card-header d-flex justify-content-between align-items-center" style="background-color:#fff;">
-            <div>
-                <h4>Dashboard</h4>
+    <div class="row g-4">
+        <!-- Total Assigned Tickets -->
+        <div class="col-md-6">
+            <div class="card shadow-sm text-center p-4 border-0">
+                <div class="card-body">
+                    <h5 class="fw-bold">Total Assigned Tickets</h5>
+                    <h1 class="display-4 text-primary"><?php echo $assignedTickets; ?></h1>
+                </div>
             </div>
         </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Total Assigned Tickets</h5>
-                            <p class="card-text"><?php echo $assignedTickets; ?></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Resolved Tickets (This Month)</h5>
-                            <p class="card-text"><?php echo $resolvedTickets; ?></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Overdue Tickets</h5>
-                            <p class="card-text">
-                                <?php
-                                if ($overdueTicketsCount > 0) {
-                                    foreach ($overdueTickets as $ticket) {
-                                        echo "Ticket ID: " . $ticket['ticket_num'] . "<br>";
-                                    }
-                                } else {
-                                    echo "No overdue assigned tasks";
-                                }
-                                ?>
-                            </p>
-                        </div>
-                    </div>
+        <!-- Resolved Tickets -->
+        <div class="col-md-6">
+            <div class="card shadow-sm text-center p-4 border-0">
+                <div class="card-body">
+                    <h5 class="fw-bold">Resolved Tickets (This Month)</h5>
+                    <h1 class="display-4 text-success"><?php echo $resolvedTickets; ?></h1>
                 </div>
             </div>
-            <h5>Assigned Tickets (Ordered by Priority and Schedule)</h5>
-            <ul class="list-group">
-                <?php
-                foreach ($assignedTicketsList as $ticket) {
-                    echo "<li class='list-group-item'>Ticket Number: " . $ticket['ticket_num'] . " - Priority: " . $ticket['priority_type'] . ", Schedule: " . $ticket['sched_start'] . " to " . $ticket['sched_end'] . "</li>";
-                }
-                ?>
-            </ul>
+        </div>
+    </div>
+
+    <!-- Assigned Tickets & Overdue -->
+    <div class="row mt-4 g-4">
+        <!-- Assigned Tickets List -->
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white fw-bold">Assigned Tickets (Ordered by Priority & Schedule)</div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <?php
+                            foreach ($assignedTicketsList as $ticket) { ?>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span><?php echo $ticket['ticket_num']; ?> - Priority: <span class="badge bg-primary text-light"><?php echo $ticket['priority_type']; ?></span></span>
+                                    <span class="text-muted"><?php echo $ticket['sched_start']; ?> → <?php echo $ticket['sched_end']; ?></span>
+                                </li>
+                            <?php }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Overdue Tickets -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white fw-bold">Overdue Tickets</div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <?php
+                            if ($overdueTicketsCount > 0) {
+                                foreach ($overdueTickets as $ticket) {
+                                    echo "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" . $ticket['ticket_num'] . "&nbsp;<span class=\"badge bg-danger\">Overdue</span>";
+                                }
+                            } else {
+                                echo "<i>No overdue assigned tasks</i>";
+                            }
+                        ?>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
