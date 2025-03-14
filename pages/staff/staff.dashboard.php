@@ -2,7 +2,7 @@
 include('staff.header.php');
 
 // Fetch total assigned tickets
-$assignedTicketsQuery = "SELECT COUNT(*) as total_assigned FROM tbl_tickets WHERE assigned = '{$_SESSION['id']}'";
+$assignedTicketsQuery = "SELECT COUNT(*) as total_assigned FROM tbl_tickets WHERE assigned = '{$_SESSION['id']}' AND STATUS != '5'";
 $assignedTicketsResult = mysqli_query($conn, $assignedTicketsQuery);
 if ($assignedTicketsResult) {
     $assignedTickets = mysqli_fetch_assoc($assignedTicketsResult)['total_assigned'];
@@ -20,7 +20,7 @@ if ($resolvedTicketsResult) {
 }
 
 // Fetch assigned tickets ordered by priority and schedule
-$assignedTicketsListQuery = "SELECT * FROM tbl_tickets WHERE assigned = '{$_SESSION['id']}' ORDER BY FIELD(priority_type, 'P1', 'P2', 'P3', 'P4', 'P5'), sched_start ASC, sched_end ASC";
+$assignedTicketsListQuery = "SELECT * FROM tbl_tickets WHERE assigned = '{$_SESSION['id']}' AND status != '5' ORDER BY FIELD(priority_type, 'P1', 'P2', 'P3', 'P4', 'P5'), sched_start ASC, sched_end ASC";
 $assignedTicketsListResult = mysqli_query($conn, $assignedTicketsListQuery);
 $assignedTicketsList = [];
 if ($assignedTicketsListResult && mysqli_num_rows($assignedTicketsListResult) > 0) {
@@ -91,13 +91,13 @@ $overdueTicketsCount = count($overdueTickets);
         <!-- Overdue Tickets -->
         <div class="col-md-4">
             <div class="card shadow-sm border-0">
-                <div class="card-header bg-white fw-bold">Overdue Tickets</div>
+                <div class="card-header bg-white fw-bold"><i class="fas fa-exclamation-triangle text-danger"></i>&nbsp;Overdue Tickets</div>
                 <div class="card-body">
                     <ul class="list-group">
                         <?php
                             if ($overdueTicketsCount > 0) {
                                 foreach ($overdueTickets as $ticket) {
-                                    echo "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" . $ticket['ticket_num'] . "&nbsp;<span class=\"badge bg-danger\">Overdue</span>";
+                                    echo "<li class=\"list-group-item d-flex justify-content-between align-items-center\">" . $ticket['ticket_num'] . "&nbsp;<span class=\"badge bg-danger text-light\">Overdue</span>";
                                 }
                             } else {
                                 echo "<i>No overdue assigned tasks</i>";

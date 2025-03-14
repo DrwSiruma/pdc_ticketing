@@ -67,9 +67,11 @@
                 </div>
                 <div class="card-body">
                     <?php
-                    if ($ticket_row['sched_end'] < date('Y-m-d H:i:s')) {
-                            echo '<div class="alert" style="background: red;color: #fff;"><i class="fas fa-exclamation-triangle"></i>&nbsp;Ticket Schedule is Overdue!</div>';
-                    }
+                        if ($ticket_row['ticket_status'] != '5' || $ticket_row['rprt'] != '1') {
+                            if ($ticket_row['sched_end'] < date('Y-m-d H:i:s')) {
+                                echo '<div class="alert" style="background: red;color: #fff;"><i class="fas fa-exclamation-triangle"></i>&nbsp;Ticket Schedule is Overdue!</div>';
+                            }
+                        }
                     ?>
                     <div class="row">
                         <div class="col-md-6">
@@ -174,7 +176,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="assigned">Assign To:</label>
+                                        <label for="assigned">Assigned To:</label>
                                         <input type="text" name="assigned" id="assigned" class="form-control" value="<?php echo $ticket_row['staff_name']; ?>" disabled>
                                     </div>
                                 </div>
@@ -194,10 +196,14 @@
                                         <label for="enddate">End Date:</label>
                                         <input type="date" name="enddate" id="enddate" class="form-control 
                                             <?php
-                                                if ($ticket_row['sched_end'] < date('Y-m-d H:i:s')) {
-                                                    echo 'bg-danger text-light';
+                                                if ($ticket_row['ticket_status'] == '5' || $ticket_row['rprt'] == '1') {
+                                                    echo '';
                                                 } else {
-                                                    echo 'bg-success text-light';
+                                                    if ($ticket_row['sched_end'] < date('Y-m-d H:i:s')) {
+                                                        echo 'bg-danger text-light';
+                                                    } else {
+                                                        echo '';
+                                                    }
                                                 }
                                             ?>
                                         " value="<?php echo $ticket_row['sched_end']; ?>" disabled>
