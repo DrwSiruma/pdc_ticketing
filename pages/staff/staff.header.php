@@ -69,7 +69,7 @@ if ($ticketcnt_qry) {
                             <a class="nav-link <?php //echo ($page == 'user/dashboard') ? 'active' : ''; ?>" aria-current="page" href="dashboard">Support Center Home</a>
                         </li> -->
                         <li class="nav-item">
-                            <a class="nav-link <?php echo in_array($page, ['staff/tickets', 'staff/view-ticket']) ? 'active' : ''; ?>" href="tickets">Tickets&nbsp;
+                            <a class="nav-link <?php echo in_array($page, ['staff/tickets', 'staff/view-ticket', 'staff/edit-report']) ? 'active' : ''; ?>" href="tickets">Tickets&nbsp;
                                 <?php if ($ticket_cnt > 0) { ?>
                                     <span class="badge bg-danger text-light">
                                         <?php echo ($ticket_cnt > 99) ? '99+' : $ticket_cnt; ?>

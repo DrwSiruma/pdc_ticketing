@@ -190,6 +190,9 @@ if (strpos($page, 'admin/') === 0) {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         switch ($staff_page) {
+            case 'update-treport':
+            include 'staff/process.update-report.php';
+            break;
         }
     } else {
         switch ($staff_page) {
@@ -204,6 +207,9 @@ if (strpos($page, 'admin/') === 0) {
                 break;
             case 'view-ticket':
                 include 'staff/staff.view-ticket.php';
+                break;
+            case 'edit-report':
+                include 'staff/staff.edit-report.php';
                 break;
             case 'logout':
                 include '../includes/logout.php';
