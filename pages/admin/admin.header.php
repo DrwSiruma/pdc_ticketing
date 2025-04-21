@@ -22,7 +22,7 @@ if ($ticketcnt_qry) {
     $ticket_cnt = $ticketcnt_res['ticket_count'];
 }
 
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
