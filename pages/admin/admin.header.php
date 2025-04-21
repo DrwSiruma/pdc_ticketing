@@ -5,7 +5,7 @@ include('../includes/connection.php');
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: /pdc_ticketing/pages/login");
     exit();
-}
+} 
 
 // Retrieve any error message from the session
 $error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
