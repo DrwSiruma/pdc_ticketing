@@ -29,6 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $client_name = trim($_POST['fn_client']);
     $signature_client = mysqli_real_escape_string($conn, $_POST['signature_client']);
     $signature_personnel = mysqli_real_escape_string($conn, $_POST['signature_personnel']);
+    $overdue = trim($_POST['overdue']);
+    if ($overdue == 1) {
+        $report_remarks = "Done in Overdue";
+    } else {
+        $report_remarks = "";
+    }
 
     if ($action_type === 'save') {
         // Logic for saving the report
@@ -41,8 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             recom = '$recom',
             fn_client = '$client_name',
             signature_client = '$signature_client',
-            signature_personnel = '$signature_personnel'
+            signature_personnel = '$signature_personnel',
+            report_remarks = '$report_remarks'
             WHERE ticket_num = '$ticket_num'";
+
+        $update_overdue_query = "UPDATE tbl_tickets SET overdue = '$overdue' WHERE ticket_num = '$ticket_num'";
+        mysqli_query($conn, $update_overdue_query);
         mysqli_query($conn, $query);
         log_activity($conn, $admin_id, "Updated ticket report of: #$ticket_num", "Report");
         $_SESSION['success'] = "Report updated successfully.";
@@ -68,8 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 recom = '$recom',
                 fn_client = '$client_name',
                 signature_client = '$signature_client',
-                signature_personnel = '$signature_personnel'
+                signature_personnel = '$signature_personnel',
+                report_remarks = '$report_remarks'
                 WHERE ticket_num = '$ticket_num'";
+            $update_overdue_query = "UPDATE tbl_tickets SET overdue = '$overdue' WHERE ticket_num = '$ticket_num'";
+            mysqli_query($conn, $update_overdue_query);
             mysqli_query($conn, $query);
             log_activity($conn, $admin_id, "Finished ticket report of: #$ticket_num", "Report");
             $_SESSION['success'] = "Report updated successfully.";

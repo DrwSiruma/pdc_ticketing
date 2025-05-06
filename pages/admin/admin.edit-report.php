@@ -1,7 +1,7 @@
 <?php 
     include('admin.header.php');
     $ticket_num = $_GET['id'];
-    $ticket_qry = mysqli_query($conn, "SELECT * FROM tbl_ticketreport WHERE ticket_num = '$ticket_num'");
+    $ticket_qry = mysqli_query($conn, "SELECT tr.*, t.sched_end FROM tbl_tickets t LEFT JOIN tbl_ticketreport tr ON t.ticket_num = tr.ticket_num WHERE tr.ticket_num = '$ticket_num'");
     $ticket_row = mysqli_fetch_array($ticket_qry);
     $ticket_date = new DateTime($ticket_row['ticket_date']);
 ?>
@@ -177,6 +177,16 @@
                         </div>
                     </div>
                 </div>
+
+                <?php
+                    $currentDateTime = new DateTime();
+                    $schedEndDateTime = new DateTime($ticket_row['sched_end']);
+                    if ($schedEndDateTime < $currentDateTime) {
+                        echo '<input type="hidden" name="overdue" value="1">';
+                    } else {
+                        echo '<input type="hidden" name="overdue" value="0">';
+                    }
+                ?>
 
                 <div class="report-footer">
                     <input type="hidden" name="action_type" id="actionType" value="">
