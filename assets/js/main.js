@@ -34,15 +34,17 @@ function showOtherReason() {
 }
 
 // Replace the form submit event listener with the button click event listener
-document.getElementById('rasgn_btn').addEventListener('click', function(event) {
+document.getElementById('rasgn_btn').addEventListener('click', function() {
     var reasonSelect = document.getElementById("rschdReason");
     var otherRReasonInput = document.getElementById("otherRReason");
     var finalRReasonInput = document.getElementById("finalRReason");
 
-    if (reasonSelect.value == "3") {
-        finalRReasonInput.value = otherRReasonInput.value.trim();
-    } else {
-        finalRReasonInput.value = reasonSelect.options[reasonSelect.selectedIndex].text;
+    if (reasonSelect && finalRReasonInput) {
+        if (reasonSelect.value == "3" && otherRReasonInput) {
+            finalRReasonInput.value = otherRReasonInput.value.trim();
+        } else {
+            finalRReasonInput.value = reasonSelect.options[reasonSelect.selectedIndex].text;
+        }
     }
 });
 

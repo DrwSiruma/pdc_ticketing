@@ -124,7 +124,13 @@
                                 <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
                                 <td><?php echo $rows['outlet_name']; ?></td>
                                 <td><?php echo $rows['priority_type']; ?></td>
-                                <td><?php echo formatSchedule($rows['sched_start'], $rows['sched_end']); ?></td>
+                                <?php 
+                                    if ($rows['sched_end'] < date('Y-m-d H:i:s')) {
+                                        echo '<td class="text-danger">' . formatSchedule($rows['sched_start'], $rows['sched_end']) . '</td>';
+                                    } else {
+                                        echo '<td>' . formatSchedule($rows['sched_start'], $rows['sched_end']) . '</td>';
+                                    }
+                                ?>
                                 <td><?php echo $rows['staff_name']; ?></td>
                                 <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
                                 <td>
@@ -171,7 +177,13 @@
                                 <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
                                 <td><?php echo $rows['outlet_name']; ?></td>
                                 <td><?php echo $rows['priority_type']; ?></td>
-                                <td><?php echo formatSchedule($rows['sched_start'], $rows['sched_end']); ?></td>
+                                <?php 
+                                    if ($rows['sched_end'] < date('Y-m-d H:i:s')) {
+                                        echo '<td class="text-danger">' . formatSchedule($rows['sched_start'], $rows['sched_end']) . '</td>';
+                                    } else {
+                                        echo '<td>' . formatSchedule($rows['sched_start'], $rows['sched_end']) . '</td>';
+                                    }
+                                ?>
                                 <td><?php echo $rows['staff_name']; ?></td>
                                 <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
                                 <td>

@@ -82,6 +82,13 @@
                 <?php if (!empty($success)) : ?>
                     <div class="alert alert-success"><?php echo $success; ?></div>
                 <?php endif; ?>
+                <?php
+                    if ($ticket_row['ticket_status'] != '5' || $ticket_row['rprt'] != '1') {
+                        if ($ticket_row['sched_end'] < date('Y-m-d H:i:s')) {
+                            echo '<div class="alert" style="background: red;color: #fff;"><i class="fas fa-exclamation-triangle"></i>&nbsp;Ticket Schedule is Overdue!</div>';
+                        }
+                    }
+                ?>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="row">
@@ -213,7 +220,19 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="enddate">End Date:</label>
-                                    <input type="date" name="enddate" id="enddate" class="form-control" value="<?php echo $ticket_row['sched_end']; ?>" disabled>
+                                    <input type="date" name="enddate" id="enddate" class="form-control 
+                                        <?php
+                                            if ($ticket_row['ticket_status'] == '5' || $ticket_row['rprt'] == '1') {
+                                                echo '';
+                                            } else {
+                                                if ($ticket_row['sched_end'] < date('Y-m-d H:i:s')) {
+                                                    echo 'bg-danger text-light';
+                                                } else {
+                                                    echo '';
+                                                }
+                                            }
+                                        ?>
+                                    " value="<?php echo $ticket_row['sched_end']; ?>" disabled>
                                 </div>
                             </div>
                         </div>
