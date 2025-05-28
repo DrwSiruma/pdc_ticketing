@@ -83,7 +83,7 @@ if ($ticketcnt_qry) {
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($page == 'staff/notifications') ? 'active' : ''; ?>" aria-current="page" href="notifications">Notifications&nbsp;
                                 <?php if ($unread_count > 0) { ?>
-                                    <span class="badge bg-secondary text-light">
+                                    <span class="badge bg-danger text-light">
                                         <?php echo ($unread_count > 99) ? '99+' : $unread_count; ?>
                                     </span>
                                 <?php } ?>
