@@ -83,9 +83,13 @@
                     <div class="alert alert-success"><?php echo $success; ?></div>
                 <?php endif; ?>
                 <?php
-                    if ($ticket_row['ticket_status'] != '5' || $ticket_row['rprt'] != '1') {
+                    if ($ticket_row['ticket_status'] == '5' || $ticket_row['ticket_status'] == '3'|| $ticket_row['ticket_status'] == '2'|| $ticket_row['rprt'] == '1') {
+                        echo '';
+                    } else {
                         if ($ticket_row['sched_end'] < date('Y-m-d H:i:s')) {
                             echo '<div class="alert" style="background: red;color: #fff;"><i class="fas fa-exclamation-triangle"></i>&nbsp;Ticket Schedule is Overdue!</div>';
+                        } else {
+                            echo '';
                         }
                     }
                 ?>
