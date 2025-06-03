@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             log_activity($conn, $staff_id, "Updated ticket report of: #$ticket_num", "Report");
             $_SESSION['success'] = "Report updated successfully.";
-            notifications($conn, "Technical Report, ticket #: $ticket_num, is modified by $emp_name.", "0");
+            notifications($conn, "Service Report, ticket #: $ticket_num, is modified by $emp_name.", "0");
             header("Location: edit-report?id=$ticket_num");
         }
     } else {

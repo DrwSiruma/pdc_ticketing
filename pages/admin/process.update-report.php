@@ -88,12 +88,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             log_activity($conn, $admin_id, "Finished ticket report of: #$ticket_num", "Report");
             $_SESSION['success'] = "Report updated successfully.";
             header("Location: ticket");
-            notifications($conn, "Technical Report, ticket #: $ticket_num, is closed by the admin.", $emp_id);
+            notifications($conn, "Services Report, ticket #: $ticket_num, is closed by the admin.", $emp_id);
         } else {
             log_activity($conn, $admin_id, "Updated ticket report of: #$ticket_num", "Report");
             $_SESSION['success'] = "Report updated successfully.";
             header("Location: edit-report?id=$ticket_num");
-            notifications($conn, "Technical Report, ticket #: $ticket_num, is modified by the admin.", $emp_id);
+            notifications($conn, "Services Report, ticket #: $ticket_num, is modified by the admin.", $emp_id);
         }
     } else {
         $_SESSION['error'] = "Failed to update report.";
