@@ -211,6 +211,12 @@ if (strpos($page, 'admin/') === 0) {
             case 'edit-report':
                 include 'staff/staff.edit-report.php';
                 break;
+            case 'mark-read':
+                include 'staff/process.mark-read.php';
+                break;
+            case 'mark-all-read':
+                include 'staff/process.mark-all-read.php';
+                break;
             case 'logout':
                 include '../includes/logout.php';
                 break;
