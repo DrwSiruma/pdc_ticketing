@@ -191,7 +191,7 @@
 
                     <div class="report-footer">
                         <input type="hidden" name="action_type" id="actionType" value="">
-                        <a href="tickets?tab=open" class="btn btn-secondary">Cancel</a>
+                        <a href="ticket?tab=open" class="btn btn-secondary">Cancel</a>
                         <button type="button" class="btn btn-primary" id="saveReportBtn">
                             <i class="fas fa-save"></i>&nbsp;Save Report
                         </button>
