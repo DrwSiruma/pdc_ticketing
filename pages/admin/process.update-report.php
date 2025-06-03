@@ -15,6 +15,18 @@ function log_activity($conn, $user_id, $activity, $type) {
     }
 }
 
+function notifications($conn, $notif_msg, $staff_id) {
+    $sql = "INSERT INTO tbl_notif (notif_msg, user_id, post_date) VALUES (?, ?, NOW(6))";
+    $stmt = $conn->prepare($sql);
+    if ($stmt) {
+        $stmt->bind_param("si", $notif_msg, $staff_id);
+        $stmt->execute();
+        $stmt->close();
+    } else {
+        error_log("Failed to prepare statement for notifications: " . $conn->error);
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $admin_id = $_SESSION['id'];
     $action_type = trim($_POST['action_type']);
@@ -28,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $recom = trim($_POST['recom']);
     $client_name = trim($_POST['fn_client']);
     $signature_client = $_POST['signature_client']; // no escaping here; handled by prepared statements
+    $emp_id = trim($_POST['emp_id']);
     $signature_personnel = $_POST['signature_personnel'];
     $overdue = trim($_POST['overdue']);
     $report_remarks = ($overdue == 1) ? "Done in Overdue" : "";
@@ -75,10 +88,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             log_activity($conn, $admin_id, "Finished ticket report of: #$ticket_num", "Report");
             $_SESSION['success'] = "Report updated successfully.";
             header("Location: ticket");
+            notifications($conn, "Technical Report, ticket #: $ticket_num, is closed by the admin.", $emp_id);
         } else {
             log_activity($conn, $admin_id, "Updated ticket report of: #$ticket_num", "Report");
             $_SESSION['success'] = "Report updated successfully.";
             header("Location: edit-report?id=$ticket_num");
+            notifications($conn, "Technical Report, ticket #: $ticket_num, is modified by the admin.", $emp_id);
         }
     } else {
         $_SESSION['error'] = "Failed to update report.";

@@ -150,6 +150,7 @@
                                 <div class="form-group">
                                     <label>Full Name:</label>
                                     <input type="text" class="form-control" name="fn_personnel" value="<?php echo !empty($ticket_row['emp_name']) ? $ticket_row['emp_name'] : ''; ?>" readonly>
+                                    <input type="hidden" class="form-control" value="<?php echo !empty($ticket_row['emp_id']) ? $ticket_row['emp_id'] : ''; ?>" name="emp_id" id="emp_id">
                                 </div>
                             </div>
                             <div class="col-md-6">
