@@ -14,16 +14,6 @@ unset($_SESSION['error']);
 $success = isset($_SESSION['success']) ? $_SESSION['success'] : '';
 unset($_SESSION['success']);
 
-// Query to count unread notifications
-$notifcnt_qry = $conn->query("SELECT COUNT(*) AS unread_count FROM tbl_notif WHERE user_id = {$_SESSION['id']} AND status = '1'");
-
-// Fetch the unread count
-$unread_notif = 0;
-if ($notifcnt_qry) {
-    $notifcnt_row = $notifcnt_qry->fetch_assoc();
-    $unread_notif = $notifcnt_row['unread_count'];
-}
-
 $ticketcnt_qry = $conn->query("SELECT COUNT(*) AS ticket_count FROM tbl_tickets WHERE status = '1' OR status = '2' OR status = '4'");
 
 $unread_count = 0;
@@ -89,12 +79,23 @@ if ($ticketcnt_qry) {
                     <a class="nav-link" href="ticket">
                         <i class="fas fa-fw fa-ticket-alt fa-sm"></i>
                         <span>Tickets&nbsp;
-                            <?php if ($ticket_cnt > 0) { ?>
-                                <span class="badge bg-secondary text-light">
-                                    <?php echo ($ticket_cnt > 99) ? '99+' : $ticket_cnt; ?>
-                                </span>
-                            <?php } ?>
+                            <span id="ticket-count-indicator" class="badge bg-secondary text-light" style="display:none;"></span>
                         </span>
+                        <script>
+                            setInterval(function() {
+                                fetch('admin.chk-ticket-count.php')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        const badge = document.getElementById('ticket-count-indicator');
+                                        if (data.count > 0) {
+                                            badge.textContent = (data.count > 99) ? '99+' : data.count;
+                                            badge.style.display = 'inline-block';
+                                        } else {
+                                            badge.style.display = 'none';
+                                        }
+                                    });
+                            }, 3000); // every 3 seconds
+                        </script>
                     </a>
                 </li>
 
