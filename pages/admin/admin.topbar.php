@@ -8,15 +8,25 @@
 <ul class="navbar-nav ml-auto">
 
     <li class="nav-item dropdown no-arrow position">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell"></i>
-            <?php if ($unread_notif > 0) { ?>
-                <span class="position-absolute" 
-                    style="top: 25%; right: 5%; width: 12px; height: 12px; background-color: red; border-radius: 50%; border: 2px solid white;">
-                </span>
-            <?php } ?>
+            <span id="notif-indicator" class="position-absolute" style="display:none; top: 25%; right: 5%; width: 12px; height: 12px; background-color: red; border-radius: 50%; border: 2px solid white;"></span>
         </a>
     </li>
+    <script>
+        setInterval(function() {
+            fetch('admin.chk-notif.php')
+                .then(response => response.json())
+                .then(data => {
+                    const indicator = document.getElementById('notif-indicator');
+                    if (data.unread_notif > 0) {
+                        indicator.style.display = 'inline-block';
+                    } else {
+                        indicator.style.display = 'none';
+                    }
+                });
+        }, 3000); // check every 5 seconds
+    </script>
 
     <div class="topbar-divider d-none d-sm-block"></div>
 
