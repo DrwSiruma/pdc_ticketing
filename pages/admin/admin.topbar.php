@@ -10,6 +10,11 @@
     <li class="nav-item dropdown no-arrow position">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell"></i>
+            <?php if ($unread_notif > 0) { ?>
+                <span class="position-absolute" 
+                    style="top: 25%; right: 5%; width: 12px; height: 12px; background-color: red; border-radius: 50%; border: 2px solid white;">
+                </span>
+            <?php } ?>
         </a>
     </li>
 

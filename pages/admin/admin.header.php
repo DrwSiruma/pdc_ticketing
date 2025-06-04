@@ -14,6 +14,16 @@ unset($_SESSION['error']);
 $success = isset($_SESSION['success']) ? $_SESSION['success'] : '';
 unset($_SESSION['success']);
 
+// Query to count unread notifications
+$notifcnt_qry = $conn->query("SELECT COUNT(*) AS unread_count FROM tbl_notif WHERE user_id = {$_SESSION['id']} AND status = '1'");
+
+// Fetch the unread count
+$unread_notif = 0;
+if ($notifcnt_qry) {
+    $notifcnt_row = $notifcnt_qry->fetch_assoc();
+    $unread_notif = $notifcnt_row['unread_count'];
+}
+
 $ticketcnt_qry = $conn->query("SELECT COUNT(*) AS ticket_count FROM tbl_tickets WHERE status = '1' OR status = '2' OR status = '4'");
 
 $unread_count = 0;
@@ -123,12 +133,12 @@ if ($ticketcnt_qry) {
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="technical-report">
                         <i class="fas fa-fw fa-file fa-sm"></i>
                         <span>Technical Reports</span>
                     </a>
-                </li>
+                </li> -->
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
 
