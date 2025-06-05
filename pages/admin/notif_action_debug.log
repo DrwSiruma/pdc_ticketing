@@ -1,0 +1,88 @@
+2025-06-05 06:39:35
+Array
+(
+    [session] => Array
+        (
+            [id] => 1
+            [role] => admin
+            [name] => Administrator
+            [username] => pdc_admin
+        )
+
+    [data] => Array
+        (
+            [id] => 48
+            [action] => mark_read
+        )
+
+)
+2025-06-05 06:39:45
+Array
+(
+    [session] => Array
+        (
+            [id] => 1
+            [role] => admin
+            [name] => Administrator
+            [username] => pdc_admin
+        )
+
+    [data] => Array
+        (
+            [id] => 48
+            [action] => mark_read
+        )
+
+)
+2025-06-05 06:39:47
+Array
+(
+    [session] => Array
+        (
+            [id] => 1
+            [role] => admin
+            [name] => Administrator
+            [username] => pdc_admin
+        )
+
+    [data] => Array
+        (
+            [action] => mark_all_read
+        )
+
+)
+2025-06-05 06:43:33
+Array
+(
+    [session] => Array
+        (
+            [id] => 1
+            [role] => admin
+            [name] => Administrator
+            [username] => pdc_admin
+        )
+
+    [data] => Array
+        (
+            [action] => mark_all_read
+        )
+
+)
+2025-06-05 06:43:35
+Array
+(
+    [session] => Array
+        (
+            [id] => 1
+            [role] => admin
+            [name] => Administrator
+            [username] => pdc_admin
+        )
+
+    [data] => Array
+        (
+            [id] => 48
+            [action] => mark_read
+        )
+
+)

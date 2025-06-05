@@ -83,7 +83,7 @@ if ($ticketcnt_qry) {
                         </span>
                         <script>
                             setInterval(function() {
-                                fetch('admin.chk-ticket-count.php')
+                                fetch('ticket-count')
                                     .then(response => response.json())
                                     .then(data => {
                                         const badge = document.getElementById('ticket-count-indicator');
@@ -94,7 +94,7 @@ if ($ticketcnt_qry) {
                                             badge.style.display = 'none';
                                         }
                                     });
-                            }, 3000); // every 3 seconds
+                            }, 2000); // every 2 seconds
                         </script>
                     </a>
                 </li>

@@ -122,6 +122,15 @@ if (strpos($page, 'admin/') === 0) {
             case 'close-ticket':
                 include 'admin/process.close-ticket.php';
                 break;
+            case 'ticket-count':
+                include 'admin/admin.chk-ticket-count.php';
+                break;
+            case 'notif-check':
+                include 'admin/admin.chk-notif.php';
+                break;
+            case 'notif-action':
+                include 'admin/admin.notif-action.php';
+                break;
             case 'logout':
                 include '../includes/logout.php';
                 break;

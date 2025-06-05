@@ -12,20 +12,70 @@
             <i class="fas fa-bell"></i>
             <span id="notif-indicator" class="position-absolute" style="display:none; top: 25%; right: 5%; width: 12px; height: 12px; background-color: red; border-radius: 50%; border: 2px solid white;"></span>
         </a>
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="notifDropdown" style="min-width: 350px; max-height: 400px; overflow-y: auto;">
+            <h6 class="dropdown-header text-dark">Notifications</h6>
+            <div id="notif-container">
+                <div class="text-center small text-gray-500 py-2">Loading...</div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item text-center small text-primary" id="notif-mark-all">Mark all as read</button>
+        </div>
     </li>
     <script>
-        setInterval(function() {
-            fetch('admin.chk-notif.php')
+        function loadNotifications() {
+            fetch('notif-check')
                 .then(response => response.json())
                 .then(data => {
                     const indicator = document.getElementById('notif-indicator');
+                    const container = document.getElementById('notif-container');
                     if (data.unread_notif > 0) {
                         indicator.style.display = 'inline-block';
                     } else {
                         indicator.style.display = 'none';
                     }
+                    if (data.notifications && data.notifications.length > 0) {
+                        container.innerHTML = '';
+                        data.notifications.forEach(function(notif) {
+                            const notifItem = document.createElement('div');
+                            notifItem.className = 'dropdown-item d-flex align-items-center justify-content-between';
+                            notifItem.innerHTML = `
+                                <div>
+                                    <div class="small text-gray-500">${notif.time}</div>
+                                    <span>${notif.message}</span>
+                                </div>
+                                <!-- <button class="btn btn-sm btn-link text-primary notif-action-btn" data-id="${notif.id}"><i class="fas fa-eye"></i></button> -->
+                            `;
+                            container.appendChild(notifItem);
+                        });
+                    } else {
+                        container.innerHTML = '<div class="text-center small text-gray-500 py-2">No notifications</div>';
+                    }
                 });
-        }, 3000); // check every 5 seconds
+        }
+
+        setInterval(loadNotifications, 2000);
+        document.addEventListener('DOMContentLoaded', loadNotifications);
+
+        // Action button event delegation
+        document.addEventListener('click', function(e) {
+            const notifBtn = e.target.closest('.notif-action-btn');
+            if (notifBtn) {
+                const notifId = notifBtn.getAttribute('data-id');
+                fetch('admin.notif-action.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({id: notifId, action: 'mark_read'})
+                }).then(() => loadNotifications());
+                return;
+            }
+            if (e.target.id === 'notif-mark-all') {
+                fetch('admin.notif-action.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({action: 'mark_all_read'})
+                }).then(() => loadNotifications());
+            }
+        });
     </script>
 
     <div class="topbar-divider d-none d-sm-block"></div>
