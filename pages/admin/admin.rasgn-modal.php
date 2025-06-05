@@ -56,7 +56,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-warning" type="submit" id="rasgn_btn">Save</button>
+                    <button class="btn btn-warning" type="submit" id="rasgn_btn2">Save</button>
                 </div>
             </form>
         </div>

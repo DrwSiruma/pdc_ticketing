@@ -69,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $admin_id = $_SESSION['id'];
             log_activity($conn, $admin_id, "Re-assigned ticket #: $ticket_num", "Ticket");
             notifications($conn, "Your ticket #: $ticket_num, is re-assigned to \"$name_val\".", $outlet_id);
+            notifications($conn, "You have a new assigned ticket #: $ticket_num, See it through the dashboard", $rasgn_to);
             ticket_report($conn, $rasgn_to, $name_val, $ticket_num);
 
             $_SESSION['success'] = "Ticket re-scheduled successfully.";

@@ -226,6 +226,15 @@ if (strpos($page, 'admin/') === 0) {
             case 'mark-all-read':
                 include 'staff/process.mark-all-read.php';
                 break;
+            case 'notif-check':
+                include 'staff/staff.chk-notif.php';
+                break;
+            case 'ticket-check':
+                include 'staff/staff.chk-ticket.php';
+                break;
+            case 'ticket-data':
+                include 'staff/staff.ticket-data.php';
+                break;
             case 'logout':
                 include '../includes/logout.php';
                 break;

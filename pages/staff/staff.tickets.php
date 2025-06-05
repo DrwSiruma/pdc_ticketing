@@ -60,42 +60,12 @@
                                         <th>From</th>
                                         <th>Priority</th>
                                         <th>Schedule</th>
-                                        <th>Assigned to</th>
                                         <th>Last Modified</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php
-                                        foreach ($open_tickets as $rows) {
-                                            $postDT = new DateTime($rows["date_posted"]);
-                                            $modDT = new DateTime($rows["date_modified"]);
-                                    ?>
-                                    <tr>
-                                        <td hidden><?php echo $postDT->format('m/d/Y - h:i A'); ?></td>
-                                        <td><?php echo $rows['ticket_num']; ?></td>
-                                        <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
-                                        <td><?php echo $rows['outlet_name']; ?></td>
-                                        <td><?php echo $rows['priority_type']; ?></td>
-                                        <?php 
-                                            if ($rows['sched_end'] < date('Y-m-d H:i:s')) {
-                                                echo '<td class="text-danger">' . formatSchedule($rows['sched_start'], $rows['sched_end']) . '</td>';
-                                            } else {
-                                                echo '<td>' . formatSchedule($rows['sched_start'], $rows['sched_end']) . '</td>';
-                                            }
-                                        ?>
-                                        <td><?php echo $rows['staff_name']; ?></td>
-                                        <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
-                                        <td>
-                                            <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View Report"><i class="fas fa-eye"></i></a>
-                                            <?php if ($rows['rprt'] == 1) { ?>
-                                                <a href="generate-pdf?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="Download Report"><i class="fas fa-download"></i></a>
-                                            <?php } elseif($rows['rprt'] == 0) { ?>
-                                                <a href="edit-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
-                                            <?php } ?>
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
+                                <tbody id="open-tickets-body">
+                                    <!--  -->
                                 </tbody>
                             </table>
                         </div>
@@ -112,43 +82,12 @@
                                         <th>From</th>
                                         <th>Priority</th>
                                         <th>Schedule</th>
-                                        <th>Assigned to</th>
                                         <th>Last Modified</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php
-                                        foreach ($overdue_tickets as $rows) {
-                                            $postDT = new DateTime($rows["date_posted"]);
-                                            $modDT = new DateTime($rows["date_modified"]);
-                                    ?>
-                                    <tr>
-                                        <td hidden><?php echo $postDT->format('m/d/Y - h:i A'); ?></td>
-                                        <td><?php echo $rows['ticket_num']; ?></td>
-                                        <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
-                                        <td><?php echo $rows['outlet_name']; ?></td>
-                                        <td><?php echo $rows['priority_type']; ?></td>
-                                        <?php 
-                                            if ($rows['sched_end'] < date('Y-m-d H:i:s')) {
-                                                echo '<td class="text-danger">' . formatSchedule($rows['sched_start'], $rows['sched_end']) . '</td>';
-                                            } else {
-                                                echo '<td>' . formatSchedule($rows['sched_start'], $rows['sched_end']) . '</td>';
-                                            }
-                                        ?>
-                                        <td><?php echo $rows['staff_name']; ?></td>
-                                        <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
-                                        <td>
-                                            <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View"><i class="fas fa-eye"></i></a>
-                                            <?php if ($rows['rprt'] == 1) { ?>
-                                                <!-- <a href="view-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="View Report"><i class="fas fa-file"></i></a> -->
-                                                <a href="generate-pdf?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="Download Report"><i class="fas fa-download"></i></a>
-                                            <?php } elseif($rows['rprt'] == 0) { ?>
-                                                <a href="edit-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
-                                            <?php } ?>
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
+                                <tbody id="overdue-tickets-body">
+                                    <!--  -->
                                 </tbody>
                             </table>
                         </div>
@@ -163,35 +102,12 @@
                                         <th>Ticket #</th>
                                         <th>Subject</th>
                                         <th>From</th>
-                                        <th>Assigned to</th>
                                         <th>Date Closed</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php
-                                        foreach ($closed_tickets as $rows) {
-                                            $postDT = new DateTime($rows["date_posted"]);
-                                            $modDT = new DateTime($rows["date_closed"]);
-                                    ?>
-                                    <tr>
-                                        <td hidden><?php echo $postDT->format('m/d/Y - h:i A'); ?></td>
-                                        <td><?php echo $rows['ticket_num']; ?></td>
-                                        <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
-                                        <td><?php echo $rows['outlet_name']; ?></td>
-                                        <td><?php echo $rows['staff_name']; ?></td>
-                                        <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
-                                        <td>
-                                            <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View Report"><i class="fas fa-eye"></i></a>
-                                            <?php if ($rows['rprt'] == 1) { ?>
-                                                <!-- <a href="view-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="View Report"><i class="fas fa-file"></i></a> -->
-                                                <a href="generate-pdf?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="Download Report"><i class="fas fa-download"></i></a>
-                                            <?php } elseif($rows['rprt'] == 0) { ?>
-                                                <a href="edit-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
-                                            <?php } ?>
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
+                                <tbody id="closed-tickets-body">
+                                    <!--  -->
                                 </tbody>
                             </table>
                         </div>
@@ -203,4 +119,56 @@
     </div>
     
     <script src="../../assets/js/tab.staff.js"></script>
+    <script>
+        function fetchAndUpdateTickets() {
+            fetch('ticket-data')
+                .then(response => response.json())
+                .then(data => {
+                    // Open tickets
+                    const openBody = document.getElementById('open-tickets-body');
+                    openBody.innerHTML = data.open.map(row => `
+                        <tr>
+                            <td hidden>${row.date_posted}</td>
+                            <td>${row.ticket_num}</td>
+                            <td>${row.subject}</td>
+                            <td>${row.from}</td>
+                            <td>${row.priority}</td>
+                            <td>${row.schedule}</td>
+                            <td>${row.last_modified}</td>
+                            <td>${row.actions}</td>
+                        </tr>
+                    `).join('');
+
+                    // Overdue tickets
+                    const overdueBody = document.getElementById('overdue-tickets-body');
+                    overdueBody.innerHTML = data.overdue.map(row => `
+                        <tr>
+                            <td hidden>${row.date_posted}</td>
+                            <td>${row.ticket_num}</td>
+                            <td>${row.subject}</td>
+                            <td>${row.from}</td>
+                            <td>${row.priority}</td>
+                            <td>${row.schedule}</td>
+                            <td>${row.last_modified}</td>
+                            <td>${row.actions}</td>
+                        </tr>
+                    `).join('');
+
+                    // Closed tickets
+                    const closedBody = document.getElementById('closed-tickets-body');
+                    closedBody.innerHTML = data.closed.map(row => `
+                        <tr>
+                            <td hidden>${row.date_posted}</td>
+                            <td>${row.ticket_num}</td>
+                            <td>${row.subject}</td>
+                            <td>${row.from}</td>
+                            <td>${row.date_closed}</td>
+                            <td>${row.actions}</td>
+                        </tr>
+                    `).join('');
+                });
+        }
+        setInterval(fetchAndUpdateTickets, 2000);
+        document.addEventListener('DOMContentLoaded', fetchAndUpdateTickets);
+    </script>
 <?php include('staff.footer.php'); ?>

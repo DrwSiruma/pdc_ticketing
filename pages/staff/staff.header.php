@@ -15,16 +15,6 @@ $success = isset($_SESSION['success']) ? $_SESSION['success'] : '';
 unset($_SESSION['success']);
 unset($_SESSION['success']);
 
-// Query to count unread notifications
-$notifcnt_qry = $conn->query("SELECT COUNT(*) AS unread_count FROM tbl_notif WHERE user_id = {$_SESSION['id']} AND status = '1'");
-
-// Fetch the unread count
-$unread_count = 0;
-if ($notifcnt_qry) {
-    $notifcnt_row = $notifcnt_qry->fetch_assoc();
-    $unread_count = $notifcnt_row['unread_count'];
-}
-
 $ticketcnt_qry = $conn->query("SELECT COUNT(*) AS ticket_count FROM tbl_tickets WHERE (status = '1' OR status = '4') AND assigned = " . $_SESSION['id']);
 
 $ticket_cnt = 0;
@@ -70,23 +60,16 @@ if ($ticketcnt_qry) {
                         </li> -->
                         <li class="nav-item">
                             <a class="nav-link <?php echo in_array($page, ['staff/tickets', 'staff/view-ticket', 'staff/edit-report']) ? 'active' : ''; ?>" href="tickets">Tickets&nbsp;
-                                <?php if ($ticket_cnt > 0) { ?>
-                                    <span class="badge bg-danger text-light">
-                                        <?php echo ($ticket_cnt > 99) ? '99+' : $ticket_cnt; ?>
-                                    </span>
-                                <?php } ?>
+                                <span id="ticket-count-indicator" class="badge bg-danger text-light" style="display:none;"></span>
                             </a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link <?php //echo ($page == 'user/conversations') ? 'active' : ''; ?>" aria-current="page" href="conversations">Conversations&nbsp;<span class="badge bg-secondary text-light">99+</span></a>
                         </li> -->
                         <li class="nav-item">
-                            <a class="nav-link <?php echo ($page == 'staff/notifications') ? 'active' : ''; ?>" aria-current="page" href="notifications">Notifications&nbsp;
-                                <?php if ($unread_count > 0) { ?>
-                                    <span class="badge bg-danger text-light">
-                                        <?php echo ($unread_count > 99) ? '99+' : $unread_count; ?>
-                                    </span>
-                                <?php } ?>
+                            <a class="nav-link <?php echo ($page == 'staff/notifications') ? 'active' : ''; ?>" aria-current="page" href="notifications">
+                                Notifications&nbsp;
+                                <span id="notif-indicator" class="badge bg-danger text-light" style="display:none;"></span>
                             </a>
                         </li>
                     </ul>
@@ -102,3 +85,43 @@ if ($ticketcnt_qry) {
                 </div>
             </div>
         </nav>
+
+        <!-- Your page content here -->
+
+        <script>
+            function loadStaffNotifications() {
+                fetch('notif-check')
+                    .then(response => response.json())
+                    .then(data => {
+                        const indicator = document.getElementById('notif-indicator');
+                        if (!indicator) return;
+                        if (data.unread_notif > 0) {
+                            indicator.textContent = (data.unread_notif > 99) ? '99+' : data.unread_notif;
+                            indicator.style.display = 'inline-block';
+                        } else {
+                            indicator.style.display = 'none';
+                        }
+                    });
+            }
+            setInterval(loadStaffNotifications, 2000);
+            document.addEventListener('DOMContentLoaded', loadStaffNotifications);
+                        
+            function loadStaffTicketCount() {
+                fetch('ticket-check')
+                    .then(response => response.json())
+                    .then(data => {
+                        const badge = document.getElementById('ticket-count-indicator');
+                        if (!badge) return;
+                        if (data.ticket_count > 0) {
+                            badge.textContent = (data.ticket_count > 99) ? '99+' : data.ticket_count;
+                            badge.style.display = 'inline-block';
+                        } else {
+                            badge.style.display = 'none';
+                        }
+                    });
+            }
+            setInterval(loadStaffTicketCount, 2000);
+            document.addEventListener('DOMContentLoaded', loadStaffTicketCount);
+        </script>
+    </body>
+</html>

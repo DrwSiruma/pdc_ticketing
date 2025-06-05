@@ -90,9 +90,9 @@ function showOtherReason2() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const rasgnBTN = document.getElementById('rasgn_btn');
+    const rasgnBTN = document.getElementById('rasgn_btn2');
     if (rasgnBTN) {
-        rasgnBTN.addEventListener('change', function() {
+        rasgnBTN.addEventListener('click', function(event) {
             var reasonSelect2 = document.getElementById("rasgnReason");
             var otherRReasonInput2 = document.getElementById("otherRReason2");
             var finalRReasonInput2 = document.getElementById("finalRReason2");
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-// document.getElementById('rasgn_btn').addEventListener('click', function(event) {
+// document.getElementById('rasgn_btn2').addEventListener('click', function(event) {
 //     var reasonSelect2 = document.getElementById("rasgnReason");
 //     var otherRReasonInput2 = document.getElementById("otherRReason2");
 //     var finalRReasonInput2 = document.getElementById("finalRReason2");
