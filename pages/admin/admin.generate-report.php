@@ -14,7 +14,7 @@ $time_out = !empty($ticket['time_out']) ? date("h:i A", strtotime($ticket['time_
 class CustomPDF extends TCPDF {
     public function Header() {
         // Outer Border (closer to the page edges)
-        $this->SetLineStyle(array('width' => 1.2, 'color' => array(0, 0, 0)));
+        $this->SetLineStyle(array('width' => 0.6, 'color' => array(0, 0, 0)));
         $this->Rect(5, 5, $this->getPageWidth() - 10, $this->getPageHeight() - 10);
 
         // Inner Border (aligned with the main content)
