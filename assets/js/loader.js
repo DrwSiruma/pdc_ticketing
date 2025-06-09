@@ -20,7 +20,23 @@ document.addEventListener("DOMContentLoaded", () => {
         showLoaderThenSubmit();
     });
 
+    function updateSignatures() {
+        // Client signature
+        var clientCanvas = document.getElementById('clientSignature');
+        var clientInput = document.getElementById('signatureInput');
+        if (clientCanvas && clientInput) {
+            clientInput.value = clientCanvas.toDataURL();
+        }
+        // Personnel signature
+        var personnelCanvas = document.getElementById('personnelSignature');
+        var personnelInput = document.getElementById('signaturePersonnelInput');
+        if (personnelCanvas && personnelInput) {
+            personnelInput.value = personnelCanvas.toDataURL();
+        }
+    }
+
     function showLoaderThenSubmit() {
+        updateSignatures(); // Ensure signatures are up-to-date
         if (loader) loader.style.display = "block"; // Show the loader
         setTimeout(() => {
             form.submit();
