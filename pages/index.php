@@ -229,11 +229,17 @@ if (strpos($page, 'admin/') === 0) {
             case 'notif-check':
                 include 'staff/staff.chk-notif.php';
                 break;
+            case 'notif-data':
+                include 'staff/staff.notif-data.php';
+                break;
             case 'ticket-check':
                 include 'staff/staff.chk-ticket.php';
                 break;
             case 'ticket-data':
                 include 'staff/staff.ticket-data.php';
+                break;
+            case 'jquery3.6':
+                include '../assets/js/jquery-3.6.0.min.js';
                 break;
             case 'logout':
                 include '../includes/logout.php';

@@ -51,7 +51,7 @@
                     <!-- Open Tab -->
                     <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel" aria-labelledby="ex-with-icons-tab-1">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm w-100" id="opentck_tbl">
+                            <table class="table table-bordered table-striped table-sm w-100" id="opentkt_tbl">
                                 <thead>
                                     <tr>
                                         <th hidden>Post Date</th>
@@ -73,7 +73,7 @@
                     <!-- Overdue Tab -->
                     <div class="tab-pane fade" id="ex-with-icons-tabs-2" role="tabpanel" aria-labelledby="ex-with-icons-tab-2">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm w-100" id="overdue_tbl">
+                            <table class="table table-bordered table-striped table-sm w-100" id="overduetkt_tbl">
                                 <thead>
                                     <tr>
                                         <th hidden>Post Date</th>
@@ -95,7 +95,7 @@
                     <!-- Closed Tab -->
                     <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel" aria-labelledby="ex-with-icons-tab-3">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm w-100" id="closetck_tbl">
+                            <table class="table table-bordered table-striped table-sm w-100" id="closetkt_tbl">
                                 <thead>
                                     <tr>
                                         <th hidden>Post Date</th>
@@ -117,58 +117,144 @@
             </div>
         </div>
     </div>
-    
     <script src="../../assets/js/tab.staff.js"></script>
+    <script src="jquery3.6"></script>
     <script>
         function fetchAndUpdateTickets() {
-            fetch('ticket-data')
-                .then(response => response.json())
-                .then(data => {
-                    // Open tickets
-                    const openBody = document.getElementById('open-tickets-body');
-                    openBody.innerHTML = data.open.map(row => `
-                        <tr>
-                            <td hidden>${row.date_posted}</td>
-                            <td>${row.ticket_num}</td>
-                            <td>${row.subject}</td>
-                            <td>${row.from}</td>
-                            <td>${row.priority}</td>
-                            <td>${row.schedule}</td>
-                            <td>${row.last_modified}</td>
-                            <td>${row.actions}</td>
-                        </tr>
-                    `).join('');
-
-                    // Overdue tickets
-                    const overdueBody = document.getElementById('overdue-tickets-body');
-                    overdueBody.innerHTML = data.overdue.map(row => `
-                        <tr>
-                            <td hidden>${row.date_posted}</td>
-                            <td>${row.ticket_num}</td>
-                            <td>${row.subject}</td>
-                            <td>${row.from}</td>
-                            <td>${row.priority}</td>
-                            <td>${row.schedule}</td>
-                            <td>${row.last_modified}</td>
-                            <td>${row.actions}</td>
-                        </tr>
-                    `).join('');
-
-                    // Closed tickets
-                    const closedBody = document.getElementById('closed-tickets-body');
-                    closedBody.innerHTML = data.closed.map(row => `
-                        <tr>
-                            <td hidden>${row.date_posted}</td>
-                            <td>${row.ticket_num}</td>
-                            <td>${row.subject}</td>
-                            <td>${row.from}</td>
-                            <td>${row.date_closed}</td>
-                            <td>${row.actions}</td>
-                        </tr>
-                    `).join('');
+                // Open tickets
+                var openTable = $('#opentkt_tbl').DataTable({
+                    ajax: {
+                        url: 'ticket-data',
+                        dataSrc: 'open'
+                    },
+                    columns: [
+                        { data: 'date_posted', visible: false },
+                        { data: 'ticket_num' },
+                        { data: 'subject' },
+                        { data: 'from' },
+                        { data: 'priority' },
+                        { data: 'schedule' },
+                        { data: 'last_modified' },
+                        { data: 'actions' }
+                    ],
+                    language: {
+                        emptyTable: "<i>No Available Data on this Table</i>"
+                    }
                 });
+
+                // Overdue tickets
+                var overdueTable = $('#overduetkt_tbl').DataTable({
+                    ajax: {
+                        url: 'ticket-data',
+                        dataSrc: 'overdue'
+                    },
+                    columns: [
+                        { data: 'date_posted', visible: false },
+                        { data: 'ticket_num' },
+                        { data: 'subject' },
+                        { data: 'from' },
+                        { data: 'priority' },
+                        { data: 'schedule' },
+                        { data: 'last_modified' },
+                        { data: 'actions' }
+                    ],
+                    language: {
+                        emptyTable: "<i>No Available Data on this Table</i>"
+                    }
+                });
+
+                // Closed tickets
+                var closeTable = $('#closetkt_tbl').DataTable({
+                    ajax: {
+                        url: 'ticket-data',
+                        dataSrc: 'closed'
+                    },
+                    columns: [
+                        { data: 'date_posted', visible: false },
+                        { data: 'ticket_num' },
+                        { data: 'subject' },
+                        { data: 'from' },
+                        { data: 'date_closed' },
+                        { data: 'actions' }
+                    ],
+                    language: {
+                        emptyTable: "<i>No Available Data on this Table</i>"
+                    }
+                });
+
+                // Auto-refresh every 2 seconds
+                setInterval(function() {
+                    openTable.ajax.reload(null, false); // false = keep current page
+                    overdueTable.ajax.reload(null, false);
+                    closeTable.ajax.reload(null, false);
+                }, 2000);
         }
-        setInterval(fetchAndUpdateTickets, 2000);
-        document.addEventListener('DOMContentLoaded', fetchAndUpdateTickets);
+
+        $(document).ready(function() {
+            fetchAndUpdateTickets();
+        });
+
+        // function fetchAndUpdateTickets() {
+        //     fetch('ticket-data')
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             // Open tickets
+        //             const openBody = document.getElementById('open-tickets-body');
+        //             if (data.open.length === 0) {
+        //                 openBody.innerHTML = '<tr><td colspan="8" class="text-center"><i>No Available Data on this Table</i></td></tr>';
+        //             } else {
+        //                 openBody.innerHTML = data.open.map(row => `
+        //                     <tr>
+        //                         <td hidden>${row.date_posted}</td>
+        //                         <td>${row.ticket_num}</td>
+        //                         <td>${row.subject}</td>
+        //                         <td>${row.from}</td>
+        //                         <td>${row.priority}</td>
+        //                         <td>${row.schedule}</td>
+        //                         <td>${row.last_modified}</td>
+        //                         <td>${row.actions}</td>
+        //                     </tr>
+        //                 `).join('');
+        //             }
+
+        //             // Overdue tickets
+        //             const overdueBody = document.getElementById('overdue-tickets-body');
+        //             if (data.overdue.length === 0) {
+        //                 overdueBody.innerHTML = '<tr><td colspan="8" class="text-center"><i>No Available Data on this Table</i></td></tr>';
+        //             } else {
+        //                 overdueBody.innerHTML = data.overdue.map(row => `
+        //                     <tr>
+        //                         <td hidden>${row.date_posted}</td>
+        //                         <td>${row.ticket_num}</td>
+        //                         <td>${row.subject}</td>
+        //                         <td>${row.from}</td>
+        //                         <td>${row.priority}</td>
+        //                         <td>${row.schedule}</td>
+        //                         <td>${row.last_modified}</td>
+        //                         <td>${row.actions}</td>
+        //                     </tr>
+        //                 `).join('');
+        //             }
+
+        //             // Closed tickets
+        //             const closedBody = document.getElementById('closed-tickets-body');
+        //             if (data.closed.length === 0) {
+        //                 closedBody.innerHTML = '<tr><td colspan="6" class="text-center"><i>No Available Data on this Table</i></td></tr>';
+        //             } else {
+        //                 closedBody.innerHTML = data.closed.map(row => `
+        //                     <tr>
+        //                         <td hidden>${row.date_posted}</td>
+        //                         <td>${row.ticket_num}</td>
+        //                         <td>${row.subject}</td>
+        //                         <td>${row.from}</td>
+        //                         <td>${row.date_closed}</td>
+        //                         <td>${row.actions}</td>
+        //                     </tr>
+        //                 `).join('');
+        //             }
+        //         });
+        // }
+        // setInterval(fetchAndUpdateTickets, 2000);
+        // document.addEventListener('DOMContentLoaded', fetchAndUpdateTickets);
     </script>
 <?php include('staff.footer.php'); ?>
