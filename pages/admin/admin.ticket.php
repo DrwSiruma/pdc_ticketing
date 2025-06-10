@@ -63,7 +63,7 @@
             <!-- Pending Tab -->
             <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel" aria-labelledby="ex-with-icons-tab-1">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-sm w-100" id="pendingtck_tbl">
+                    <table class="table table-bordered table-striped table-sm w-100" id="pending_tbl">
                         <thead>
                             <tr>
                                 <th>Post Date</th>
@@ -75,22 +75,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                foreach ($pending_tickets as $rows) {
-                                    $postDT = new DateTime($rows["date_posted"]);
-                            ?>
-                            <tr>
-                                <td><?php echo $postDT->format('m/d/Y - h:i A'); ?></td>
-                                <td style="font-weight: 500;"><?php echo $rows['ticket_num']; ?></td>
-                                <td><?php echo $rows['outlet_name']; ?></td>
-                                <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
-                                <?php echo $rows['designation'] == 1 ? "<td class='bg-info text-dark'>IT</td>" : "<td class='bg-warning text-dark'>Maintenance</td>"; ?>
-                                <td>
-                                    <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View Report"><i class="fas fa-eye"></i></a>
-                                    <!-- <a href="#" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a> -->
-                                </td>
-                            </tr>
-                            <?php } ?>
+                            <!-- DataTables will populate this via AJAX -->
                         </tbody>
                     </table>
                 </div>
@@ -98,7 +83,7 @@
             <!-- Open Tab -->
             <div class="tab-pane fade" id="ex-with-icons-tabs-2" role="tabpanel" aria-labelledby="ex-with-icons-tab-2">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-sm w-100" id="opentck_tbl">
+                    <table class="table table-bordered table-striped table-sm w-100" id="open_tbl">
                         <thead>
                             <tr>
                                 <th hidden>Post Date</th>
@@ -113,37 +98,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                foreach ($open_tickets as $rows) {
-                                    $postDT = new DateTime($rows["date_posted"]);
-                                    $modDT = new DateTime($rows["date_modified"]);
-                            ?>
-                            <tr>
-                                <td hidden><?php echo $postDT->format('m/d/Y - h:i A'); ?></td>
-                                <td><?php echo $rows['ticket_num']; ?></td>
-                                <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
-                                <td><?php echo $rows['outlet_name']; ?></td>
-                                <td><?php echo $rows['priority_type']; ?></td>
-                                <?php 
-                                    if ($rows['sched_end'] < date('Y-m-d H:i:s')) {
-                                        echo '<td class="text-danger">' . formatSchedule($rows['sched_start'], $rows['sched_end']) . '</td>';
-                                    } else {
-                                        echo '<td>' . formatSchedule($rows['sched_start'], $rows['sched_end']) . '</td>';
-                                    }
-                                ?>
-                                <td><?php echo $rows['staff_name']; ?></td>
-                                <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
-                                <td>
-                                    <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View Report"><i class="fas fa-eye"></i></a>
-                                    <?php if ($rows['rprt'] == 1) { ?>
-                                        <!-- <a href="view-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="View Report"><i class="fas fa-file"></i></a> -->
-                                        <a href="generate-pdf?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="Download Report"><i class="fas fa-download"></i></a>
-                                    <?php } elseif($rows['rprt'] == 0) { ?>
-                                        <a href="edit-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
-                                    <?php } ?>
-                                </td>
-                            </tr>
-                            <?php } ?>
+                            <!-- DataTables will populate this via AJAX -->
                         </tbody>
                     </table>
                 </div>
@@ -151,7 +106,7 @@
             <!-- Overdue Tab -->
             <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel" aria-labelledby="ex-with-icons-tab-3">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-sm w-100" id="overdue_tbl">
+                    <table class="table table-bordered table-striped table-sm w-100" id="overdues_tbl">
                         <thead>
                             <tr>
                                 <th hidden>Post Date</th>
@@ -166,37 +121,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                foreach ($overdue_tickets as $rows) {
-                                    $postDT = new DateTime($rows["date_posted"]);
-                                    $modDT = new DateTime($rows["date_modified"]);
-                            ?>
-                            <tr>
-                                <td hidden><?php echo $postDT->format('m/d/Y - h:i A'); ?></td>
-                                <td><?php echo $rows['ticket_num']; ?></td>
-                                <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
-                                <td><?php echo $rows['outlet_name']; ?></td>
-                                <td><?php echo $rows['priority_type']; ?></td>
-                                <?php 
-                                    if ($rows['sched_end'] < date('Y-m-d H:i:s')) {
-                                        echo '<td class="text-danger">' . formatSchedule($rows['sched_start'], $rows['sched_end']) . '</td>';
-                                    } else {
-                                        echo '<td>' . formatSchedule($rows['sched_start'], $rows['sched_end']) . '</td>';
-                                    }
-                                ?>
-                                <td><?php echo $rows['staff_name']; ?></td>
-                                <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
-                                <td>
-                                    <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View"><i class="fas fa-eye"></i></a>
-                                    <?php if ($rows['rprt'] == 1) { ?>
-                                        <!-- <a href="view-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="View Report"><i class="fas fa-file"></i></a> -->
-                                        <a href="generate-pdf?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="Download Report"><i class="fas fa-download"></i></a>
-                                    <?php } elseif($rows['rprt'] == 0) { ?>
-                                        <a href="edit-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
-                                    <?php } ?>
-                                </td>
-                            </tr>
-                            <?php } ?>
+                            <!-- DataTables will populate this via AJAX -->
                         </tbody>
                     </table>
                 </div>
@@ -204,7 +129,7 @@
             <!-- Closed Tab -->
             <div class="tab-pane fade" id="ex-with-icons-tabs-4" role="tabpanel" aria-labelledby="ex-with-icons-tab-4">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-sm w-100" id="closetck_tbl">
+                    <table class="table table-bordered table-striped table-sm w-100" id="close_tbl">
                         <thead>
                             <tr>
                                 <th hidden>Post Date</th>
@@ -217,29 +142,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                foreach ($closed_tickets as $rows) {
-                                    $postDT = new DateTime($rows["date_posted"]);
-                                    $modDT = new DateTime($rows["date_closed"]);
-                            ?>
-                            <tr>
-                                <td hidden><?php echo $postDT->format('m/d/Y - h:i A'); ?></td>
-                                <td><?php echo $rows['ticket_num']; ?></td>
-                                <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
-                                <td><?php echo $rows['outlet_name']; ?></td>
-                                <td><?php echo $rows['staff_name']; ?></td>
-                                <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
-                                <td>
-                                    <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View Report"><i class="fas fa-eye"></i></a>
-                                    <?php if ($rows['rprt'] == 1) { ?>
-                                        <!-- <a href="view-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="View Report"><i class="fas fa-file"></i></a> -->
-                                        <a href="generate-pdf?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-primary" title="Download Report"><i class="fas fa-download"></i></a>
-                                    <?php } elseif($rows['rprt'] == 0) { ?>
-                                        <a href="edit-report?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>
-                                    <?php } ?>
-                                </td>
-                            </tr>
-                            <?php } ?>
+                            <!-- DataTables will populate this via AJAX -->
                         </tbody>
                     </table>
                 </div>
@@ -247,7 +150,7 @@
             <!-- Reject Tab -->
             <div class="tab-pane fade" id="ex-with-icons-tabs-5" role="tabpanel" aria-labelledby="ex-with-icons-tab-5">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-sm w-100" id="rejtck_tbl">
+                    <table class="table table-bordered table-striped table-sm w-100" id="reject_tbl">
                         <thead>
                             <tr>
                                 <th>Post Date</th>
@@ -260,23 +163,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                foreach ($rejected_tickets as $rows) {
-                                    $postDT = new DateTime($rows["date_posted"]);
-                                    $modDT = new DateTime($rows["date_modified"]);
-                            ?>
-                            <tr>
-                                <td><?php echo $postDT->format('m/d/Y - h:i A'); ?></td>
-                                <td><?php echo $rows['ticket_num']; ?></td>
-                                <td><?php echo $rows['categ_name'] . ' - ' . $rows['item_name']; ?></td>
-                                <td><?php echo $rows['outlet_name']; ?></td>
-                                <td><?php echo $rows['remark']; ?></td>
-                                <td><?php echo $modDT->format('m-d-Y - h:i A'); ?></td>
-                                <td>
-                                    <a href="view-ticket?id=<?php echo $rows['ticket_num']; ?>" class="btn-sm btn-secondary" title="View"><i class="fas fa-eye"></i> View</a>
-                                </td>
-                            </tr>
-                            <?php } ?>
+                            <!-- DataTables will populate this via AJAX -->
                         </tbody>
                     </table>
                 </div>
@@ -286,5 +173,135 @@
 
     </div>
 
+<script src="jquery3.6"></script>
 <script src="../../assets/js/tab.admin.js"></script>
+<script>
+    function fetchAndUpdateTickets() {
+        // Pending Tickets
+        var pendingTable = $('#pending_tbl').DataTable({
+            ajax: {
+                url: 'admin.ticket-data.php',
+                data: { type: 'pending' },
+                dataSrc: 'pending'
+            },
+            columns: [
+                { data: 'date_posted' },
+                { data: 'ticket_num' },
+                { data: 'from' },
+                { data: 'subject' },
+                { data: 'designation' },
+                { data: 'actions' }
+            ],
+            language: {
+                emptyTable: '<i>No Available Data on this Table</i>'
+            },
+            order: [[0, 'desc']]
+        });
+
+        // Open Tickets
+        var openTable = $('#open_tbl').DataTable({
+            ajax: {
+                url: 'admin.ticket-data.php',
+                data: { type: 'open' },
+                dataSrc: 'open'
+            },
+            columns: [
+                { data: 'date_posted', visible: false },
+                { data: 'ticket_num' },
+                { data: 'subject' },
+                { data: 'from' },
+                { data: 'priority' },
+                { data: 'schedule' },
+                { data: 'assigned_to' },
+                { data: 'last_modified' },
+                { data: 'actions' }
+            ],
+            language: {
+                emptyTable: '<i>No Available Data on this Table</i>'
+            },
+            order: [[0, 'desc']]
+        });
+
+        // Overdue Tickets
+        var overdueTable = $('#overdues_tbl').DataTable({
+            ajax: {
+                url: 'admin.ticket-data.php',
+                data: { type: 'overdue' },
+                dataSrc: 'overdue'
+            },
+            columns: [
+                { data: 'date_posted', visible: false },
+                { data: 'ticket_num' },
+                { data: 'subject' },
+                { data: 'from' },
+                { data: 'priority' },
+                { data: 'schedule' },
+                { data: 'assigned_to' },
+                { data: 'last_modified' },
+                { data: 'actions' }
+            ],
+            language: {
+                emptyTable: '<i>No Available Data on this Table</i>'
+            },
+            order: [[0, 'desc']]
+        });
+
+        // Closed Tickets
+        var closeTable = $('#close_tbl').DataTable({
+            ajax: {
+                url: 'admin.ticket-data.php',
+                data: { type: 'closed' },
+                dataSrc: 'closed'
+            },
+            columns: [
+                { data: 'date_posted', visible: false },
+                { data: 'ticket_num' },
+                { data: 'subject' },
+                { data: 'from' },
+                { data: 'assigned_to' },
+                { data: 'date_closed' },
+                { data: 'actions' }
+            ],
+            language: {
+                emptyTable: '<i>No Available Data on this Table</i>'
+            },
+            order: [[0, 'desc']]
+        });
+
+        // Rejected Tickets
+        var rejectTable = $('#reject_tbl').DataTable({
+            ajax: {
+                url: 'admin.ticket-data.php',
+                data: { type: 'rejected' },
+                dataSrc: 'rejected'
+            },
+            columns: [
+                { data: 'date_posted' },
+                { data: 'ticket_num' },
+                { data: 'subject' },
+                { data: 'from' },
+                { data: 'remarks' },
+                { data: 'last_modified' },
+                { data: 'actions' }
+            ],
+            language: {
+                emptyTable: '<i>No Available Data on this Table</i>'
+            },
+            order: [[0, 'desc']]
+        });
+    
+        // Auto-refresh every 2 seconds
+        setInterval(function() {
+            pendingTable.ajax.reload(null, false);
+            openTable.ajax.reload(null, false);
+            overdueTable.ajax.reload(null, false);
+            closeTable.ajax.reload(null, false);
+            rejectTable.ajax.reload(null, false);
+        }, 2000);
+    }
+
+    $(document).ready(function() {
+        fetchAndUpdateTickets();
+    });
+</script>
 <?php include('admin.footer.php'); ?>

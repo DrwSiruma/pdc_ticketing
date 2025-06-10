@@ -131,6 +131,12 @@ if (strpos($page, 'admin/') === 0) {
             case 'notif-action':
                 include 'admin/admin.notif-action.php';
                 break;
+            case 'ticket-data':
+                include 'admin/admin.ticket-data.php';
+                break;
+            case 'jquery3.6':
+                include '../assets/js/jquery-3.6.0.min.js';
+                break;
             case 'logout':
                 include '../includes/logout.php';
                 break;
@@ -185,6 +191,9 @@ if (strpos($page, 'admin/') === 0) {
                 break;
             case 'mark-all-read':
                 include 'user/process.mark-all-read.php';
+                break;
+            case 'jquery3.6':
+                include '../assets/js/jquery-3.6.0.min.js';
                 break;
             case 'logout':
                 include '../includes/logout.php';
