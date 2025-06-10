@@ -24,28 +24,7 @@ include('staff.header.php');
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <?php
-                                //if (mysqli_num_rows($notif_qry) > 0) {
-                                //    mysqli_data_seek($notif_qry, 0); // Reset pointer to start
-                                //    while($notif_row=mysqli_fetch_array($notif_qry)){
-                                //        if ($notif_row['status']=='1') {
-                            ?>
-                            <tr style="background-color: rgba(0, 0, 0, .03);">
-                                <td><?php // echo $notif_row['notif_msg']; ?></td>
-                                <td><a href="mark-read?id=<?php // echo $notif_row['id']; ?>" class="text-success" title="read"><i class="fas fa-check"></i></a></td>
-                            </tr>
-                            <?php // } else{ ?>
-                                <tr>
-                                    <td><?php // echo $notif_row['notif_msg']; ?></td>
-                                    <td></td>
-                                </tr>
-                            <?php 
-                                //         }
-                                //     }
-                                // } else {
-                                //     echo "<tr><td colspan='2'><i>No notifications yet.</i></td></tr>";
-                                // }
-                            ?> -->
+                            <!--  -->
                         </tbody>
                     </table>
                 </div>
