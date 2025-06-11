@@ -49,11 +49,11 @@
                                     <td>
                                         <a class="btn btn-sm btn-outline-dark" href="edit-user?id=<?php echo $rows['id']; ?>" title="Edit User"><i class="fas fa-user-edit"></i></a>
                                         <?php if ($rows['status'] == 'Active') { ?>
-                                            <a class="btn btn-sm btn-outline-dark" href="user-status?id=<?php echo $rows['id']; ?>&status=Inactive" title="Deactivate User">
+                                            <a class="btn btn-sm bg-danger text-light btn-outline-dark" href="user-status?id=<?php echo $rows['id']; ?>&status=Inactive" title="Deactivate User">
                                                 <i class="fas fa-user-times"></i>
                                             </a>
                                         <?php } else { ?>
-                                            <a class="btn btn-sm btn-outline-dark" href="user-status?id=<?php echo $rows['id']; ?>&status=Active" title="Activate User">
+                                            <a class="btn btn-sm bg-success text-light btn-outline-dark" href="user-status?id=<?php echo $rows['id']; ?>&status=Active" title="Activate User">
                                                 <i class="fas fa-user-check"></i>
                                             </a>
                                         <?php } ?>
