@@ -13,7 +13,11 @@
             <span id="notif-indicator" class="position-absolute" style="display:none; top: 25%; right: 5%; width: 12px; height: 12px; background-color: red; border-radius: 50%; border: 2px solid white;"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="notifDropdown" style="min-width: 350px; max-height: 400px; overflow-y: auto;">
-            <h6 class="dropdown-header text-dark">Notifications</h6>
+            <div class="d-flex justify-content-between align-items-center px-3 py-2">
+                <h3 class="dropdown-header text-dark p-0 m-0">Notifications</h3>
+                <button class="btn btn-link btn-sm text-primary p-0" id="notif-mark-all-top" style="font-size: 0.7rem;">Mark all as read</button>
+            </div>
+            <div class="dropdown-divider"></div>
             <div id="notif-container">
                 <div class="text-center small text-gray-500 py-2">Loading...</div>
             </div>
@@ -21,6 +25,10 @@
             <button class="dropdown-item text-center small text-primary" id="notif-mark-all">Mark all as read</button>
         </div>
     </li>
+    <style>
+        .notif-bg-even { background-color: #f8f9fa; }
+        .notif-bg-odd { background-color: #e9ecef; }
+    </style>
     <script>
         function loadNotifications() {
             fetch('notif-check')
@@ -35,9 +43,9 @@
                     }
                     if (data.notifications && data.notifications.length > 0) {
                         container.innerHTML = '';
-                        data.notifications.forEach(function(notif) {
+                        data.notifications.forEach(function(notif, idx) {
                             const notifItem = document.createElement('div');
-                            notifItem.className = 'dropdown-item d-flex align-items-center justify-content-between';
+                            notifItem.className = 'dropdown-item d-flex align-items-center justify-content-between ' + (idx % 2 === 0 ? 'notif-bg-even' : 'notif-bg-odd');
                             notifItem.innerHTML = `
                                 <div>
                                     <div class="small text-gray-500">${notif.time}</div>
