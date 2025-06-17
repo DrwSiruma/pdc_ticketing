@@ -1,6 +1,8 @@
 <?php 
 include('admin.header.php');
 $ticket_num = $_GET['id'];
+$query = mysqli_query($conn, "SELECT r.*, t.designation FROM `tbl_ticketreport` r LEFT JOIN `tbl_tickets` t ON r.ticket_num = t.ticket_num WHERE r.ticket_num = '$ticket_num'");
+$ticket = mysqli_fetch_array($query);
 ?>
 
 <div class="container-fluid">
@@ -13,9 +15,15 @@ $ticket_num = $_GET['id'];
         </div>
     <?php } ?>
 
-    <a href="generate-pdf?id=<?php echo $ticket_num; ?>" class="btn btn-danger">
-        <i class="fas fa-file-pdf"></i> Generate PDF
-    </a>
+    <?php if ($ticket['designation'] == 1) { ?>
+        <a href="generate-it-report?id=<?php echo $ticket_num; ?>" class="btn btn-danger">
+            <i class="fas fa-file-pdf"></i> Generate PDF
+        </a>
+    <?php } elseif ($ticket['designation'] == 2) { ?>
+        <a href="generate-maintenance-report?id=<?php echo $ticket_num; ?>" class="btn btn-danger">
+            <i class="fas fa-file-pdf"></i> Generate PDF
+        </a>
+    <?php } ?>
 </div>
 
 <?php include('admin.footer.php'); ?>
