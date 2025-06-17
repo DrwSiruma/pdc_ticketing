@@ -63,13 +63,17 @@ $tickets = $stmt->get_result();
 while ($row = $tickets->fetch_assoc()) {
     $action = '<a href="view-ticket?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-secondary" title="View Report"><i class="fas fa-eye"></i></a>';
     if ($row['rprt'] == 1) {
-         if ($row['designation'] == 1) {
+        if ($row['designation'] == 1) {
             $action .= ' <a href="generate-it-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-primary" title="Download IT Report"><i class="fas fa-download"></i></a>';
         } elseif ($row['designation'] == 2) {
             $action .= ' <a href="generate-maintenance-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-primary" title="Download Maintenance Report"><i class="fas fa-download"></i></a>';
         }
     } elseif ($row['rprt'] == 0) {
-        $action .= ' <a href="edit-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+        if ($row['designation'] == 1) {
+            $action .= ' <a href="edit-report-it?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+        } elseif ($row['designation'] == 2) {
+            $action .= ' <a href="edit-report-mt?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+        }
     }
     $open[] = [
         'date_posted' => '<span hidden>' . date('m/d/Y - h:i A', strtotime($row['date_posted'])) . '</span>',
@@ -105,7 +109,11 @@ while ($row = $tickets->fetch_assoc()) {
             $action .= ' <a href="generate-maintenance-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-primary" title="Download Maintenance Report"><i class="fas fa-download"></i></a>';
         }
     } elseif ($row['rprt'] == 0) {
-        $action .= ' <a href="edit-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+        if ($row['designation'] == 1) {
+            $action .= ' <a href="edit-report-it?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+        } elseif ($row['designation'] == 2) {
+            $action .= ' <a href="edit-report-mt?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+        }
     }
     $overdue[] = [
         'date_posted' => '<span hidden>' . date('m/d/Y - h:i A', strtotime($row['date_posted'])) . '</span>',
@@ -141,7 +149,11 @@ while ($row = $tickets->fetch_assoc()) {
             $action .= ' <a href="generate-maintenance-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-primary" title="Download Maintenance Report"><i class="fas fa-download"></i></a>';
         }
     } elseif ($row['rprt'] == 0) {
-        $action .= ' <a href="edit-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+        if ($row['designation'] == 1) {
+            $action .= ' <a href="edit-report-it?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+        } elseif ($row['designation'] == 2) {
+            $action .= ' <a href="edit-report-mt?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+        }
     }
     $closed[] = [
         'date_posted' => '<span hidden>' . date('m/d/Y - h:i A', strtotime($row['date_posted'])) . '</span>',
