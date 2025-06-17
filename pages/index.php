@@ -232,6 +232,12 @@ if (strpos($page, 'admin/') === 0) {
             case 'edit-report':
                 include 'staff/staff.edit-report.php';
                 break;
+            case 'generate-it-report':
+                include 'staff/staff.generate-report.php';
+                break;
+            case 'generate-maintenance-report':
+                include 'staff/staff.generate-report-m.php';
+                break;
             case 'mark-read':
                 include 'staff/process.mark-read.php';
                 break;

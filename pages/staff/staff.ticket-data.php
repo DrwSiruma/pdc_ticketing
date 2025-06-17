@@ -104,13 +104,21 @@ function actionButtons($row, $closed = false) {
     $btns = '<a href="view-ticket?id='.$row['ticket_num'].'" class="btn-sm btn-secondary" title="View Report"><i class="fas fa-eye"></i></a> ';
     if (!$closed) {
         if ($row['rprt'] == 1) {
-            $btns .= '<a href="generate-pdf?id='.$row['ticket_num'].'" class="btn-sm btn-primary" title="Download Report"><i class="fas fa-download"></i></a>';
+            if ($row['designation'] == 1) {
+                $btns .= ' <a href="generate-it-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-primary" title="Download IT Report"><i class="fas fa-download"></i></a>';
+            } elseif ($row['designation'] == 2) {
+                $btns .= ' <a href="generate-maintenance-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-primary" title="Download Maintenance Report"><i class="fas fa-download"></i></a>';
+            }
         } elseif ($row['rprt'] == 0) {
             $btns .= '<a href="edit-report?id='.$row['ticket_num'].'" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
         }
     } else {
         if ($row['rprt'] == 1) {
-            $btns .= '<a href="generate-pdf?id='.$row['ticket_num'].'" class="btn-sm btn-primary" title="Download Report"><i class="fas fa-download"></i></a>';
+            if ($row['designation'] == 1) {
+                $btns .= ' <a href="generate-it-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-primary" title="Download IT Report"><i class="fas fa-download"></i></a>';
+            } elseif ($row['designation'] == 2) {
+                $btns .= ' <a href="generate-maintenance-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-primary" title="Download Maintenance Report"><i class="fas fa-download"></i></a>';
+            }
         } elseif ($row['rprt'] == 0) {
             $btns .= '<a href="edit-report?id='.$row['ticket_num'].'" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
         }
