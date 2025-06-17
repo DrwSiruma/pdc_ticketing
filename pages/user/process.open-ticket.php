@@ -116,8 +116,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->execute()) {
         $user_id = $_SESSION['id'];
+        $user_name = $_SESSION['name'];
         log_activity($conn, $user_id, "Open new ticket #: $ticketnum", "Ticket");
         notifications($conn, "You have successfully created ticket #: $ticketnum", $user_id);
+        notifications($conn, "$user_name created ticket #: $ticketnum", '1');
 
         $_SESSION['success'] = "Successful.";
         header("Location: ticket?id=$ticketnum");
