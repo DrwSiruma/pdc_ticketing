@@ -2,7 +2,7 @@
         aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">   
-            <form method="post" action="resched-ticket?id=<?php echo $ticket_num; ?>&user=<?php echo $ticket_row['outlet']; ?>">
+            <form method="post" action="resched-ticket?id=<?php echo $ticket_num; ?>&user=<?php echo $ticket_row['outlet']; ?>" onsubmit="return setFinalRReason()">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Re-Schedule Ticket #<?php echo $ticket_num; ?></h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">

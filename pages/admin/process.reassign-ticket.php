@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: view-ticket?id=$ticket_num");
         exit();
     } else {
-        $final_remarks = "Re-assigned to: $rasgn_to. Reason: $remarks";
+        $final_remarks = "Re-assigned to: $name_val. Reason: $remarks";
         // Update ticket in the database
         $sql = "UPDATE tbl_tickets SET remark = ?, assigned = ?, date_modified = NOW() WHERE ticket_num = ?";
         $stmt = $conn->prepare($sql);
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             notifications($conn, "You have a new assigned ticket #: $ticket_num, See it through the dashboard", $rasgn_to);
             ticket_report($conn, $rasgn_to, $name_val, $ticket_num);
 
-            $_SESSION['success'] = "Ticket re-scheduled successfully.";
+            $_SESSION['success'] = "Ticket re-assigned successfully.";
             header("Location: view-ticket?id=$ticket_num");
             exit();
         } else {

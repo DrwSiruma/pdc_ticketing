@@ -83,3 +83,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+function setFinalRReason() {
+    var reasonSelect = document.getElementById("rschdReason");
+    var otherRReasonInput = document.getElementById("otherRReason");
+    var finalRReasonInput = document.getElementById("finalRReason");
+
+    if (!reasonSelect || !finalRReasonInput) return true; // allow submit if not present
+
+    if (reasonSelect.value == "3" && otherRReasonInput) {
+        finalRReasonInput.value = otherRReasonInput.value.trim();
+    } else {
+        finalRReasonInput.value = reasonSelect.value;
+    }
+    // Prevent submit if required fields are empty
+    if (!finalRReasonInput.value) {
+        alert("Please specify a reason for re-schedule.");
+        return false;
+    }
+    return true;
+}

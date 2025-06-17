@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query = "UPDATE tbl_ticketreport SET 
         time_in = ?, time_out = ?, findings = ?, action = ?, diagnosis = ?, 
         recom = ?, fn_client = ?, signature_client = ?, signature_personnel = ?, 
-        report_remarks = ?" . ($action_type === 'finish' ? ", status = 1" : "") . "
+        report_remarks = ?, modify_date = NOW(6)" . ($action_type === 'finish' ? ", status = 1, posted_date = NOW(6)" : "") . "
         WHERE ticket_num = ?";
     
     $stmt = $conn->prepare($query);
