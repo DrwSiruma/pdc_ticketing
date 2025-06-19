@@ -1,166 +1,216 @@
-<?php
-ini_set('memory_limit', '512M');
-require_once('../assets/vendor/tcpdf/tcpdf.php');
-include('../includes/connection.php');
+<?php 
+    include('admin.header.php');
+    $ticket_num = $_GET['id'];
+    $ticket_qry = mysqli_query($conn, "SELECT tr.*, t.sched_end FROM tbl_tickets t LEFT JOIN tbl_ticketreport tr ON t.ticket_num = tr.ticket_num WHERE tr.ticket_num = '$ticket_num'");
+    $ticket_row = mysqli_fetch_array($ticket_qry);
+    $ticket_date = new DateTime($ticket_row['ticket_date']);
+?>
+    <div class="container-fluid">
+        <?php if (!empty($error)) : ?>
+            <div class="alert alert-danger"><?php echo $error; ?></div>
+        <?php endif; ?>
+        <?php if (!empty($success)) : ?>
+            <div class="alert alert-success"><?php echo $success; ?></div>
+        <?php endif; ?>
+        <form method="post" id="ticketForm" action="update-treport?id=<?php echo $ticket_num; ?>" enctype="multipart/form-data">
+            <div class="report-container">
+                <div class="report-header">
+                    <h5 class="mb-0">IT TICKET SERVICE REPORT</h5>
+                </div>
 
-$ticket_num = $_GET['id'];
-$query = mysqli_query($conn, "SELECT r.*, t.designation FROM `tbl_ticketreport` r LEFT JOIN `tbl_tickets` t ON r.ticket_num = t.ticket_num WHERE r.ticket_num = '$ticket_num'");
-$ticket = mysqli_fetch_array($query);
+                <div class="report-section">
+                    <div class="report-section-header">SERVICE DETAILS</div>
+                    <div class="report-section-body">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Establishment:</label>
+                                    <input type="text" class="form-control" value="<?php echo !empty($ticket_row['outlet_name']) ? $ticket_row['outlet_name'] : ''; ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Date:</label>
+                                    <input type="date" class="form-control" value="<?php echo !empty($ticket_row['ticket_date']) ? $ticket_date->format('Y-m-d') : ''; ?>" readonly>
+                                </div>
+                            </div>
+                        </div>
 
-// Format Time In and Time Out to 12-hour format with AM/PM
-$time_in = !empty($ticket['time_in']) ? date("h:i A", strtotime($ticket['time_in'])) : '';
-$time_out = !empty($ticket['time_out']) ? date("h:i A", strtotime($ticket['time_out'])) : '';
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Serviced By:</label>
+                                    <input type="text" class="form-control" value="<?php echo !empty($ticket_row['emp_name']) ? $ticket_row['emp_name'] : ''; ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Ticket No.:</label>
+                                    <input type="text" class="form-control" value="<?php echo !empty($ticket_row['ticket_num']) ? $ticket_row['ticket_num'] : ''; ?>" readonly>
+                                </div>
+                            </div>
+                        </div>
 
-$impactPath = '../assets/fonts/impact.ttf';
-$impact = TCPDF_FONTS::addTTFfont($impactPath, 'TrueTypeUnicode', '', 96);
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Time In:</label>
+                                    <input type="time" class="form-control" name="time_in" value="<?php echo !empty($ticket_row['time_in']) ? date('H:i', strtotime($ticket_row['time_in'])) : ''; ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Time Out:</label>
+                                    <input type="time" class="form-control" name="time_out" value="<?php echo !empty($ticket_row['time_out']) ? date('H:i', strtotime($ticket_row['time_out'])) : ''; ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-// Extend TCPDF to Add Borders
-class CustomPDF extends TCPDF {
-    public function Header() {
-        // Outer Border (closer to the page edges)
-        // $this->SetLineStyle(array('width' => 0, 'color' => array(0, 0, 0)));
-        $this->SetLineStyle(array('width' => 0, 'color' => array(255, 255, 255)));
-        $this->Rect(7, 7, $this->getPageWidth() - 14, $this->getPageHeight() - 14);
+                <div class="report-section">
+                    <div class="report-section-header">DIAGNOSTICS AND RECOMMENDATION</div>
+                    <div class="report-section-body">
+                        <div class="form-group">
+                            <label>Subject:</label>
+                            <input type="text" class="form-control" value="<?php echo !empty($ticket_row['subj']) ? $ticket_row['subj'] : ''; ?>" name="subject" readonly>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Findings:</label>
+                                    <textarea class="form-control" rows="6" name="findings"><?php echo !empty($ticket_row['findings']) ? $ticket_row['findings'] : ''; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Action Taken:</label>
+                                    <textarea class="form-control" rows="6" name="action"><?php echo !empty($ticket_row['action']) ? $ticket_row['action'] : ''; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Diagnosis:</label>
+                                    <textarea class="form-control" rows="6" name="diagnosis"><?php echo !empty($ticket_row['diagnosis']) ? $ticket_row['diagnosis'] : ''; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Recommendation(s):</label>
+                                    <textarea class="form-control" rows="6" name="recom"><?php echo !empty($ticket_row['recom']) ? $ticket_row['recom'] : ''; ?></textarea> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <div class="report-section-header">CLIENT ACKNOWLEDGEMENT</div>
+                    <div class="report-section-body">
+                        <p class="text-center">The Authorized Signature below indicates that the service requested (technical support, service, or replacement of parts) indicated above was completed and in good working.</p>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Full Name:</label>
+                                    <input type="text" class="form-control" name="fn_client" value="<?php echo !empty($ticket_row['fn_client']) ? $ticket_row['fn_client'] : ''; ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Signature:</label>
+                                    <canvas id="clientSignature" width="400" height="150" style="border: 1px solid #ccc;"></canvas>
+                                    <br>
+                                    <button type="button" class="btn btn-secondary" id="clearSignature">Clear</button>
+                                    <input type="hidden" id="signatureInput" name="signature_client" value="<?php echo !empty($ticket_row['signature_client']) ? $ticket_row['signature_client'] : ''; ?>">
+                                </div>
+                                <script>
+                                    // If signature exists, render it on the canvas
+                                    const clientSignatureData = '<?php echo !empty($ticket_row['signature_client']) ? $ticket_row['signature_client'] : ''; ?>';
+                                    if (clientSignatureData) {
+                                        const clientCanvas = document.getElementById('clientSignature');
+                                        const clientCtx = clientCanvas.getContext('2d');
+                                        const clientImg = new Image();
+                                        clientImg.onload = () => {
+                                            clientCtx.drawImage(clientImg, 0, 0);
+                                        };
+                                        clientImg.src = clientSignatureData;
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <div class="report-section-header">SERVICE PERSONNEL ACKNOWLEDGEMENT</div>
+                    <div class="report-section-body">
+                        <p class="text-center">I confirm that all reported issues were addressed, and the system is in working condition as of service completion. Recommendations are noted above.</p>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Full Name:</label>
+                                    <input type="text" class="form-control" name="fn_personnel" value="<?php echo !empty($ticket_row['emp_name']) ? $ticket_row['emp_name'] : ''; ?>" readonly>
+                                    <input type="hidden" class="form-control" value="<?php echo !empty($ticket_row['emp_id']) ? $ticket_row['emp_id'] : ''; ?>" name="emp_id" id="emp_id">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Signature:</label>
+                                    <canvas id="personnelSignature" width="400" height="150" style="border: 1px solid #ccc;"></canvas>
+                                    <br>
+                                    <button type="button" class="btn btn-secondary" id="clearPersonnelSignature">Clear</button>
+                                    <input type="hidden" id="signaturePersonnelInput" name="signature_personnel" value="<?php echo !empty($ticket_row['signature_personnel']) ? $ticket_row['signature_personnel'] : ''; ?>">
+                                </div>
+                                <script>
+                                    // If signature exists, render it on the canvas
+                                    const personnelSignatureData = '<?php echo !empty($ticket_row['signature_personnel']) ? $ticket_row['signature_personnel'] : ''; ?>';
+                                    if (personnelSignatureData) {
+                                        const personnelCanvas = document.getElementById('personnelSignature');
+                                        const personnelCtx = personnelCanvas.getContext('2d');
+                                        const personnelImg = new Image();
+                                        personnelImg.onload = () => {
+                                            personnelCtx.drawImage(personnelImg, 0, 0);
+                                        };
+                                        personnelImg.src = personnelSignatureData;
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+                    $currentDateTime = new DateTime();
+                    $schedEndDateTime = new DateTime($ticket_row['sched_end']);
+                    if ($schedEndDateTime < $currentDateTime) {
+                        echo '<input type="hidden" name="overdue" value="1">';
+                    } else {
+                        echo '<input type="hidden" name="overdue" value="0">';
+                    }
+                ?>
+
+                <div class="report-footer">
+                    <input type="hidden" name="action_type" id="actionType" value="">
+                    <a href="ticket?tab=open" class="btn btn-secondary">Cancel</a>
+                    <button type="button" class="btn btn-primary" id="saveReportBtn">
+                        <i class="fas fa-save"></i>&nbsp;Save Report
+                    </button>
+                    <button type="button" class="btn btn-success" id="finishReportBtn">
+                        <i class="fas fa-check"></i>&nbsp;Finish Report
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+<script src="../../assets/js/loader.js"></script>
+<script src="../../assets/js/sign-pad.js"></script>
+<?php 
+    $filesToInclude = [
+        'admin.finish-modal.php',
+        'admin.footer.php'
+    ];
+    
+    foreach ($filesToInclude as $file) {
+        include($file);
     }
-}
-
-// Create TCPDF Object
-$pdf = new CustomPDF('P', 'mm', 'A4', true, 'UTF-8', false);
-$pdf->SetCreator('PDC System');
-$pdf->SetTitle('Service Report');
-$pdf->SetMargins(7, 7);
-$pdf->AddPage();
-
-// --- PDC HEADER ---
-$pdf->Image('../img/logo_blck2.jpg', 7, 7, 39, 0, '', '', '', false, 300, '', false, false, 0, false, false, false);
-
-// Main header (left-aligned)
-$pdf->SetXY(49, 6);
-$pdf->SetFont($impact, 'B', 29);
-$pdf->Cell(0, 6, 'PANDA DEVELOPMENT CORPORATION', 0, 1, 'L', 0, '', 0);
-$pdf->SetXY(49, 18);
-$pdf->SetFont('helvetica', '', 11);
-$pdf->Cell(0, 5, 'BUILDING 2-A PHILCREST I COMPOUND KM 23 WEST SERVICE ROAD', 0, 1, 'L', 0, '', 0);
-$pdf->SetXY(49, 23);
-$pdf->Cell(0, 5, 'BO. CUPANG, MUNTINLUPA CITY • TEL NOS: 846-1806 / 846-2961 / 846-0204', 0, 1, 'L', 0, '', 0);
-
-// Ticket number (top-right, fixed position, does not affect layout)
-$pdf->SetFont('helvetica', 'B', 12);
-$pdf->SetTextColor(255, 0, 0); // Set font color to red
-$pdf->SetXY(154, 29);
-$pdf->Cell(50, 8, $ticket['ticket_num'], 0, 0, 'R', 0, '', 0);
-$pdf->SetTextColor(0, 0, 0); // Reset font color to black (optional)
-
-// Continue with the rest of the header
-$pdf->SetFont('helvetica', 'B', 11);
-$pdf->SetXY(7, 30);
-$pdf->Cell(0, 6, 'Technical Service Personnel', 0, 1, 'C', 0, '', 0);
-$pdf->SetFont('helvetica', 'B', 13);
-$pdf->Cell(0, 6, 'SERVICE REPORT', 0, 1, 'C', 0, '', 0);
-$pdf->Ln(2);
-
-// --- OUTLET/CONCERN DATE/CONCERN ---
-$pdf->SetXY(6, 44);
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(20, 7, 'OUTLET:', 0, 0, 'L');
-$pdf->SetFont('helvetica', '', 10);
-$pdf->Cell(80, 7, isset($ticket['outlet_name']) ? $ticket['outlet_name'] : '', 'B', 0, 'L', false);
-
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(34, 7, 'CONCERN DATE:', 0, 0, 'L');
-$pdf->SetFont('helvetica', '', 10);
-$pdf->Cell(63, 7, isset($ticket['ticket_date']) ? $ticket['ticket_date'] : '', 'B', 1, 'L', false);
-
-$pdf->SetXY(6, 52);
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(20, 7, 'CONCERN:', 0, 0, 'L');
-$pdf->SetFont('helvetica', '', 10);
-$pdf->Cell(177, 7, isset($ticket['subj']) ? $ticket['subj'] : '', 'B', 1, 'L', false);
-
-$pdf->Cell(196, 7, '', 'B', 1, 'L');
-// $pdf->Line(12, $pdf->GetY(), 198, $pdf->GetY());
-$pdf->Ln(6);
-
-// --- DIAGNOSIS & ROOT CAUSE ---
-$yStart = $pdf->GetY();
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->SetXY(7, $yStart);
-$pdf->SetFillColor(220,220,220);
-
-// Define cell widths and spacing
-$cellWidth = 95; // width for each cell
-$cellSpacing = 6; // space between cells
-
-// Diagnosis header (left)
-$pdf->Cell($cellWidth, 5, 'DIAGNOSIS', 1, 0, 'C', true);
-// Space between cells
-$pdf->Cell($cellSpacing, 7, '', 0, 0);
-// Root Cause header (right)
-$pdf->Cell($cellWidth, 5, 'ROOT CAUSE', 1, 1, 'C', true);
-
-$pdf->SetFont('helvetica', '', 10);
-for ($i = 0; $i < 7; $i++) {
-    $pdf->SetX(7);
-    // Diagnosis cell (left)
-    $pdf->Cell($cellWidth, 7, '', 1, 0, 'L', false);
-    // Space between cells
-    $pdf->Cell($cellSpacing, 7, '', 0, 0);
-    // Root Cause cell (right)
-    $pdf->Cell($cellWidth, 7, '', 1, 1, 'L', false);
-}
-$pdf->Ln(6);
-
-// --- ACTION TAKEN ---
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(196, 5, 'ACTION TAKEN:', 1, 1, 'L', true);
-$pdf->SetFont('helvetica', '', 10);
-for ($i = 0; $i < 5; $i++) {
-    $pdf->Cell(196, 7, '', 1, 1, 'L', false);
-}
-$pdf->Ln(6);
-
-// --- RECOMMENDATION ---
-$pdf->SetFont('helvetica', 'B', 10);
-$pdf->Cell(196, 5, 'RECOMMENDATION:', 1, 1, 'L', true);
-$pdf->SetFont('helvetica', '', 10);
-for ($i = 0; $i < 6; $i++) {
-    $pdf->Cell(196, 7, '', 1, 1, 'L', false);
-}
-$pdf->Ln(6);
-
-// --- SIGNATURES & FOOTER ---
-$pdf->SetFont('helvetica', 'B', 9);
-$pdf->SetFillColor(255,255,255);
-
-// Row 1
-$pdf->SetX(7);
-$pdf->MultiCell(60, 12, "CREW SIGNATURE OVER\nPRINTED NAME:", 1, 'L', false, 0);
-$pdf->Cell(60, 12, '', 1, 0, 'C', false);
-$pdf->Cell(76, 12, 'DATE:', 1, 1, 'L', false);
-// Row 2
-$pdf->SetX(7);
-$pdf->Cell(60, 12, "ACKNOWLEDGED BY:", 1, 'L', false);
-$pdf->Cell(60, 12, '', 1, 0, 'C', false);
-$pdf->Cell(76, 12, 'TIME IN:', 1, 1, 'L', false);
-// Row 3
-$pdf->SetX(7);
-$pdf->MultiCell(60, 12, "TSS SIGNATURE OVER\nPRINTED NAME:", 1, 'L', false, 0);
-$pdf->Cell(60, 12, '', 1, 0, 'C', false);
-$pdf->Cell(76, 12, 'TIME OUT:', 1, 1, 'L', false);
-
-// Save the PDF
-$export_folder = __DIR__ . '/../exports/';
-if (!file_exists($export_folder)) {
-    mkdir($export_folder, 0777, true);
-}
-$file_path = $export_folder . "Service_Report_$ticket_num.pdf";
-$pdf->Output($file_path, 'F');
-
-header("Location: view-report?id={$ticket_num}");
-exit();
-// Force download the PDF file
-// header('Content-Type: application/pdf');
-// header('Content-Disposition: attachment; filename="Service_Report_' . $ticket_num . '.pdf"');
-// readfile($file_path);
-exit();
 ?>
