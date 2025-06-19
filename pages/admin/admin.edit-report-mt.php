@@ -15,7 +15,7 @@
         <form method="post" id="ticketForm" action="update-treport?id=<?php echo $ticket_num; ?>" enctype="multipart/form-data">
             <div class="report-container">
                 <div class="report-header">
-                    <h5 class="mb-0">MT TICKET SERVICE REPORT</h5>
+                    <h5 class="mb-0">TICKET SERVICE REPORT</h5>
                 </div>
 
                 <div class="report-section">
