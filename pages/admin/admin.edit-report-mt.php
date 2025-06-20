@@ -13,14 +13,63 @@
             <div class="alert alert-success"><?php echo $success; ?></div>
         <?php endif; ?>
         <form method="post" id="ticketForm" action="update-treport?id=<?php echo $ticket_num; ?>" enctype="multipart/form-data">
-            <!-- DIAGNOSTICS, ACTION & RECOMMENDATION -->
+        <div class="report-section">
+            <div class="report-section-header">SERVICE DETAILS</div>
+            <div class="report-section-body">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Outlet / Establishment:</label>
+                            <input type="text" class="form-control" value="<?php echo !empty($ticket_row['outlet_name']) ? $ticket_row['outlet_name'] : ''; ?>" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Date:</label>
+                            <input type="date" class="form-control" value="<?php echo !empty($ticket_row['ticket_date']) ? $ticket_date->format('Y-m-d') : ''; ?>" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Serviced By:</label>
+                            <input type="text" class="form-control" value="<?php echo !empty($ticket_row['emp_name']) ? $ticket_row['emp_name'] : ''; ?>" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Ticket No.:</label>
+                            <input type="text" class="form-control" value="<?php echo !empty($ticket_row['ticket_num']) ? $ticket_row['ticket_num'] : ''; ?>" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Time In:</label>
+                            <input type="time" class="form-control" name="time_in" value="<?php echo !empty($ticket_row['time_in']) ? date('H:i', strtotime($ticket_row['time_in'])) : ''; ?>">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Time Out:</label>
+                            <input type="time" class="form-control" name="time_out" value="<?php echo !empty($ticket_row['time_out']) ? date('H:i', strtotime($ticket_row['time_out'])) : ''; ?>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- DIAGNOSTICS, ACTION & RECOMMENDATION -->
         <div class="report-section">
             <div class="report-section-header">DIAGNOSTICS • ACTION • RECOMMENDATION</div>
             <div class="report-section-body">
 
-                <!-- SUBJECT – still read‑only -->
+                <!-- Concern -->
                 <div class="form-group">
-                    <label>Subject:</label>
+                    <label>Concern:</label>
                     <input type="text"
                         class="form-control"
                         value="<?= $ticket_row['subj'] ?? '' ?>"
@@ -42,7 +91,7 @@
                         <label>Root&nbsp;Cause:</label>
                         <textarea class="form-control"
                                 rows="6"
-                                name="root_cause"><?= $ticket_row['root_cause'] ?? $ticket_row['findings'] ?? '' ?></textarea>
+                                name="findings"><?= $ticket_row['findings'] ?? $ticket_row['findings'] ?? '' ?></textarea>
                     </div>
 
                     <!-- ACTION TAKEN -->
@@ -124,7 +173,7 @@
                             <input type="text"
                                 class="form-control"
                                 name="fn_ack"
-                                value="<?= $ticket_row['fn_signature2'] ?? '' ?>">
+                                value="<?= $ticket_row['fn_signiture2'] ?? '' ?>">
                         </div>
 
                         <div class="form-group">
@@ -139,7 +188,7 @@
                             <input type="hidden"
                                 id="signatureAckInput"
                                 name="signature_ack"
-                                value="<?= $ticket_row['signature_2'] ?? '' ?>">
+                                value="<?= $ticket_row['signiture_2'] ?? '' ?>">
                         </div>
                     </div>
                     <script>

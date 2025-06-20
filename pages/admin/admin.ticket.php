@@ -265,7 +265,7 @@
             language: {
                 emptyTable: '<i>No Available Data on this Table</i>'
             },
-            order: [[0, 'desc']]
+            order: [[5, 'desc']]
         });
 
         // Rejected Tickets
