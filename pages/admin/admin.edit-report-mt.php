@@ -13,193 +13,217 @@
             <div class="alert alert-success"><?php echo $success; ?></div>
         <?php endif; ?>
         <form method="post" id="ticketForm" action="update-treport?id=<?php echo $ticket_num; ?>" enctype="multipart/form-data">
-            <div class="report-container">
-                <div class="report-header">
-                    <h5 class="mb-0">TICKET SERVICE REPORT</h5>
+            <!-- DIAGNOSTICS, ACTION & RECOMMENDATION -->
+        <div class="report-section">
+            <div class="report-section-header">DIAGNOSTICS • ACTION • RECOMMENDATION</div>
+            <div class="report-section-body">
+
+                <!-- SUBJECT – still read‑only -->
+                <div class="form-group">
+                    <label>Subject:</label>
+                    <input type="text"
+                        class="form-control"
+                        value="<?= $ticket_row['subj'] ?? '' ?>"
+                        name="subject"
+                        readonly>
                 </div>
 
-                <div class="report-section">
-                    <div class="report-section-header">SERVICE DETAILS</div>
-                    <div class="report-section-body">
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Establishment:</label>
-                                    <input type="text" class="form-control" value="<?php echo !empty($ticket_row['outlet_name']) ? $ticket_row['outlet_name'] : ''; ?>" readonly>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Date:</label>
-                                    <input type="date" class="form-control" value="<?php echo !empty($ticket_row['ticket_date']) ? $ticket_date->format('Y-m-d') : ''; ?>" readonly>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Serviced By:</label>
-                                    <input type="text" class="form-control" value="<?php echo !empty($ticket_row['emp_name']) ? $ticket_row['emp_name'] : ''; ?>" readonly>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Ticket No.:</label>
-                                    <input type="text" class="form-control" value="<?php echo !empty($ticket_row['ticket_num']) ? $ticket_row['ticket_num'] : ''; ?>" readonly>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Time In:</label>
-                                    <input type="time" class="form-control" name="time_in" value="<?php echo !empty($ticket_row['time_in']) ? date('H:i', strtotime($ticket_row['time_in'])) : ''; ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Time Out:</label>
-                                    <input type="time" class="form-control" name="time_out" value="<?php echo !empty($ticket_row['time_out']) ? date('H:i', strtotime($ticket_row['time_out'])) : ''; ?>">
-                                </div>
-                            </div>
-                        </div>
+                <div class="form-row">
+                    <!-- DIAGNOSIS -->
+                    <div class="col-md-6 mb-3">
+                        <label>Diagnosis:</label>
+                        <textarea class="form-control"
+                                rows="6"
+                                name="diagnosis"><?= $ticket_row['diagnosis'] ?? '' ?></textarea>
                     </div>
-                </div>
 
-                <div class="report-section">
-                    <div class="report-section-header">DIAGNOSTICS AND RECOMMENDATION</div>
-                    <div class="report-section-body">
-                        <div class="form-group">
-                            <label>Subject:</label>
-                            <input type="text" class="form-control" value="<?php echo !empty($ticket_row['subj']) ? $ticket_row['subj'] : ''; ?>" name="subject" readonly>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Findings:</label>
-                                    <textarea class="form-control" rows="6" name="findings"><?php echo !empty($ticket_row['findings']) ? $ticket_row['findings'] : ''; ?></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Action Taken:</label>
-                                    <textarea class="form-control" rows="6" name="action"><?php echo !empty($ticket_row['action']) ? $ticket_row['action'] : ''; ?></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Diagnosis:</label>
-                                    <textarea class="form-control" rows="6" name="diagnosis"><?php echo !empty($ticket_row['diagnosis']) ? $ticket_row['diagnosis'] : ''; ?></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Recommendation(s):</label>
-                                    <textarea class="form-control" rows="6" name="recom"><?php echo !empty($ticket_row['recom']) ? $ticket_row['recom'] : ''; ?></textarea> 
-                                </div>
-                            </div>
-                        </div>
+                    <!-- ROOT CAUSE (was “Findings”) -->
+                    <div class="col-md-6 mb-3">
+                        <label>Root&nbsp;Cause:</label>
+                        <textarea class="form-control"
+                                rows="6"
+                                name="root_cause"><?= $ticket_row['root_cause'] ?? $ticket_row['findings'] ?? '' ?></textarea>
                     </div>
-                </div>
 
-                <div class="report-section">
-                    <div class="report-section-header">CLIENT ACKNOWLEDGEMENT</div>
-                    <div class="report-section-body">
-                        <p class="text-center">The Authorized Signature below indicates that the service requested (technical support, service, or replacement of parts) indicated above was completed and in good working.</p>
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Full Name:</label>
-                                    <input type="text" class="form-control" name="fn_client" value="<?php echo !empty($ticket_row['fn_client']) ? $ticket_row['fn_client'] : ''; ?>">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Signature:</label>
-                                    <canvas id="clientSignature" width="400" height="150" style="border: 1px solid #ccc;"></canvas>
-                                    <br>
-                                    <button type="button" class="btn btn-secondary" id="clearSignature">Clear</button>
-                                    <input type="hidden" id="signatureInput" name="signature_client" value="<?php echo !empty($ticket_row['signature_client']) ? $ticket_row['signature_client'] : ''; ?>">
-                                </div>
-                                <script>
-                                    // If signature exists, render it on the canvas
-                                    const clientSignatureData = '<?php echo !empty($ticket_row['signature_client']) ? $ticket_row['signature_client'] : ''; ?>';
-                                    if (clientSignatureData) {
-                                        const clientCanvas = document.getElementById('clientSignature');
-                                        const clientCtx = clientCanvas.getContext('2d');
-                                        const clientImg = new Image();
-                                        clientImg.onload = () => {
-                                            clientCtx.drawImage(clientImg, 0, 0);
-                                        };
-                                        clientImg.src = clientSignatureData;
-                                    }
-                                </script>
-                            </div>
-                        </div>
+                    <!-- ACTION TAKEN -->
+                    <div class="col-md-6 mb-3">
+                        <label>Action&nbsp;Taken:</label>
+                        <textarea class="form-control"
+                                rows="6"
+                                name="action"><?= $ticket_row['action'] ?? '' ?></textarea>
                     </div>
-                </div>
 
-                <div class="report-section">
-                    <div class="report-section-header">SERVICE PERSONNEL ACKNOWLEDGEMENT</div>
-                    <div class="report-section-body">
-                        <p class="text-center">I confirm that all reported issues were addressed, and the system is in working condition as of service completion. Recommendations are noted above.</p>
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Full Name:</label>
-                                    <input type="text" class="form-control" name="fn_personnel" value="<?php echo !empty($ticket_row['emp_name']) ? $ticket_row['emp_name'] : ''; ?>" readonly>
-                                    <input type="hidden" class="form-control" value="<?php echo !empty($ticket_row['emp_id']) ? $ticket_row['emp_id'] : ''; ?>" name="emp_id" id="emp_id">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Signature:</label>
-                                    <canvas id="personnelSignature" width="400" height="150" style="border: 1px solid #ccc;"></canvas>
-                                    <br>
-                                    <button type="button" class="btn btn-secondary" id="clearPersonnelSignature">Clear</button>
-                                    <input type="hidden" id="signaturePersonnelInput" name="signature_personnel" value="<?php echo !empty($ticket_row['signature_personnel']) ? $ticket_row['signature_personnel'] : ''; ?>">
-                                </div>
-                                <script>
-                                    // If signature exists, render it on the canvas
-                                    const personnelSignatureData = '<?php echo !empty($ticket_row['signature_personnel']) ? $ticket_row['signature_personnel'] : ''; ?>';
-                                    if (personnelSignatureData) {
-                                        const personnelCanvas = document.getElementById('personnelSignature');
-                                        const personnelCtx = personnelCanvas.getContext('2d');
-                                        const personnelImg = new Image();
-                                        personnelImg.onload = () => {
-                                            personnelCtx.drawImage(personnelImg, 0, 0);
-                                        };
-                                        personnelImg.src = personnelSignatureData;
-                                    }
-                                </script>
-                            </div>
-                        </div>
+                    <!-- RECOMMENDATION -->
+                    <div class="col-md-6 mb-3">
+                        <label>Recommendation(s):</label>
+                        <textarea class="form-control"
+                                rows="6"
+                                name="recom"><?= $ticket_row['recom'] ?? '' ?></textarea>
                     </div>
-                </div>
-
-                <?php
-                    $currentDateTime = new DateTime();
-                    $schedEndDateTime = new DateTime($ticket_row['sched_end']);
-                    if ($schedEndDateTime < $currentDateTime) {
-                        echo '<input type="hidden" name="overdue" value="1">';
-                    } else {
-                        echo '<input type="hidden" name="overdue" value="0">';
-                    }
-                ?>
-
-                <div class="report-footer">
-                    <input type="hidden" name="action_type" id="actionType" value="">
-                    <a href="ticket?tab=open" class="btn btn-secondary">Cancel</a>
-                    <button type="button" class="btn btn-primary" id="saveReportBtn">
-                        <i class="fas fa-save"></i>&nbsp;Save Report
-                    </button>
-                    <button type="button" class="btn btn-success" id="finishReportBtn">
-                        <i class="fas fa-check"></i>&nbsp;Finish Report
-                    </button>
                 </div>
             </div>
+        </div>
+
+        <!-- ACKNOWLEDGEMENTS -->
+        <div class="report-section">
+            <div class="report-section-header">SIGNATURES & ACKNOWLEDGEMENTS</div>
+            <div class="report-section-body">
+
+                <p class="text-center small text-muted mb-4">
+                    Signatories confirm that all work described above was completed and accepted.
+                </p>
+
+                <div class="form-row">
+                    <!-- CLIENT -->
+                    <div class="col-lg-4 mb-4">
+                        <h6 class="text-center">Crew Signature</h6>
+
+                        <div class="form-group">
+                            <label>Full&nbsp;Name:</label>
+                            <input type="text"
+                                class="form-control"
+                                name="fn_client"
+                                value="<?= $ticket_row['fn_client'] ?? '' ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Signature:</label><br>
+                            <canvas id="clientSignature"
+                                    width="400" height="150"
+                                    style="border: 1px solid #ccc;"
+                                    class="signature-pad"></canvas>
+                            <button type="button"
+                                    class="btn btn-secondary btn-sm"
+                                    id="clearSignature">Clear</button>
+                            <input type="hidden"
+                                id="signatureInput"
+                                name="signature_client"
+                                value="<?= $ticket_row['signature_client'] ?? '' ?>">
+                        </div>
+                    </div>
+                    <script>
+                        // If signature exists, render it on the canvas
+                        const clientSignatureData = '<?php echo !empty($ticket_row['signature_client']) ? $ticket_row['signature_client'] : ''; ?>';
+                        if (clientSignatureData) {
+                            const clientCanvas = document.getElementById('clientSignature');
+                            const clientCtx = clientCanvas.getContext('2d');
+                            const clientImg = new Image();
+                            clientImg.onload = () => {
+                                clientCtx.drawImage(clientImg, 0, 0);
+                            };
+                            clientImg.src = clientSignatureData;
+                        }
+                    </script>
+
+                    <!-- ACKNOWLEDGED BY (NEW) -->
+                    <div class="col-lg-4 mb-4">
+                        <h6 class="text-center">Acknowledged&nbsp;By</h6>
+
+                        <div class="form-group">
+                            <label>Full&nbsp;Name:</label>
+                            <input type="text"
+                                class="form-control"
+                                name="fn_ack"
+                                value="<?= $ticket_row['fn_signature2'] ?? '' ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Signature:</label><br>
+                            <canvas id="ackSignature"
+                                    width="400" height="150"
+                                    style="border: 1px solid #ccc;"
+                                    class="signature-pad"></canvas>
+                            <button type="button"
+                                    class="btn btn-secondary btn-sm"
+                                    id="clearAckSignature">Clear</button>
+                            <input type="hidden"
+                                id="signatureAckInput"
+                                name="signature_ack"
+                                value="<?= $ticket_row['signature_2'] ?? '' ?>">
+                        </div>
+                    </div>
+                    <script>
+                        // If signature exists, render it on the canvas
+                        const acknowledgeSignatureData = '<?php echo !empty($ticket_row['signature_2']) ? $ticket_row['signature_2'] : ''; ?>';
+                        if (acknowledgeSignatureData) {
+                            const acknowledgeCanvas = document.getElementById('ackSignature');
+                            const acknowledgeCtx = acknowledgeCanvas.getContext('2d');
+                            const acknowledgeImg = new Image();
+                            acknowledgeImg.onload = () => {
+                                acknowledgeCtx.drawImage(acknowledgeImg, 0, 0);
+                            };
+                            acknowledgeImg.src = acknowledgeSignatureData;
+                        }
+                    </script>
+
+                    <!-- SERVICE PERSONNEL -->
+                    <div class="col-lg-4 mb-4">
+                        <h6 class="text-center">Service&nbsp;Personnel</h6>
+
+                        <div class="form-group">
+                            <label>Full&nbsp;Name:</label>
+                            <input type="text"
+                                class="form-control"
+                                name="fn_personnel"
+                                value="<?= $ticket_row['emp_name'] ?? '' ?>"
+                                readonly>
+                            <input type="hidden"
+                                name="emp_id"
+                                value="<?= $ticket_row['emp_id'] ?? '' ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Signature:</label><br>
+                            <canvas id="personnelSignature"
+                                    width="400" height="150"
+                                    style="border: 1px solid #ccc;"
+                                    class="signature-pad"></canvas>
+                            <button type="button"
+                                    class="btn btn-secondary btn-sm"
+                                    id="clearPersonnelSignature">Clear</button>
+                            <input type="hidden"
+                                id="signaturePersonnelInput"
+                                name="signature_personnel"
+                                value="<?= $ticket_row['signature_personnel'] ?? '' ?>">
+                        </div>
+                    </div>
+                    <script>
+                        // If signature exists, render it on the canvas
+                        const personnelSignatureData = '<?php echo !empty($ticket_row['signature_personnel']) ? $ticket_row['signature_personnel'] : ''; ?>';
+                        if (personnelSignatureData) {
+                            const personnelCanvas = document.getElementById('personnelSignature');
+                            const personnelCtx = personnelCanvas.getContext('2d');
+                            const personnelImg = new Image();
+                            personnelImg.onload = () => {
+                                personnelCtx.drawImage(personnelImg, 0, 0);
+                            };
+                            personnelImg.src = personnelSignatureData;
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <?php
+            $currentDateTime = new DateTime();
+            $schedEndDateTime = new DateTime($ticket_row['sched_end']);
+            if ($schedEndDateTime < $currentDateTime) {
+                echo '<input type="hidden" name="overdue" value="1">';
+            } else {
+                echo '<input type="hidden" name="overdue" value="0">';
+            }
+        ?>
+
+        <div class="report-footer mb-4">
+            <input type="hidden" name="action_type" id="actionType" value="">
+            <a href="ticket?tab=open" class="btn btn-secondary">Cancel</a>
+            <button type="button" class="btn btn-primary" id="saveReportBtn">
+                <i class="fas fa-save"></i>&nbsp;Save Report
+            </button>
+            <button type="button" class="btn btn-success" id="finishReportBtn">
+                <i class="fas fa-check"></i>&nbsp;Finish Report
+            </button>
+        </div>
         </form>
     </div>
 <script src="../../assets/js/loader.js"></script>
