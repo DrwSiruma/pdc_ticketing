@@ -9,6 +9,7 @@ if (!isset($_SESSION['id'])) {
 }
 
 $user_id = $_SESSION['id'];
+$user_role = $_SESSION['role'];
 
 function formatSchedule($start, $end) {
     return date('m/d/Y h:i A', strtotime($start)) . ' - ' . date('m/d/Y h:i A', strtotime($end));
@@ -110,7 +111,11 @@ function actionButtons($row, $closed = false) {
                 $btns .= ' <a href="generate-maintenance-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-primary" title="Download Maintenance Report"><i class="fas fa-download"></i></a>';
             }
         } elseif ($row['rprt'] == 0) {
-            $btns .= '<a href="edit-report?id='.$row['ticket_num'].'" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+            if ($row['designation'] == 1) {
+                $btns .= ' <a href="edit-report-it?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+            } elseif ($row['designation'] == 2) {
+                $btns .= ' <a href="edit-report-mt?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+            }
         }
     } else {
         if ($row['rprt'] == 1) {
@@ -120,7 +125,11 @@ function actionButtons($row, $closed = false) {
                 $btns .= ' <a href="generate-maintenance-report?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-primary" title="Download Maintenance Report"><i class="fas fa-download"></i></a>';
             }
         } elseif ($row['rprt'] == 0) {
-            $btns .= '<a href="edit-report?id='.$row['ticket_num'].'" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+            if ($row['designation'] == 1) {
+                $btns .= ' <a href="edit-report-it?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+            } elseif ($row['designation'] == 2) {
+                $btns .= ' <a href="edit-report-mt?id=' . urlencode($row['ticket_num']) . '" class="btn-sm btn-success" title="Edit Report"><i class="fas fa-file-signature"></i></a>';
+            }
         }
     }
     return $btns;
