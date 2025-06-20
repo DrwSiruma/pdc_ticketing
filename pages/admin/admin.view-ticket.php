@@ -72,7 +72,13 @@
                     <?php } elseif ($ticket_row["ticket_status"] == '2') { ?>
                         <a href="ticket-approval?id=<?php echo $ticket_num; ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>&nbsp;Approve</a>
                         <a href="#" data-toggle="modal" data-target="#DeclineModal" class="btn btn-danger btn-sm"><i class="fas fa-times"></i>&nbsp;Decline</a>
-                    <?php } ?>
+                    <?php } elseif ($ticket_row["ticket_status"] == '5') {
+                        if ($ticket_row["designation"]== '1') { ?>
+                            <a href="generate-it-report?id=<?php echo $ticket_num; ?>" class="btn btn-primary btn-sm"><i class="fas fa-download"></i>&nbsp;Download Report</a>
+                        <?php } elseif ($ticket_row["designation"]== '2') { ?>
+                            <a href="generate-maintenance-report?id=<?php echo $ticket_num; ?>" class="btn btn-primary btn-sm"><i class="fas fa-download"></i>&nbsp;Download Report</a>
+                        <?php }
+                    } ?>
                 </div>
             </div>
             <div class="card-body">

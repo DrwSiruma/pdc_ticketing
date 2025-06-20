@@ -193,7 +193,7 @@
                 { data: 'actions' }
             ],
             language: {
-                emptyTable: '<i>No Available Data on this Table</i>'
+                emptyTable: '<i>No available data on this table</i>'
             },
             order: [[0, 'desc']]
         });
@@ -217,7 +217,7 @@
                 { data: 'actions' }
             ],
             language: {
-                emptyTable: '<i>No Available Data on this Table</i>'
+                emptyTable: '<i>No available data on this table</i>'
             },
             order: [[0, 'desc']]
         });
@@ -241,7 +241,7 @@
                 { data: 'actions' }
             ],
             language: {
-                emptyTable: '<i>No Available Data on this Table</i>'
+                emptyTable: '<i>No available data on this table</i>'
             },
             order: [[0, 'desc']]
         });
@@ -263,7 +263,7 @@
                 { data: 'actions' }
             ],
             language: {
-                emptyTable: '<i>No Available Data on this Table</i>'
+                emptyTable: '<i>No available data on this table</i>'
             },
             order: [[5, 'desc']]
         });
@@ -285,7 +285,7 @@
                 { data: 'actions' }
             ],
             language: {
-                emptyTable: '<i>No Available Data on this Table</i>'
+                emptyTable: '<i>No available data on this table</i>'
             },
             order: [[0, 'desc']]
         });
