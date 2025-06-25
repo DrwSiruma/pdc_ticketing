@@ -1,6 +1,6 @@
 <?php
 include('staff.header.php');
-// $user_id = $_SESSION['id'];
+$user_id = $_SESSION['id'];
 // $notif_qry = mysqli_query($conn, "SELECT * FROM `tbl_notif` WHERE user_id = $user_id ORDER BY post_date DESC");
 ?>
 

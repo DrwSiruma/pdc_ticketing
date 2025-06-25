@@ -15,7 +15,7 @@
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="notifDropdown" style="min-width: 350px; max-height: 400px; overflow-y: auto;">
             <div class="d-flex justify-content-between align-items-center px-3 py-2">
                 <h3 class="dropdown-header text-dark p-0 m-0">Notifications</h3>
-                <button class="btn btn-link btn-sm text-primary p-0" id="notif-mark-all-top" style="font-size: 0.7rem;">Mark all as read</button>
+                <button class="btn btn-link btn-sm text-primary p-0" id="notif-mark-all" style="font-size: 0.7rem;">Mark all as read</button>
             </div>
             <div class="dropdown-divider"></div>
             <div id="notif-container">
@@ -46,12 +46,13 @@
                         data.notifications.forEach(function(notif, idx) {
                             const notifItem = document.createElement('div');
                             notifItem.className = 'dropdown-item d-flex align-items-center justify-content-between ' + (idx % 2 === 0 ? 'notif-bg-even' : 'notif-bg-odd');
+                            // Add bold style if unread
+                            const isUnread = notif.is_unread === true || notif.is_unread === 1 || notif.is_unread === '1';
                             notifItem.innerHTML = `
                                 <div>
                                     <div class="small text-gray-500">${notif.time}</div>
-                                    <span>${notif.message}</span>
+                                    <span style="font-weight: ${isUnread ? 'bold' : 'normal'};">${notif.message}</span>
                                 </div>
-                                <!-- <button class="btn btn-sm btn-link text-primary notif-action-btn" data-id="${notif.id}"><i class="fas fa-eye"></i></button> -->
                             `;
                             container.appendChild(notifItem);
                         });
