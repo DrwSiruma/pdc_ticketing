@@ -198,6 +198,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'notification':
                 include 'user/user.notification.php';
                 break;
+            case 'notif-data':
+                include 'user/user.notif-data.php';
+                break;
             case 'mark-read':
                 include 'user/process.mark-read.php';
                 break;

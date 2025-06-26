@@ -70,12 +70,7 @@ if ($notifcnt_qry) {
                             <a class="nav-link <?php //echo ($page == 'user/conversations') ? 'active' : ''; ?>" aria-current="page" href="conversations">Conversations&nbsp;<span class="badge bg-secondary text-light">99+</span></a>
                         </li> -->
                         <li class="nav-item">
-                            <a class="nav-link <?php echo ($page == 'user/notification') ? 'active' : ''; ?>" aria-current="page" href="notification">Notifications&nbsp;
-                                <?php if ($unread_count > 0) { ?>
-                                    <span class="badge bg-secondary text-light">
-                                        <?php echo ($unread_count > 99) ? '99+' : $unread_count; ?>
-                                    </span>
-                                <?php } ?>
+                            <a class="nav-link <?php echo ($page == 'user/notification') ? 'active' : ''; ?>" aria-current="page" href="notification">Notifications&nbsp;<span class="badge bg-danger text-light"></span>
                             </a>
                         </li>
                     </ul>
@@ -91,3 +86,25 @@ if ($notifcnt_qry) {
                 </div>
             </div>
         </nav>
+
+        <script>
+            function loadUserNotifications() {
+                fetch('notif-data')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update badge count
+                        const notifBadge = document.querySelector('.nav-link[href="notification"] .badge');
+                        if (notifBadge) {
+                            if (data.unread_notif > 0) {
+                                notifBadge.style.display = 'inline-block';
+                                notifBadge.textContent = data.unread_notif > 99 ? '99+' : data.unread_notif;
+                            } else {
+                                notifBadge.style.display = 'none';
+                            }
+                        }
+                        // Optionally, update dropdown or notification page here
+                    });
+            }
+            setInterval(loadUserNotifications, 2000);
+            document.addEventListener('DOMContentLoaded', loadUserNotifications);
+        </script>

@@ -26,8 +26,11 @@ function copyDescription() {
 }
 
 // Add event listener to update button states when cursor moves in contenteditable div
-document.getElementById("form_description").addEventListener("keyup", updateButtonStates);
-document.getElementById("form_description").addEventListener("mouseup", updateButtonStates);
+const formDescription = document.getElementById("form_description");
+if (formDescription) {
+    formDescription.addEventListener("keyup", updateButtonStates);
+    formDescription.addEventListener("mouseup", updateButtonStates);
+}
 
 // Function to save the content of the contenteditable div to the hidden input before submitting
 function saveDescription() {
@@ -40,27 +43,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const formTopic = document.getElementById('form_topic');
     const formItem = document.getElementById('form_item');
 
-    // Fetch topics based on designation
-    formDesignation.addEventListener('change', function () {
-        formTopic.disabled = !formDesignation.value;
-        formItem.disabled = true;
-        formTopic.innerHTML = '<option value="" selected disabled>--Select a Help Topic--</option>';
-        formItem.innerHTML = '<option value="" selected disabled>--Select an Item Topic--</option>';
+    if (formDesignation && formTopic && formItem) {
+        // Fetch topics based on designation
+        formDesignation.addEventListener('change', function () {
+            formTopic.disabled = !formDesignation.value;
+            formItem.disabled = true;
+            formTopic.innerHTML = '<option value="" selected disabled>--Select a Help Topic--</option>';
+            formItem.innerHTML = '<option value="" selected disabled>--Select an Item Topic--</option>';
 
-        if (formDesignation.value) {
-            fetchTopics(formDesignation.value);
-        }
-    });
+            if (formDesignation.value) {
+                fetchTopics(formDesignation.value);
+            }
+        });
 
-    // Fetch items based on selected topic
-    formTopic.addEventListener('change', function () {
-        formItem.disabled = !formTopic.value;
-        formItem.innerHTML = '<option value="" selected disabled>--Select an Item Topic--</option>';
+        // Fetch items based on selected topic
+        formTopic.addEventListener('change', function () {
+            formItem.disabled = !formTopic.value;
+            formItem.innerHTML = '<option value="" selected disabled>--Select an Item Topic--</option>';
 
-        if (formTopic.value) {
-            fetchItems(formDesignation.value, formTopic.value);
-        }
-    });
+            if (formTopic.value) {
+                fetchItems(formDesignation.value, formTopic.value);
+            }
+        });
+    }
 
     // Function to fetch topics based on designation
     function fetchTopics(designation) {
