@@ -186,6 +186,12 @@ if (strpos($page, 'admin/') === 0) {
             case 'ticket-history':
                 include 'user/user.ticket-history.php';
                 break;
+            case 'generate-it-report':
+                include 'user/user.generate-report-it.php';
+                break;
+            case 'generate-maintenance-report':
+                include 'user/user.generate-report-mt.php';
+                break;
             case 'conversations':
                 include 'user/user.conversations.php';
                 break;

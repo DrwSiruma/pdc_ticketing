@@ -26,7 +26,7 @@ $(document).ready(function () {
     searching: true,
     paging: true,
     info: true,
-    ordering: true,
+    ordering: [[0, 'desc']],
     lengthChange: true,
     });
 });
