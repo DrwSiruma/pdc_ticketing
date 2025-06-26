@@ -80,7 +80,7 @@ if ($notifcnt_qry) {
                         </li>
                         <li class="divider"></li>
                         <li class="nav-item">
-                            <a class="nav-link" href="logout"><i class="fas fa-sign-out-alt"></i>&nbsp;Log Out</a>
+                            <a class="nav-link" href="logout" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-sign-out-alt"></i>&nbsp;Log Out</a>
                         </li>
                     </ul>
                 </div>
