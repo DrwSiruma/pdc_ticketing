@@ -2,7 +2,7 @@
 
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Facility Management Supplies Category&nbsp;<a href="add-category" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> Add new category</a></h1>
+            <h1 class="h3 mb-0 text-gray-800">Facility Management Supplies Category&nbsp;<a href="#" data-toggle="modal" data-target="#addCategModal" class="btn btn-sm btn-success"><i class="fas fa-plus"></i>&nbsp;Add new category</a></h1>
         </div>
 
         <div class="card mt-4">
@@ -96,4 +96,7 @@
         </div>
     </div>
 
-<?php include('admin.footer.php'); ?>
+<?php 
+    include('admin.add.categ.modal.php');
+    include('admin.footer.php');
+?>
