@@ -31,7 +31,6 @@
                             <table class="table w-100" id="itcattbl">
                                 <thead hidden>
                                     <tr>
-                                        <th>Image</th>
                                         <th>Name</th>
                                         <th>Action</th>
                                     </tr>
@@ -42,8 +41,7 @@
                                         while($categ_res=mysqli_fetch_array($categ_qry)){
                                     ?>
                                         <tr>
-                                            <td width="150px"><img class="img-fluid itemcat-img" src="../<?php echo $categ_res["img_path"]; ?>"></td>
-                                            <td><a href="item-list?item=<?php echo $categ_res['id']; ?>"><?php echo $categ_res["name"]; ?></a></td>
+                                            <td style="cursor:pointer;" onclick="window.location.href='item-list?item=<?php echo $categ_res['id']; ?>'"><?php echo $categ_res["name"]; ?></td>
                                             <td class="text-right">
                                                 <a href="edit-category?id=<?php echo $categ_res['id']; ?>" class="text-secondary p-1"><i class="fas fa-pencil-alt"></i></a>
                                                 <?php if ($categ_res["status"]== '1') { ?>
@@ -64,7 +62,6 @@
                             <table class="table w-100" id="maincattbl">
                                 <thead hidden>
                                     <tr>
-                                        <th>Image</th>
                                         <th>Name</th>
                                         <th>Action</th>
                                     </tr>
@@ -75,8 +72,7 @@
                                         while($categ_res2=mysqli_fetch_array($categ_qry2)){
                                     ?>
                                         <tr>
-                                            <td width="150px"><img class="img-fluid itemcat-img" src="../<?php echo $categ_res2["img_path"]; ?>"></td>
-                                            <td><a href="item-list?item=<?php echo $categ_res2['id']; ?>"><?php echo $categ_res2["name"]; ?></a></td>
+                                            <td style="cursor:pointer;" onclick="window.location.href='item-list?item=<?php echo $categ_res2['id']; ?>'"><?php echo $categ_res2["name"]; ?></td>
                                             <td class="text-right">
                                                 <a href="edit-category?id=<?php echo $categ_res2['id']; ?>" class="text-secondary p-1"><i class="fas fa-pencil-alt"></i></a>
                                                 <?php if ($categ_res2["status"]== '1') { ?>
