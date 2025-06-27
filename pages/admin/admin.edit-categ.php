@@ -16,11 +16,11 @@
 ?>
 
     <div class="container-fluid">
-        <h1 class="h3 mb-0 text-gray-800">Edit Category</h1>
+        <h1 class="h3 mb-0 text-gray-800"><a href="help-categories"><i class="fas fa-times-circle text-danger"></i></a>&nbsp;Edit Category</h1>
 
-        <div class="card mt-4">
-            <div class="card-body">
-                <div class="container">
+        <div class="container">
+            <div class="card mt-4">
+                <div class="card-body">
                     <?php if (!empty($error)) : ?>
                         <div class="alert alert-danger"><?php echo $error; ?></div>
                     <?php endif; ?>
@@ -47,21 +47,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="form_image">Upload new image</label>
-                                        <input id="form_image" type="file" name="image" class="img-cat" accept="image/*" data-error="select a file">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <?php if (!empty($categ_res['img_name'])) : ?>
-                                        <div class="form-group">
-                                            <img src="../../img/item-category/<?php echo $categ_res['img_name']; ?>" alt="image" width="100" height="100">
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
+                            <br>
                             <div class="row">
                                 <div class="col-md-12">
                                     <input type="submit" class="btn btn-success btn-send  pt-2 btn-block" value="Submit">
