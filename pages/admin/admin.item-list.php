@@ -9,7 +9,7 @@ $item_res = mysqli_fetch_assoc($item_qry2);
 
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"><?php echo $item_res['name']; ?>&nbsp;items&nbsp;<a href="add-itemlist?categ=<?php echo $item_id; ?>" data-toggle="modal" data-target="#additemModal" class="btn btn-sm btn-success"><i class="fas fa-plus"></i>&nbsp;Add new item</a></h1>
+            <h1 class="h3 mb-0 text-gray-800"><a href="help-categories"><i class="fas fa-times-circle text-danger"></i></a>&nbsp;<?php echo $item_res['name']; ?>&nbsp;items&nbsp;<a href="add-itemlist?categ=<?php echo $item_id; ?>" data-toggle="modal" data-target="#additemModal" class="btn btn-sm btn-success"><i class="fas fa-plus"></i>&nbsp;Add new item</a></h1>
         </div>
 
         <div class="card mt-4">
@@ -26,7 +26,9 @@ $item_res = mysqli_fetch_assoc($item_qry2);
                         <table class="table w-100" id="itcattbl">
                             <thead hidden>
                                 <tr>
+                                    <th>No.</th>
                                     <th>Name</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -34,10 +36,19 @@ $item_res = mysqli_fetch_assoc($item_qry2);
                                 <?php
                                     if (mysqli_num_rows($item_qry) > 0) {
                                         mysqli_data_seek($item_qry, 0); // Reset pointer to start
+                                        $no = '1';
                                         while($list=mysqli_fetch_array($item_qry)){
                                 ?>
                                     <tr>
+                                        <td><?php echo $no++; ?></td>
                                         <td><?php echo $list["l_name"]; ?></td>
+                                        <td>
+                                            <?php if ($list["status"] == '1') { ?>
+                                                <span class="badge text-white bg-success">Enabled</span>
+                                            <?php } else { ?>
+                                                <span class="badge text-white bg-secondary">Disabled</span>
+                                            <?php } ?>
+                                        </td>
                                         <td class="text-right">
                                             <a href="#" class="text-secondary p-1"><i class="fas fa-pencil-alt"></i></a>
                                             <?php if ($list["status"]== '1') { ?>
@@ -50,7 +61,7 @@ $item_res = mysqli_fetch_assoc($item_qry2);
                                 <?php 
                                         }
                                     } else {
-                                        echo "<tr><td colspan='2'>No items found.</td></tr>";
+                                        echo "<tr><td colspan='4'>No items found.</td></tr>";
                                     }
                                 ?>
                             </tbody>

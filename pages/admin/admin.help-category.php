@@ -31,6 +31,8 @@
                             <table class="table w-100" id="itcattbl">
                                 <thead hidden>
                                     <tr>
+                                        <th>No.</th>
+                                        <th>Status</th>
                                         <th>Name</th>
                                         <th>Action</th>
                                     </tr>
@@ -38,10 +40,19 @@
                                 <tbody>
                                     <?php
                                         $categ_qry = mysqli_query($conn, "SELECT * FROM tbl_itemcategory WHERE designation = '1'");
+                                        $no = '1';
                                         while($categ_res=mysqli_fetch_array($categ_qry)){
                                     ?>
                                         <tr>
-                                            <td style="cursor:pointer;" onclick="window.location.href='item-list?item=<?php echo $categ_res['id']; ?>'"><?php echo $categ_res["name"]; ?></td>
+                                            <td><?php echo $no++; ?></td>
+                                            <td style="cursor:pointer;" onclick="window.location.href='item-list?item=<?php echo $categ_res['id']; ?>'">
+                                                <?php if ($categ_res["status"] == '1') { ?>
+                                                    <span><i class="fas fa-fw fa-circle fa-xs text-success"></i></span>
+                                                <?php } else { ?>
+                                                    <span><i class="fas fa-fw fa-circle fa-xs text-secondary"></i></span>
+                                                <?php } ?> 
+                                            </td>
+                                            <td style="cursor:pointer;" onclick="window.location.href='item-list?item=<?php echo $categ_res['id']; ?>'"><a href="item-list?item=<?php echo $categ_res['id']; ?>"><?php echo $categ_res["name"]; ?></a></td>
                                             <td class="text-right">
                                                 <a href="edit-category?id=<?php echo $categ_res['id']; ?>" class="text-secondary p-1"><i class="fas fa-pencil-alt"></i></a>
                                                 <?php if ($categ_res["status"]== '1') { ?>
@@ -62,6 +73,8 @@
                             <table class="table w-100" id="maincattbl">
                                 <thead hidden>
                                     <tr>
+                                        <th>No.</th>
+                                        <th>Status</th>
                                         <th>Name</th>
                                         <th>Action</th>
                                     </tr>
@@ -69,10 +82,19 @@
                                 <tbody>
                                     <?php
                                         $categ_qry2 = mysqli_query($conn, "SELECT * FROM tbl_itemcategory WHERE designation = '2'");
+                                        $no = '1';
                                         while($categ_res2=mysqli_fetch_array($categ_qry2)){
                                     ?>
                                         <tr>
-                                            <td style="cursor:pointer;" onclick="window.location.href='item-list?item=<?php echo $categ_res2['id']; ?>'"><?php echo $categ_res2["name"]; ?></td>
+                                            <td><?php echo $no++; ?></td>
+                                            <td style="cursor:pointer;" onclick="window.location.href='item-list?item=<?php echo $categ_res2['id']; ?>'">
+                                                <?php if ($categ_res2["status"] == '1') { ?>
+                                                    <span><i class="fas fa-fw fa-circle fa-xs text-success"></i></span>
+                                                <?php } else { ?>
+                                                    <span><i class="fas fa-fw fa-circle fa-xs text-secondary"></i></span>
+                                                <?php } ?> 
+                                            </td>
+                                            <td style="cursor:pointer;" onclick="window.location.href='item-list?item=<?php echo $categ_res2['id']; ?>'"><a href="item-list?item=<?php echo $categ_res2['id']; ?>"><?php echo $categ_res2["name"]; ?></a></td>
                                             <td class="text-right">
                                                 <a href="edit-category?id=<?php echo $categ_res2['id']; ?>" class="text-secondary p-1"><i class="fas fa-pencil-alt"></i></a>
                                                 <?php if ($categ_res2["status"]== '1') { ?>
