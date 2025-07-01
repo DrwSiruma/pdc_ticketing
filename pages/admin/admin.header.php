@@ -128,7 +128,7 @@ if ($ticketcnt_qry) {
                 </div>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="service-report">
+                    <a class="nav-link" href="srv-report">
                         <i class="fas fa-fw fa-file fa-sm"></i>
                         <span>Service Reports</span>
                     </a>

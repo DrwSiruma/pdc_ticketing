@@ -140,6 +140,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'ticket-data':
                 include 'admin/admin.ticket-data.php';
                 break;
+            case 'srv-report':
+                include 'admin/admin.srv-report.php';
+                break;
             case 'jquery3.6':
                 include '../assets/js/jquery-3.6.0.min.js';
                 break;
