@@ -39,9 +39,9 @@
                             <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
                             <select class="form-control" id="role" name="role" required>
                                 <option value="" hidden>Select Role</option>
-                                <option value="admin">System Admin</option>
+                                <!-- <option value="admin">System Admin</option>
                                 <option value="it-admin">IT - Admin</option>
-                                <option value="maintenance-admin">Maintenance - Admin</option>
+                                <option value="maintenance-admin">Maintenance - Admin</option> -->
                                 <option value="office">Office</option>
                                 <option value="outlet">Outlet</option>
                                 <option value="it">IT - Personnel</option>

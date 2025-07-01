@@ -52,7 +52,7 @@ if (isset($_GET['id'])) {
                                         <div class="col-md-12">
                                             <label for="role">Role :</label>
                                             <select class="form-control" id="role" name="role">
-                                                <option value="admin" <?php if ($user['role'] == 'admin') echo 'selected'; ?>>Admin</option>
+                                                <!-- <option value="admin" <?php //if ($user['role'] == 'admin') echo 'selected'; ?> disable>Admin</option> -->
                                                 <option value="it" <?php if ($user['role'] == 'it') echo 'selected'; ?>>IT</option>
                                                 <option value="maintenance" <?php if ($user['role'] == 'maintenance') echo 'selected'; ?>>Maintenance</option>
                                                 <option value="office" <?php if ($user['role'] == 'office') echo 'selected'; ?>>Office</option>
