@@ -156,7 +156,22 @@ function formatSchedule($start, $end) {
                         <tbody>
                           <tr>
                             <td><button class="btn btn-primary w-100" disabled>Open Chat</button></td>
-                            <td><a href="track-ticket" class="btn btn-primary w-100">Close</a></td>
+                            <?php
+                              if ($row["status"]== '1' || $row["status"]== '4') { 
+                                if ($row['designation'] == 1) {
+                                  echo '<td><a href="edit-it-report?id=' . urlencode($row['ticket_num']) . '" class="btn btn-success w-100" title="View Report"><i class="far fa-eye"></i>&nbsp;View Report</a></td>';
+                                } elseif ($row['designation'] == 2) {
+                                  echo '<td><a href="edit-maintenance-report?id=' . urlencode($row['ticket_num']) . '" class="btn btn-success w-100" title="View Report"><i class="far fa-eye"></i>&nbsp;View Report</a></td>';
+                                }
+                              } elseif ($row["status"]== '5') { 
+                                if ($row['designation'] == 1) {
+                                  echo '<td><a href="generate-it-report?id=' . urlencode($row['ticket_num']) . '" class="btn btn-danger w-100" title="Download Report"><i class="fas fa-download"></i>&nbsp;Save Report</a></td>';
+                                } elseif ($row['designation'] == 2) {
+                                  echo '<td><a href="generate-maintenance-report?id=' . urlencode($row['ticket_num']) . '" class="btn btn-danger w-100" title="Download Report"><i class="fas fa-download"></i>&nbsp;Save Report</a></td>';
+                                }
+                              }
+                            ?>
+                            <td><a href="track-ticket" class="btn btn-secondary w-100">Close</a></td>
                           </tr>
                         </tbody>
                       </table>

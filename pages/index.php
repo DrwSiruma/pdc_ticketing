@@ -195,6 +195,12 @@ if (strpos($page, 'admin/') === 0) {
             case 'generate-maintenance-report':
                 include 'user/user.generate-report-mt.php';
                 break;
+            case 'edit-it-report':
+                include 'user/user.edit-report-it.php';
+                break;
+            case 'edit-maintenance-report':
+                include 'user/user.edit-report-mt.php';
+                break;
             case 'conversations':
                 include 'user/user.conversations.php';
                 break;
