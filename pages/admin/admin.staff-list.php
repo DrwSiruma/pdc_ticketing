@@ -62,7 +62,7 @@
                     <!-- maintenance -->
                     <div class="tab-pane fade" id="pills-maint" role="tabpanel" aria-labelledby="pills-maint-tab">
                         <div class="table-responsive">
-                            <table class="table table-bordered w-100" id="itcattbl">
+                            <table class="table table-bordered w-100" id="maincattbl">
                                 <thead>
                                     <tr>
                                         <th>ID #</th>

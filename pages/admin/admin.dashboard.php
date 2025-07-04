@@ -164,12 +164,19 @@
                             <div class="card-body flex-grow-1 p-0" style="overflow-y:auto; max-height:calc(250px - 56px);">
                                 <ul class="list-group" style="border-radius: 0;">
                                     <?php
-                                        foreach ($TicketsList as $ticket) { ?>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <span><span style="font-weight: bold;"><?php echo $ticket['ticket_num']; ?></span> - Priority: <span class="badge bg-primary text-light"><?php echo $ticket['priority_type']; ?></span></span>
-                                                <span class="text-muted"><?php echo $ticket['sched_start']; ?> → <?php echo $ticket['sched_end']; ?></span>
-                                            </li>
+                                        if ($TicketsListResult === false) {
+                                            echo "<li class=\"list-group-item text-danger\">No open tickets tickets.</li>";
+                                        } elseif (empty($TicketsList)) {
+                                            echo "<li class=\"list-group-item text-muted\">No open tickets assigned.</li>";
+                                        } else {
+                                            // Display each ticket in the list
+                                            foreach ($TicketsList as $ticket) { ?>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <span><span style="font-weight: bold;"><?php echo $ticket['ticket_num']; ?></span> - Priority: <span class="badge bg-primary text-light"><?php echo $ticket['priority_type']; ?></span></span>
+                                                    <span class="text-muted"><?php echo $ticket['sched_start']; ?> → <?php echo $ticket['sched_end']; ?></span>
+                                                </li>
                                         <?php }
+                                        }
                                     ?>
                                 </ul>
                             </div>
@@ -184,10 +191,10 @@
                                     <?php
                                         if ($overdueTicketsCount > 0) {
                                             foreach ($overdueTickets as $ticket) {
-                                                echo "<li class=\"list-group-item d-flex justify-content-between align-items-center\"><span style=\"font-weight: bold;\">" . $ticket['ticket_num'] . "</span>&nbsp;<span class=\"badge bg-danger text-light\">Overdue</span>";
+                                                echo "<li class=\"list-group-item d-flex justify-content-between align-items-center\"><span style=\"font-weight: bold;\">" . $ticket['ticket_num'] . "</span>&nbsp;<span class=\"badge bg-danger text-light\">Overdue</span></li>";
                                             }
                                         } else {
-                                            echo "<i>No overdue assigned tasks</i>";
+                                            echo "<li class=\"list-group-item d-flex justify-content-between align-items-center\"><i>No overdue assigned tasks</i></li>";
                                         }
                                     ?>
                                 </ul>
