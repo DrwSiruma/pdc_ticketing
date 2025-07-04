@@ -96,7 +96,7 @@
                             <label>Root&nbsp;Cause:</label>
                             <textarea class="form-control"
                                     rows="6"
-                                    name="findings"><?= $ticket_row['findings'] ?? $ticket_row['findings'] ?? '' ?></textarea>
+                                    name="findings" readonly><?= $ticket_row['findings'] ?? $ticket_row['findings'] ?? '' ?></textarea>
                         </div>
 
                         <!-- ACTION TAKEN -->
@@ -104,7 +104,7 @@
                             <label>Action&nbsp;Taken:</label>
                             <textarea class="form-control"
                                     rows="6"
-                                    name="action"><?= $ticket_row['action'] ?? '' ?></textarea>
+                                    name="action" readonly><?= $ticket_row['action'] ?? '' ?></textarea>
                         </div>
 
                         <!-- RECOMMENDATION -->
@@ -112,7 +112,7 @@
                             <label>Recommendation(s):</label>
                             <textarea class="form-control"
                                     rows="6"
-                                    name="recom"><?= $ticket_row['recom'] ?? '' ?></textarea>
+                                    name="recom" readonly><?= $ticket_row['recom'] ?? '' ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -230,11 +230,9 @@
                                 <label>Signature:</label><br>
                                 <canvas id="personnelSignature"
                                         width="400" height="150"
-                                        style="border: 1px solid #ccc;"
+                                        style="border: 1px solid #ccc; background-color: #eee;"
                                         class="signature-pad"></canvas>
-                                <button type="button"
-                                        class="btn btn-secondary btn-sm"
-                                        id="clearPersonnelSignature">Clear</button>
+                                <!-- No clear button, viewer only -->
                                 <input type="hidden"
                                     id="signaturePersonnelInput"
                                     name="signature_personnel"
@@ -242,16 +240,31 @@
                             </div>
                         </div>
                         <script>
-                            // If signature exists, render it on the canvas
+                            // Render signature only, disable drawing
                             const personnelSignatureData = '<?php echo !empty($ticket_row['signature_personnel']) ? $ticket_row['signature_personnel'] : ''; ?>';
-                            if (personnelSignatureData) {
-                                const personnelCanvas = document.getElementById('personnelSignature');
+                            const personnelCanvas = document.getElementById('personnelSignature');
+                            if (personnelSignatureData && personnelCanvas) {
                                 const personnelCtx = personnelCanvas.getContext('2d');
                                 const personnelImg = new Image();
                                 personnelImg.onload = () => {
+                                    personnelCtx.clearRect(0, 0, personnelCanvas.width, personnelCanvas.height);
                                     personnelCtx.drawImage(personnelImg, 0, 0);
                                 };
                                 personnelImg.src = personnelSignatureData;
+                            }
+                            // Disable all pointer and key events on the canvas
+                            if (personnelCanvas) {
+                                personnelCanvas.style.pointerEvents = 'none';
+                                personnelCanvas.tabIndex = -1;
+                                personnelCanvas.addEventListener('keydown', function(e) {
+                                    e.preventDefault();
+                                });
+                                // Prevent overflow by setting width/height via CSS
+                                personnelCanvas.style.width = '100%';
+                                personnelCanvas.style.maxWidth = '400px';
+                                personnelCanvas.style.height = '150px';
+                                personnelCanvas.style.boxSizing = 'border-box';
+                                personnelCanvas.parentElement.style.overflow = 'hidden';
                             }
                         </script>
                     </div>
