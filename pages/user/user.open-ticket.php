@@ -80,7 +80,7 @@
                         <!-- Supporting Image upload -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="form_image">Supporting Image <span class="text-danger">*</span></label>
+                                <label for="form_image">Supporting Image (Maximum 5MB)<span class="text-danger">*</span></label>
                                 <input id="form_image" type="file" name="image" class="form-control" required="required" accept="image/*">
                             </div>
                         </div>
