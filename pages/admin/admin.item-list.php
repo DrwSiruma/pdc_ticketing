@@ -50,7 +50,7 @@ $item_res = mysqli_fetch_assoc($item_qry2);
                                             <?php } ?>
                                         </td>
                                         <td class="text-right">
-                                            <a href="#" class="text-secondary p-1"><i class="fas fa-pencil-alt"></i></a>
+                                            <a href="#" class="text-secondary p-1 edit-item-btn" data-id="<?php echo $list['l_id']; ?>" data-name="<?php echo htmlspecialchars($list['l_name'], ENT_QUOTES); ?>"><i class="fas fa-pencil-alt"></i></a>
                                             <?php if ($list["status"]== '1') { ?>
                                                 <a href="status-item?id=<?php echo $list["l_id"]; ?>&categ=<?php echo $item_id; ?>&status=0" class="text-secondary p-1"><i class="fas fa-ban"></i></a>
                                             <?php } else { ?>
@@ -74,5 +74,6 @@ $item_res = mysqli_fetch_assoc($item_qry2);
 
 <?php 
     include('admin.add.item.modal.php');
+    include('admin.edit-item.modal.php');
     include('admin.footer.php');
 ?>

@@ -35,6 +35,9 @@ if (strpos($page, 'admin/') === 0) {
             case 'add-itemlist':
                 include 'admin/process.add-itemlist.php';
                 break;
+            case 'edit-itemlist':
+                include 'admin/process.edit-itemlist.php';
+                break;
             case 'ticket-approval':
                 include 'admin/process.ticket-approval.php';
                 break;
