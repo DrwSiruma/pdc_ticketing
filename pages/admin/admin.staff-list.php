@@ -1,5 +1,11 @@
 <?php include('admin.header.php'); ?>
 
+<?php
+function getRoleCode($role) {
+    return ($role === 'it') ? 1 : (($role === 'maintenance') ? 2 : 0);
+}
+?>
+
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">IT/Maintenance Support Staffs</h1>
@@ -52,7 +58,9 @@
                                                     <i class="fas fa-fw fa-circle fa-xs text-secondary"></i>&nbsp;<?php echo $it_res['status']; ?>
                                                 <?php } ?>
                                             </td>
-                                            <td></td>
+                                            <td>
+                                                <a class="btn btn-sm btn-outline-dark" href="assigned-tickets?id=<?php echo $it_res['id']; ?>&role=<?php echo getRoleCode($it_res['role']); ?>" title="View"><i class="fas fa-eye"></i> View Assignments</a>
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
@@ -86,7 +94,9 @@
                                                     <i class="fas fa-fw fa-circle fa-xs text-secondary"></i>&nbsp;<?php echo $maintenance_res['status']; ?>
                                                 <?php } ?>
                                             </td>
-                                            <td></td>
+                                            <td>
+                                                <a class="btn btn-sm btn-outline-dark" href="assigned-tickets.php?id=<?php echo $maintenance_res['id']; ?>&role=<?php echo getRoleCode($maintenance_res['role']); ?>" title="View"><i class="fas fa-eye"></i> View Assignments</a>
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>

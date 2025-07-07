@@ -20,6 +20,17 @@ $(document).ready(function () {
     });
 });
 
+// assigned ticket table
+$(document).ready(function () {
+    var table = $('#assignedTicketsTable').DataTable({
+    searching: true,
+    paging: true,
+    info: true,
+    ordering: true,
+    lengthChange: true,
+    });
+});
+
 // inventory tables
 $(document).ready(function () {
     var table = $('#itcattbl').DataTable({
